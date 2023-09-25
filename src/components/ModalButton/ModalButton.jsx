@@ -1,4 +1,4 @@
-import { ButtonStyled } from './Button.styled';
+import { ButtonStyled } from './ModalButton.styled';
 
 export const Button = ({ text, isGradient }) => {
     const styles = isGradient ? {

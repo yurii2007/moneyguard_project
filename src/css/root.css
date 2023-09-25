@@ -1,5 +1,6 @@
 :root {
   --main-font-color: #fbfbfb;
+  --white-color: #FFF;
   --secondary-font-color: rgba(255, 255, 255, 0.6);
   --btn-gradient-color: linear-gradient(
     97deg,

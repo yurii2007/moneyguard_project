@@ -12,12 +12,14 @@ const breakpoints = {
 
 export const ContainerStyle = styled.div`
   width: ${size.mobileS};
-  padding: ${props => props.padding};
+  padding-inline: 20px;
   @media ${breakpoints.tablet} {
     max-width: ${size.tablet};
+    padding-inline: 32px;
   }
 
   @media ${breakpoints.desktop} {
     max-width: ${size.desktop};
+    padding-inline: 16px;
   }
 `;

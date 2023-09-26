@@ -1,14 +1,16 @@
 import React, { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
+import { LayOutBox } from './Layout.styled';
 
 const Layout = () => {
   return (
     <div>
-      <main>
+      <header>header</header>
+      <LayOutBox>
         <Suspense fallback={<p>Loading ... </p>}>
           <Outlet />
         </Suspense>
-      </main>
+      </LayOutBox>
     </div>
   );
 };

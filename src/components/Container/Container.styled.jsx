@@ -1,25 +1,25 @@
 import styled from 'styled-components';
 
-const size = {
-  mobileS: '320px',
+export const size = {
+  mobile: '280px',
   tablet: '768px',
   desktop: '1280px',
 };
-const breakpoints = {
+export const breakpoints = {
   tablet: `(min-width: ${size.tablet})`,
   desktop: `(min-width: ${size.desktop})`,
 };
 
 export const ContainerStyle = styled.div`
-  width: ${size.mobileS};
+  min-width: ${size.mobile};
   padding-inline: 20px;
   @media ${breakpoints.tablet} {
-    max-width: ${size.tablet};
+    max-width: 704px;
     padding-inline: 32px;
   }
 
   @media ${breakpoints.desktop} {
-    max-width: ${size.desktop};
+    max-width: 1248px;
     padding-inline: 16px;
   }
 `;

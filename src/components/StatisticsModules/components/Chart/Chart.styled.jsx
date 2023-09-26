@@ -69,3 +69,10 @@ export const Total = styled.div`
     left: 50%;
   }
 `;
+export const TextInfo = styled.p`
+  margin: 135px 0;
+
+  text-align: center;
+  font-weight: 600;
+  color: var(--white);
+`;

@@ -2,17 +2,19 @@ import React, { useEffect, useState } from 'react';
 import Select from 'react-select';
 import { optionsMonth, optionsYear } from './selectOptions';
 import { SelectBox } from './Select.styled';
-import { customSelect } from './selectCustomStules';
+import { customSelect } from './selectCustomStyles';
+import { useDispatch } from 'react-redux';
+import { getTransaction } from 'redux/Transaction/transactionOperation';
 
 const SelectComponent = () => {
   const date = new Date();
-
+  const dispatch = useDispatch();
   const [month, setMonth] = useState(date.getMonth() + 1);
   const [year, setYear] = useState(date.getFullYear());
 
   useEffect(() => {
-    //  console.log({ month: Number(month), year: Number(year) });
-  }, [month, year]);
+    dispatch(getTransaction({ month: Number(month), year: Number(year) }));
+  }, [dispatch, month, year]);
 
   return (
     <SelectBox>

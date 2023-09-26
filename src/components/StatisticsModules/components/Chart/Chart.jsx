@@ -1,29 +1,34 @@
 import React from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
-import { Total, TotalContainer } from './Chart.styled';
+import { TextInfo, Total, TotalContainer } from './Chart.styled';
 import { colorStatistics } from '../Transaction/colorsForTypes';
-import { transaction } from '../Transaction/Transaction';
+import { useTransaction } from 'utils/useTransaction';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const ChartComponent = () => {
-  const balans = 30; //берем со строра в user
+const ChartComponent = ({ transactions }) => {
+  const { income, summary } = useTransaction();
+  if (!transactions || !income || !summary) {
+    return <TextInfo>Sorry you not have info in this period</TextInfo>;
+  }
 
+  const balance = income + summary;
   const data = {
-    labels: transaction.categoriesSummary.map(item => item.name),
+    labels: transactions?.map(item => item.name),
     datasets: [
       {
         label: 'Ammount',
-        data: transaction.categoriesSummary.map(item => Math.abs(item.total)),
-        backgroundColor: transaction.categoriesSummary.map(item => {
+        data: transactions?.map(item => Math.abs(item.total)),
+        backgroundColor: transactions?.map(item => {
           const colorItems = colorStatistics.find(
             colorItem => colorItem.name === item.name
           );
-          return colorItems.color;
+          return colorItems ? colorItems.color : '#FFFFFF';
         }),
         hoverOffset: 2,
         borderWidth: 0,
+        cutout: '70%',
       },
     ],
   };
@@ -39,7 +44,7 @@ const ChartComponent = () => {
   return (
     <TotalContainer>
       <Doughnut data={data} options={options} />
-      <Total>₴ {balans.toFixed(2)}</Total>
+      {balance && <Total>₴ {balance.toFixed(2)}</Total>}
     </TotalContainer>
   );
 };

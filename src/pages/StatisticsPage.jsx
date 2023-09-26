@@ -4,14 +4,16 @@ import SelectComponent from 'components/StatisticsModules/components/Select/Sele
 import Title from 'components/StatisticsModules/components/Title/Title';
 import Transaction from 'components/StatisticsModules/components/Transaction/Transaction';
 import React from 'react';
+import { useTransaction } from 'utils/useTransaction';
 
 const StatisticsPage = () => {
+  const { transactions } = useTransaction();
   return (
     <Container>
       <div style={{ paddingBottom: '32px' }}>
         <div style={{ width: '280px', margin: '0 auto' }}>
           <Title>Statistics</Title>
-          <ChartComponent />
+          <ChartComponent transactions={transactions} />
         </div>
         <SelectComponent />
         <Transaction />

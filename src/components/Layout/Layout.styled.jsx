@@ -10,12 +10,10 @@ export const LayOutBox = styled.main`
   background-image: url(${bgMob});
   background-repeat: no-repeat;
   background-size: cover;
-
-  @media ${breakpoints.tablet} {
+  @media sreen and ${breakpoints.tablet} {
     background-image: url(${bgTab});
   }
-
-  @media ${breakpoints.desktop} {
+  @media sreen and ${breakpoints.desktop} {
     background-image: url(${bgDes});
   }
 `;

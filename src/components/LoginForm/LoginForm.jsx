@@ -3,6 +3,19 @@ import { useFormik } from 'formik';
 import { logIn } from 'redux/auth/AuthThunk';
 import { Button } from 'components/ModalButton/ModalButton';
 import * as Yup from 'yup';
+import {
+  Card,
+  ErrorRegister,
+  InputRegister,
+  InputWrapper,
+  LogoWrapper,
+  TitleRegisters,
+  FormRegister,
+  IconWrapper,
+} from './LoginForm.styled';
+import { ReactComponent as EmailIcon } from '../../images/svg/form-email.svg';
+import { ReactComponent as LockIcon } from '../../images/svg/form-password.svg';
+import { ReactComponent as LogoIcon } from '../../images/svg/logo.svg';
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
@@ -44,43 +57,62 @@ export const LoginForm = () => {
   });
 
   return (
-    <form onSubmit={formik.handleSubmit}>
-      <div>
-        <label htmlFor="email">Email:</label>
-        <input
-          type="text"
-          id="email"
-          name="email"
-          value={formik.values.email}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          required
-        />
-        {formik.touched.email && formik.errors.email ? (
-          <div className="error">{formik.errors.email}</div>
-        ) : null}
-      </div>
-      <div>
-        <label htmlFor="password">Password:</label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          value={formik.values.password}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          required
-        />
-        {formik.touched.password && formik.errors.password ? (
-          <div className="error">{formik.errors.password}</div>
-        ) : null}
-      </div>
+    <Card>
+      <FormRegister onSubmit={formik.handleSubmit}>
+        <LogoWrapper>
+          <LogoIcon className="logo-register" />
+          <TitleRegisters>Money Guard</TitleRegisters>
+        </LogoWrapper>
+        <InputWrapper>
+          <label htmlFor="email"></label>
+          <InputRegister
+            placeholder="E-mail"
+            type="text"
+            id="email"
+            name="email"
+            value={formik.values.email}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            required
+          />
 
-      <div>
-        <Button type="submit" text="LogIn" isGradient={true} />
-        <Button type="button" text="Register" isGradient={false} />
-      </div>
-    </form>
+          <IconWrapper>
+            <EmailIcon />
+          </IconWrapper>
+
+          {formik.touched.email && formik.errors.email ? (
+            <ErrorRegister className="error">
+              {formik.errors.email}
+            </ErrorRegister>
+          ) : null}
+        </InputWrapper>
+        <InputWrapper>
+          <label htmlFor="password"></label>
+          <InputRegister
+            placeholder="Password"
+            type="password"
+            id="password"
+            name="password"
+            value={formik.values.password}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            required
+          />
+          <IconWrapper>
+            <LockIcon />
+          </IconWrapper>
+          {formik.touched.password && formik.errors.password ? (
+            <ErrorRegister className="error">
+              {formik.errors.password}
+            </ErrorRegister>
+          ) : null}
+        </InputWrapper>
+        <div className="button-wrapper">
+          <Button type="submit" text="LogIn" isGradient={true} />
+          <Button type="button" text="Register" isGradient={false} />
+        </div>
+      </FormRegister>
+    </Card>
   );
 };
 

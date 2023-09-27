@@ -9,6 +9,7 @@ import StatisticsPage from 'pages/StatisticsPage';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { refreshUser } from 'redux/auth/AuthThunk';
+import CurrencyPage from 'pages/CurrencyPage';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -19,30 +20,30 @@ export const App = () => {
 
   return (
     <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<Navigate to="/home" />}></Route>
+      <Route
+        path="/register"
+        element={
+          <PublicRoute redirectTo="/dashboard/home" restricted>
+            <RegisterPage />
+          </PublicRoute>
+        }
+      />
+      <Route
+        path="/login"
+        element={
+          <PublicRoute redirectTo="/dashboard/home" restricted>
+            <LoginPage />
+          </PublicRoute>
+        }
+      />
+      <Route path="/dashboard" element={<Layout />}>
+        <Route index element={<Navigate to='/home' />} />
         <Route
-          path="/home"
+          path="home"
           element={
             <PrivateRoute redirectTo="/login">
               <Home />
             </PrivateRoute>
-          }
-        />
-        <Route
-          path="register"
-          element={
-            <PublicRoute redirectTo="/home" restricted>
-              <RegisterPage />
-            </PublicRoute>
-          }
-        />
-        <Route
-          path="login"
-          element={
-            <PublicRoute redirectTo="/home" restricted>
-              <LoginPage />
-            </PublicRoute>
           }
         />
         <Route
@@ -53,8 +54,19 @@ export const App = () => {
             </PrivateRoute>
           }
         />
+        <Route
+          path="currency"
+          element={
+            <PrivateRoute redirectTo="/login">
+              <CurrencyPage />
+            </PrivateRoute>
+          }
+        />
       </Route>
-      <Route path="*" element={<Navigate to="/home" replace={true} />} />
+      <Route
+        path="*"
+        element={<Navigate to="dashboard/home" replace={true} />}
+      />
     </Routes>
   );
 };

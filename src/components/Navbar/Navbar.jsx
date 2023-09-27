@@ -6,11 +6,11 @@ export const Navigation = () => {
   const { isLoggedIn } = useAuth();
   return (
     <nav className={css.navigationContainer}>
-      <NavLink className={css.link} to="/">
+      <NavLink className={css.link} to="home">
         Home
       </NavLink>
       {isLoggedIn && (
-        <NavLink className={css.link} to="/statistics">
+        <NavLink className={css.link} to="statistics">
           Statistics
         </NavLink>
       )}

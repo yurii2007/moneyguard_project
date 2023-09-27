@@ -8,6 +8,7 @@ export const LoaderWrapper = styled.div`
   height: 100vh;
   background: rgba(34, 13, 91, 0.23);
   backdrop-filter: blur(3.5px);
+  pointer-events: all;
   svg {
     position: absolute;
     left: 50%;

@@ -2,7 +2,6 @@ const { default: styled } = require('styled-components');
 
 export const SelectBox = styled.div`
   display: flex;
-  margin-top: 16px;
 
   @media screen and (max-width: 767px) {
     gap: 20px;

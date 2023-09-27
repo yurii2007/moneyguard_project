@@ -1,5 +1,5 @@
 import { ModalLogoutStyle } from '../ModalLogout/ModalLogoutStyle';
-
+import { ReactComponent as CloseIcon } from '../../images/svg/close-icon.svg';
 export const ModalLogout = ({ active, setActive }) => {
   return (
     <ModalLogoutStyle
@@ -10,7 +10,9 @@ export const ModalLogout = ({ active, setActive }) => {
       <div
         className={active ? 'modal-content active' : 'modal-content'}
         onClick={e => e.stopPropagation()}
-      ></div>
+      >
+        <CloseIcon></CloseIcon>
+      </div>
     </ModalLogoutStyle>
   );
 };

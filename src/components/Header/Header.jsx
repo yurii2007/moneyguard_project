@@ -14,11 +14,10 @@ export const Header = () => {
         <span className="logo-text">Money Guard</span>
         <p className="user-name">name</p>
         <button className="exit-button" onClick={() => setModalShow(true)}>
-          <ExitIconButton></ExitIconButton>Exit
+          <ExitIconButton className="exit-button-svg"></ExitIconButton>
         </button>
       </HeaderStyled>
       <ModalLogout active={isModalShow} setActive={() => setModalShow(false)} />
-      {/* {isModalShow && <ModalLogout />} */}
     </>
   );
 };

@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkmoneyguard_project=self.webpackChunkmoneyguard_project||[]).push([[126],{6126:function(e,r,n){n.r(r);var u=n(184);r.default=function(){return(0,u.jsx)("div",{children:"CurrencyPage"})}}}]);
+//# sourceMappingURL=126.490f7dc6.chunk.js.map

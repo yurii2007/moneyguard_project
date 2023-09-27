@@ -20,9 +20,9 @@ export const App = () => {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
+        <Route index element={<Navigate to="/home" />}></Route>
         <Route
           path="/home"
-          index
           element={
             <PrivateRoute redirectTo="/login">
               <Home />
@@ -32,7 +32,7 @@ export const App = () => {
         <Route
           path="register"
           element={
-            <PublicRoute redirectTo="home" restricted>
+            <PublicRoute redirectTo="/home" restricted>
               <RegisterPage />
             </PublicRoute>
           }
@@ -40,7 +40,7 @@ export const App = () => {
         <Route
           path="login"
           element={
-            <PublicRoute redirectTo="/statistics" restricted>
+            <PublicRoute redirectTo="/home" restricted>
               <LoginPage />
             </PublicRoute>
           }
@@ -48,13 +48,13 @@ export const App = () => {
         <Route
           path="statistics"
           element={
-            <PrivateRoute redirectTo="login">
+            <PrivateRoute redirectTo="/login">
               <StatisticsPage />
             </PrivateRoute>
           }
         />
       </Route>
-      <Route path="*" element={<Navigate to="home" replace={true} />} />
+      <Route path="*" element={<Navigate to="/home" replace={true} />} />
     </Routes>
   );
 };

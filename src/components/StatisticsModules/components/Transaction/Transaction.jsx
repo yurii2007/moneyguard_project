@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { nanoid } from 'nanoid';
 import {
   HeaderTitle,
@@ -11,18 +11,40 @@ import {
 import { colorStatistics } from './colorsForTypes';
 import TransactionItemComponent from '../TransactionItem/TransactionItem';
 import { useTransaction } from 'utils/useTransaction';
+import FilterButton from '../FilterButton/FilterButton';
 
 const Transaction = () => {
   const { transactions, summary, income } = useTransaction();
+  const [data, setData] = useState(transactions);
+  useEffect(() => {
+    setData(transactions);
+  }, [transactions]);
+
+  const handleFilterData = toggle => {
+    const x = [...data];
+    let newData;
+    if (toggle) {
+      newData = x.sort(
+        (first, second) => Math.abs(first.total) - Math.abs(second.total)
+      );
+    } else {
+      newData = x.sort(
+        (first, second) => Math.abs(second.total) - Math.abs(first.total)
+      );
+    }
+
+    setData(newData);
+  };
 
   return (
     <>
       <HeaderTransaction>
         <HeaderTitle>Category</HeaderTitle>
+        <FilterButton handleFilterData={handleFilterData} />
         <HeaderTitle>Sum</HeaderTitle>
       </HeaderTransaction>
       <TransactionList>
-        {transactions.map(item => {
+        {data?.map(item => {
           const color =
             colorStatistics.find(category => category.name === item.name)
               ?.color || '';

@@ -7,9 +7,12 @@ export const HeaderStyled = styled.header`
   display: flex;
 
   .logo-header {
-    width: 23.489px;
-    height: 22.468px;
+    width: 18;
+    height: 18;
   }
   .logo-text {
+    width: 86.672px;
+    height: 19.387px;
+    font-size: 12.84px;
   }
 `;

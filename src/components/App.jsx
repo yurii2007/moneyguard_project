@@ -1,15 +1,15 @@
-import Home from 'pages/Home';
+import React, { useEffect } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import PublicRoute from './Routes/PublicRoute';
-import Layout from './Layout/Layout';
-import RegisterPage from 'pages/RegisterPage';
-import LoginPage from 'pages/LoginPage';
-import PrivateRoute from './Routes/PrivateRoute';
-import StatisticsPage from 'pages/StatisticsPage';
 import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+import PublicRoute from './Routes/PublicRoute';
+import PrivateRoute from './Routes/PrivateRoute';
+import LoginPage from 'pages/LoginPage';
+import RegisterPage from 'pages/RegisterPage';
+import Layout from './Layout/Layout';
 import { refreshUser } from 'redux/auth/AuthThunk';
-import Currency from 'pages/Currency';
+const Home = React.lazy(() => import('pages/Home'));
+const StatisticsPage = React.lazy(() => import('pages/StatisticsPage'));
+const Currency = React.lazy(() => import('pages/Currency'));
 
 export const App = () => {
   const dispatch = useDispatch();

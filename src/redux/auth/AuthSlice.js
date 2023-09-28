@@ -23,7 +23,7 @@ const handleFulfilled = (state, { payload }) => {
 const handleFulfilledRefresh = (state, { payload }) => {
   state.isLoading = false;
   state.error = '';
-  state.user = payload.user;
+  state.user = payload;
   state.isAuth = true;
 };
 

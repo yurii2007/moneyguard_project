@@ -1,4 +1,5 @@
 import React from 'react';
+import { RiEmotionUnhappyLine } from 'react-icons/ri';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 import { TextInfo, Total, TotalContainer } from './Chart.styled';
@@ -10,7 +11,15 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 const ChartComponent = ({ transactions }) => {
   const { income, summary } = useTransaction();
   if (!transactions || !income || !summary) {
-    return <TextInfo>Sorry you not have info in this period</TextInfo>;
+    return (
+      <div style={{ paddingBottom: '32px' }}>
+        <div style={{ margin: '0 auto', width: '250px' }}>
+          <RiEmotionUnhappyLine size="250" fill="white" />
+        </div>
+
+        <TextInfo> Sorry you not have info in this period</TextInfo>
+      </div>
+    );
   }
 
   const balance = income + summary;

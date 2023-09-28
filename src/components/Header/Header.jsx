@@ -10,12 +10,18 @@ export const Header = () => {
   return (
     <>
       <HeaderStyled>
-        <ReactLogo className="logo-header" />
-        <span className="logo-text">Money Guard</span>
-        <p className="user-name">name</p>
-        <button className="exit-button" onClick={() => setModalShow(true)}>
-          <ExitIconButton className="exit-button-svg"></ExitIconButton>
-        </button>
+        <div className="logo-container">
+          <ReactLogo className="logo-header" />
+          <span className="logo-text">Money Guard</span>
+        </div>
+        <div className="exit-container">
+          <p className="user-name">Name</p>
+          <div className="divider"></div>
+          <button className="exit-button" onClick={() => setModalShow(true)}>
+            <ExitIconButton className="exit-button-svg"></ExitIconButton>
+            <span className="text-exit">Exit</span>
+          </button>
+        </div>
       </HeaderStyled>
       <ModalLogout active={isModalShow} setActive={() => setModalShow(false)} />
     </>

@@ -1,5 +1,4 @@
 import SideCurrency from './SideCurrency/SideCurrency';
-import { useMediaQuery } from '@react-hook/media-query';
 import { MainContainer, DownContainer, Graphics, Line } from './SideBar.styled';
 import { useMediaQuery } from '@react-hook/media-query';
 

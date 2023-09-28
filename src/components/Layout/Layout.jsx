@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import { LayOutBox } from './Layout.styled';
 import { Header } from 'components/Header/Header';
 import { Navigation } from 'components/Navbar/Navbar';

@@ -19,7 +19,7 @@ export const ModalLogout = ({ active, setActive }) => {
         className={active ? 'modal-content active' : 'modal-content'}
         onClick={e => e.stopPropagation()}
       >
-        <div className="modal-content">
+        <div className="modal-element">
           <ReactLogo className="logo-modal" />
           <span className="logo-text">Money Guard</span>
 

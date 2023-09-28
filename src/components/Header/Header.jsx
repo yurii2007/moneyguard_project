@@ -10,7 +10,7 @@ export const Header = () => {
   const [isModalShow, setModalShow] = useState(false);
   let userEmail = useSelector(selectUserEmail);
   userEmail = userEmail?.replace(/@.+/gi, '');
-
+  console.log(userEmail);
   return (
     <>
       <HeaderStyled>

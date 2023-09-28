@@ -71,6 +71,7 @@ export const HeaderStyled = styled.header`
     margin-right: 8px;
     color: rgba(255, 255, 255, 0.6);
   }
+
   @media screen and (min-width: 768px) {
     .user-name {
       margin-right: 12px;

@@ -23,7 +23,7 @@ const TransactionsList = () => {
       createTransactionThunk({
         transactionDate: '2023-09-28',
         type: 'EXPENSE',
-        categoryId: "3caa7ba0-79c0-40b9-ae1f-de1af1f6e386",
+        categoryId: '3caa7ba0-79c0-40b9-ae1f-de1af1f6e386',
         comment: 'Car',
         amount: -150,
       })
@@ -33,20 +33,20 @@ const TransactionsList = () => {
   return (
     <StyledTransactionsList>
       <button onClick={onAddTransaction}>Add test transaction</button>
-      <table>
-        <thead>
-          <tr>
-            <th>Date</th>
-            <th>Type</th>
-            <th>Category</th>
-            <th>Comment</th>
-            <th>Sum</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {Array.isArray(transactions) && transactions.length > 0 ? (
-            transactions.map(
+      {Array.isArray(transactions) && transactions.length > 0 ? (
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Type</th>
+              <th>Category</th>
+              <th>Comment</th>
+              <th>Sum</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {transactions.map(
               ({ id, transactionDate, type, categoryId, comment, amount }) => (
                 <TransactionsItem
                   key={id}
@@ -58,12 +58,12 @@ const TransactionsList = () => {
                   amount={amount}
                 />
               )
-            )
-          ) : (
-            <p>There are no transactions added!</p>
-          )}
-        </tbody>
-      </table>
+            )}
+          </tbody>
+        </table>
+      ) : (
+        <thead>There are no transactions added!</thead>
+      )}
     </StyledTransactionsList>
   );
 };

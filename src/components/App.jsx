@@ -5,8 +5,8 @@ import PublicRoute from './Routes/PublicRoute';
 import PrivateRoute from './Routes/PrivateRoute';
 import LoginPage from 'pages/LoginPage';
 import RegisterPage from 'pages/RegisterPage';
-import Layout from './Layout/Layout';
 import { refreshUser } from 'redux/auth/AuthThunk';
+import { LayoutContainer } from './LayoutContainer/LayoutContainer';
 const Home = React.lazy(() => import('pages/Home'));
 const StatisticsPage = React.lazy(() => import('pages/StatisticsPage'));
 const Currency = React.lazy(() => import('pages/Currency'));
@@ -36,7 +36,7 @@ export const App = () => {
           </PublicRoute>
         }
       />
-      <Route path="/dashboard" element={<Layout />}>
+      <Route path="/dashboard" element={<LayoutContainer />}>
         <Route index element={<Navigate to="/home" />} />
         <Route
           path="home"

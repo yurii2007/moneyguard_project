@@ -13,11 +13,11 @@ function Currency() {
   });
 
   return (
-    <div>
+    <>
       <SideCurrency />
       <Graphics />
       <Line />
-    </div>
+    </>
   );
 }
 

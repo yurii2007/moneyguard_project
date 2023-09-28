@@ -9,7 +9,6 @@ import { useTransaction } from 'utils/useTransaction';
 const StatisticsPage = () => {
   const { transactions } = useTransaction();
   return (
-    <Container>
       <div style={{ paddingBottom: '32px' }}>
         <div style={{ width: '280px', margin: '0 auto' }}>
           <Title>Statistics</Title>
@@ -18,7 +17,6 @@ const StatisticsPage = () => {
         <SelectComponent />
         <Transaction />
       </div>
-    </Container>
   );
 };
 

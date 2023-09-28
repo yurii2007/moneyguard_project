@@ -9,7 +9,7 @@ import Layout from './Layout/Layout';
 import { refreshUser } from 'redux/auth/AuthThunk';
 const Home = React.lazy(() => import('pages/Home'));
 const StatisticsPage = React.lazy(() => import('pages/StatisticsPage'));
-const CurrencyPage = React.lazy(() => import('pages/CurrencyPage'));
+const Currency = React.lazy(() => import('pages/Currency'));
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -58,7 +58,7 @@ export const App = () => {
           path="currency"
           element={
             <PrivateRoute redirectTo="/login">
-              <CurrencyPage />
+              <Currency />
             </PrivateRoute>
           }
         />

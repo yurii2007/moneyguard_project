@@ -3,7 +3,15 @@ import backRegisterTablet from '../../images/png/dollar-tablet.png';
 import backRegisterDesktop from '../../images/png/dollar-desktop.png';
 
 export const Card = styled.div`
+  background: radial-gradient(
+    circle at center center,
+    rgba(47, 21, 176, 0.73),
+    rgba(48, 46, 142, 1)
+  );
+
   @media screen and (min-width: 768px) {
+    background-color: #101010;
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -44,6 +52,32 @@ export const FormRegister = styled.form`
 
   .button-wrapper > button {
     margin-bottom: 20px;
+    position: relative;
+  }
+
+  .button-wrapper > button:hover,
+  .button-wrapper > button:focus {
+    background: transparent !important;
+    box-shadow: none;
+    color: #ffc727 !important;
+  }
+
+  .button-wrapper > button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: transparent;
+    transition: width 0.5s ease-in-out;
+  }
+
+  .button-wrapper > button:hover::before,
+  .button-wrapper > button:focus::before {
+    width: 100%;
+
+    border-bottom: 1px solid #ffc727;
   }
 
   @media screen and (min-width: 768px) {
@@ -102,10 +136,11 @@ export const InputRegister = styled.input`
   padding: 0px 45px;
   margin: 0px;
   position: relative;
+  outline: none;
 
   transition: border-color 0.3s, border-radius 0.3s, border-bottom 0.3s;
 
-  &:hover {
+  &:focus {
     outline: none;
     border-bottom: solid 1px #ffc727;
   }
@@ -119,7 +154,7 @@ export const IconWrapper = styled.div`
 
 export const ErrorRegister = styled.div`
   margin-top: 5px;
-  color: red;
+  color: #ffc727;
   text-align: center;
   line-height: 1.5;
   font-size: 14px;

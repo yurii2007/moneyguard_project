@@ -3,18 +3,26 @@ import backLoginTablet from '../../images/png/money-tablet.png';
 import backLoginDesktop from '../../images/png/money-desktop.png';
 
 export const Card = styled.div`
+  background: radial-gradient(
+    circle at center center,
+    rgba(47, 21, 176, 0.73),
+    rgba(48, 46, 142, 1)
+  );
+
   @media screen and (min-width: 768px) {
+    background-color: #101010;
+
+    background-image: url(${backLoginTablet});
+
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-
-    background-image: url(${backLoginTablet});
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
   }
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 1280px) {
     background-image: url(${backLoginDesktop});
   }
 `;
@@ -37,10 +45,17 @@ export const TitleRegisters = styled.h2`
 `;
 
 export const FormRegister = styled.form`
-  padding-top: 23px;
+  padding-top: 97px;
   padding-left: 20px;
   padding-right: 20px;
-  padding-bottom: 23px;
+  padding-bottom: 98px;
+
+  .button-wrapper > button:hover {
+    background: transparent !important;
+    color: #ffc727 !important;
+    outline: 1px solid #ffc727;
+    transition: background 0.3s, color 0.3s, outline 0.3s;
+  }
 
   .button-wrapper > button {
     margin-bottom: 20px;
@@ -58,7 +73,6 @@ export const FormRegister = styled.form`
     background-color: rgba(255, 255, 255, 0.1);
 
     box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
-    backdrop-filter: blur(50px);
   }
 
   .button-wrapper {
@@ -102,11 +116,13 @@ export const InputRegister = styled.input`
   padding: 0px 45px;
   margin: 0px;
   position: relative;
+  outline: none;
 
   transition: border-color 0.3s, border-radius 0.3s, border-bottom 0.3s;
 
-  &:hover {
+  &:hover:focus {
     outline: none;
+    border: none;
     border-bottom: solid 1px #ffc727;
   }
 `;

@@ -9,7 +9,7 @@ import {
   getTransactionCategoriesThunk,
 } from 'redux/finance/financeThunks';
 
-const TransactionsList = ({  }) => {
+const TransactionsList = () => {
   const dispatch = useDispatch();
   const transactions = useSelector(state => state.transactions.data);
 

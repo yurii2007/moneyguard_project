@@ -9,7 +9,7 @@ import StatisticsPage from 'pages/StatisticsPage';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { refreshUser } from 'redux/auth/AuthThunk';
-import CurrencyPage from 'pages/CurrencyPage';
+import Currency from 'pages/Currency';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -37,7 +37,7 @@ export const App = () => {
         }
       />
       <Route path="/dashboard" element={<Layout />}>
-        <Route index element={<Navigate to='/home' />} />
+        <Route index element={<Navigate to="/home" />} />
         <Route
           path="home"
           element={
@@ -58,7 +58,7 @@ export const App = () => {
           path="currency"
           element={
             <PrivateRoute redirectTo="/login">
-              <CurrencyPage />
+              <Currency />
             </PrivateRoute>
           }
         />

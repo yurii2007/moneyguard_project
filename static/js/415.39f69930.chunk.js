@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkmoneyguard_project=self.webpackChunkmoneyguard_project||[]).push([[415],{9198:function(n,r,e){e.d(r,{W:function(){return t}});var u=e(8861),c=e(184),t=function(n){var r=n.children;return(0,c.jsx)(u.Nk,{children:r})}},5415:function(n,r,e){e.r(r);var u=e(9198),c=(e(2791),e(184));r.default=function(){return(0,c.jsx)(u.W,{children:(0,c.jsx)("div",{children:"Home"})})}}}]);
-//# sourceMappingURL=415.39f69930.chunk.js.map

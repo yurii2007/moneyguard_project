@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// import { BsCaretDown, BsCaretUp } from 'react-icons/bs';
 import { AiFillCaretDown, AiFillCaretUp } from 'react-icons/ai';
 import { Button } from './FilterButton.styled';
 

@@ -156,7 +156,17 @@ export const RegisterForm = () => {
               {formik.errors.confirmPassword}
             </ErrorRegister>
           ) : null}
-          <PasswordStrengthBar password={formik.values.password} />
+          <PasswordStrengthBar
+            scoreWords={[
+              'too short',
+              'weak',
+              'insecure',
+              'secure',
+              'god password',
+            ]}
+            barColors={['#ff868d', '#ffc727', '#9e40ba', '#7000ff', 'green']}
+            password={formik.values.password}
+          />
         </InputWrapper>
         <div className="button-wrapper">
           <Button type="submit" text="Register" isGradient={true} />

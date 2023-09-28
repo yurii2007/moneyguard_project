@@ -19,8 +19,27 @@ const Home = () => {
             amount: 0,
             balanceAfter: 0,
           },
+          {
+            id: 'string2',
+            transactionDate: 'string',
+            type: 'INCOME',
+            categoryId: 'string',
+            userId: 'string',
+            comment: 'string',
+            amount: 0,
+            balanceAfter: 0,
+          },
+          {
+            id: 'string3',
+            transactionDate: 'string',
+            type: 'INCOME',
+            categoryId: 'string',
+            userId: 'string',
+            comment: 'string',
+            amount: 0,
+            balanceAfter: 0,
+          },
         ]}
-       
       />
     </Container>
   );

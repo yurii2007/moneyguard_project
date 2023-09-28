@@ -1,6 +1,6 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
- 
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
+
 const instance = axios.create({
   baseURL: 'https://wallet.goit.ua/api',
 });
@@ -32,7 +32,6 @@ export async function getTransactionCategories() {
   return data;
 }
 
-
 export async function getSummaryTransaction({ month = null, year = null }) {
   const { data } = await instance.get('/transactions-summary', {
     params: { month, year },
@@ -40,10 +39,12 @@ export async function getSummaryTransaction({ month = null, year = null }) {
   return data;
 }
 
-
 export const createTransactionThunk = createAsyncThunk(
   'finance/createTransactionThunk',
   async (transaction, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const token = state.auth.token;
+    instance.defaults.headers.common.Authorization = `Bearer ${token}`;
     try {
       return await createTransaction(transaction);
     } catch (error) {
@@ -55,6 +56,10 @@ export const createTransactionThunk = createAsyncThunk(
 export const fetchAllTransactionsThunk = createAsyncThunk(
   'finance/fetchAllTransactionsThunk',
   async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const token = state.auth.token;
+    instance.defaults.headers.common.Authorization = `Bearer ${token}`;
+
     try {
       return await fetchAllTransactions();
     } catch (error) {
@@ -66,6 +71,9 @@ export const fetchAllTransactionsThunk = createAsyncThunk(
 export const updTransactionThunk = createAsyncThunk(
   'finance/updTransactionThunk',
   async (transaction, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const token = state.auth.token;
+    instance.defaults.headers.common.Authorization = `Bearer ${token}`;
     try {
       return await updTransaction(transaction);
     } catch (error) {
@@ -77,6 +85,9 @@ export const updTransactionThunk = createAsyncThunk(
 export const delTransactionThunk = createAsyncThunk(
   'finance/delTransactionThunk',
   async (id, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const token = state.auth.token;
+    instance.defaults.headers.common.Authorization = `Bearer ${token}`;
     try {
       return await delTransaction(id);
     } catch (error) {
@@ -88,6 +99,9 @@ export const delTransactionThunk = createAsyncThunk(
 export const getTransactionCategoriesThunk = createAsyncThunk(
   'finance/getTransactionCategoriesThunk',
   async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const token = state.auth.token;
+    instance.defaults.headers.common.Authorization = `Bearer ${token}`;
     try {
       return await getTransactionCategories();
     } catch (error) {
@@ -99,6 +113,9 @@ export const getTransactionCategoriesThunk = createAsyncThunk(
 export const getSummaryTransactionThunk = createAsyncThunk(
   'finance/getSummaryTransactionThunk',
   async (date, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const token = state.auth.token;
+    instance.defaults.headers.common.Authorization = `Bearer ${token}`;
     try {
       return await getSummaryTransaction(date);
     } catch (error) {

@@ -1,19 +1,38 @@
 import PropTypes from 'prop-types';
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { StyledTransactionsList } from './TransactionsList.styled';
 import { TransactionsItem } from 'components/TransactionsList/TransactionsItem/TransactionsItem';
-import { fetchAllTransactionsThunk } from 'redux/finance/financeThunks';
+import {
+  createTransactionThunk,
+  fetchAllTransactionsThunk,
+  getTransactionCategoriesThunk,
+} from 'redux/finance/financeThunks';
 
- const TransactionsList = ({ transactions }) => {
-  const dispatch = useDispatch()
+const TransactionsList = ({  }) => {
+  const dispatch = useDispatch();
+  const transactions = useSelector(state => state.transactions.data);
 
-  useEffect(()=>{
-  dispatch(fetchAllTransactionsThunk());
-  },[dispatch])
+  useEffect(() => {
+    dispatch(fetchAllTransactionsThunk());
+    dispatch(getTransactionCategoriesThunk());
+  }, [dispatch]);
+
+  const onAddTransaction = () => {
+    dispatch(
+      createTransactionThunk({
+        transactionDate: '2023-09-28',
+        type: 'EXPENSE',
+        categoryId: "3caa7ba0-79c0-40b9-ae1f-de1af1f6e386",
+        comment: 'Car',
+        amount: -150,
+      })
+    );
+  };
 
   return (
     <StyledTransactionsList>
+      <button onClick={onAddTransaction}>Add test transaction</button>
       <table>
         <thead>
           <tr>
@@ -26,18 +45,22 @@ import { fetchAllTransactionsThunk } from 'redux/finance/financeThunks';
           </tr>
         </thead>
         <tbody>
-          {transactions.map(
-            ({ id, transactionDate, type, categoryId, comment, amount }) => (
-              <TransactionsItem
-                key={id}
-                id={id}
-                transactionDate={transactionDate}
-                type={type}
-                categoryId={categoryId}
-                comment={comment}
-                amount={amount}
-              />
+          {Array.isArray(transactions) && transactions.length > 0 ? (
+            transactions.map(
+              ({ id, transactionDate, type, categoryId, comment, amount }) => (
+                <TransactionsItem
+                  key={id}
+                  id={id}
+                  transactionDate={transactionDate}
+                  type={type}
+                  categoryId={categoryId}
+                  comment={comment}
+                  amount={amount}
+                />
+              )
             )
+          ) : (
+            <p>There are no transactions added!</p>
           )}
         </tbody>
       </table>

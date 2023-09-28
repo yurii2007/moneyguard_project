@@ -13,7 +13,7 @@ export const ModalLogoutStyle = styled.div`
   justify-content: center;
   opacity: 0;
   transition: 0.5s;
-
+  z-index: 1000;
   .active {
     opacity: 1;
   }
@@ -35,7 +35,6 @@ export const ModalLogoutStyle = styled.div`
   .text-logout {
     color: var(--white-color);
     text-align: center;
-    padding-top: 239px;
     margin-bottom: 40px;
     padding-left: 53px;
     padding-right: 53px;
@@ -47,10 +46,26 @@ export const ModalLogoutStyle = styled.div`
     width: 15px;
     height: 15px;
   }
+
+  .modal-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .logo-modal {
+    width: 36px;
+    height: 36px;
+  }
+
+  .logo-text {
+    font-size: 27px;
+    line-height: 40px;
+    letter-spacing: 0em;
+    color: var(--white-color);
+  }
+
   .buttonlog {
-    margin-left: 20px;
-    margin-right: 20px;
-    padding-bottom: 238px;
     background: var(--main-font-color);
     color: #623f8b;
     width: 300px;

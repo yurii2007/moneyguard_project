@@ -3,7 +3,7 @@ import axios from 'axios';
 
 axios.defaults.baseURL = 'https://wallet.goit.ua/';
 
-const setAuthToken = token => {
+export const setAuthToken = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
@@ -39,9 +39,25 @@ export const logIn = createAsyncThunk(
 
 export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
-    await axios.post('/api/auth/sign-out');
+    await axios.delete('/api/auth/sign-out');
     clearAuthToken();
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
   }
 });
+
+export const refreshUser = createAsyncThunk(
+  'auth/userRefresh',
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const prevToken = state.auth.token;
+
+    try {
+      setAuthToken(prevToken);
+      const { data } = await axios.get('/api/users/current');
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

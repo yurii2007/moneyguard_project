@@ -2,7 +2,22 @@ import { Button } from 'components/ModalButton/ModalButton';
 import { useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/AuthThunk';
+import PasswordStrengthBar from 'react-password-strength-bar';
 import * as Yup from 'yup';
+import {
+  Card,
+  InputWrapper,
+  InputRegister,
+  TitleRegisters,
+  LogoWrapper,
+  FormRegister,
+  ErrorRegister,
+  IconWrapper,
+} from './RegisterForm.styled';
+import { ReactComponent as UserIcon } from '../../images/svg/form-user.svg';
+import { ReactComponent as EmailIcon } from '../../images/svg/form-email.svg';
+import { ReactComponent as LockIcon } from '../../images/svg/form-password.svg';
+import { ReactComponent as LogoIcon } from '../../images/svg/logo.svg';
 
 export const RegisterForm = () => {
   const dispatch = useDispatch();
@@ -51,73 +66,114 @@ export const RegisterForm = () => {
   });
 
   return (
-    <form onSubmit={formik.handleSubmit}>
-      <div>
-        <label htmlFor="username">Username:</label>
-        <input
-          type="text"
-          id="username"
-          name="username"
-          value={formik.values.username}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          required
-        />
-        {formik.touched.username && formik.errors.username ? (
-          <div className="error">{formik.errors.username}</div>
-        ) : null}
-      </div>
-      <div>
-        <label htmlFor="email">Email:</label>
-        <input
-          type="text"
-          id="email"
-          name="email"
-          value={formik.values.email}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          required
-        />
-        {formik.touched.email && formik.errors.email ? (
-          <div className="error">{formik.errors.email}</div>
-        ) : null}
-      </div>
-      <div>
-        <label htmlFor="password">Password:</label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          value={formik.values.password}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          required
-        />
-        {formik.touched.password && formik.errors.password ? (
-          <div className="error">{formik.errors.password}</div>
-        ) : null}
-      </div>
-      <div>
-        <label htmlFor="confirmPassword">Confirm Password:</label>
-        <input
-          type="password"
-          id="confirmPassword"
-          name="confirmPassword"
-          value={formik.values.confirmPassword}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          required
-        />
-        {formik.touched.confirmPassword && formik.errors.confirmPassword ? (
-          <div className="error">{formik.errors.confirmPassword}</div>
-        ) : null}
-      </div>
+    <Card>
+      <FormRegister onSubmit={formik.handleSubmit}>
+        <LogoWrapper>
+          <LogoIcon className="logo-register" />
+          <TitleRegisters>Money Guard</TitleRegisters>
+        </LogoWrapper>
+        <InputWrapper>
+          <label htmlFor="username"></label>
 
-      <div>
-        <Button type="submit" text="Register" isGradient={true} />
-        <Button type="button" text="LogIn" isGradient={false} />
-      </div>
-    </form>
+          <InputRegister
+            placeholder="Name"
+            type="text"
+            id="username"
+            name="username"
+            value={formik.values.username}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            required
+          />
+          <IconWrapper>
+            <UserIcon />
+          </IconWrapper>
+          {formik.touched.username && formik.errors.username ? (
+            <ErrorRegister className="error">
+              {formik.errors.username}
+            </ErrorRegister>
+          ) : null}
+        </InputWrapper>
+        <InputWrapper>
+          <label htmlFor="email"></label>
+          <InputRegister
+            placeholder="E-mail"
+            type="text"
+            id="email"
+            name="email"
+            value={formik.values.email}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            required
+          />
+          <IconWrapper>
+            <EmailIcon />
+          </IconWrapper>
+          {formik.touched.email && formik.errors.email ? (
+            <ErrorRegister className="error">
+              {formik.errors.email}
+            </ErrorRegister>
+          ) : null}
+        </InputWrapper>
+        <InputWrapper>
+          <label htmlFor="password"></label>
+          <InputRegister
+            placeholder="Password"
+            type="password"
+            id="password"
+            name="password"
+            value={formik.values.password}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            required
+          />
+          <IconWrapper>
+            <LockIcon />
+          </IconWrapper>
+          {formik.touched.password && formik.errors.password ? (
+            <ErrorRegister className="error">
+              {formik.errors.password}
+            </ErrorRegister>
+          ) : null}
+        </InputWrapper>
+        <InputWrapper>
+          <label htmlFor="confirmPassword"></label>
+          <InputRegister
+            placeholder="Confirm password"
+            type="password"
+            id="confirmPassword"
+            name="confirmPassword"
+            value={formik.values.confirmPassword}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            required
+          />
+          <IconWrapper>
+            <LockIcon />
+          </IconWrapper>
+          {formik.touched.confirmPassword && formik.errors.confirmPassword ? (
+            <ErrorRegister className="error">
+              {formik.errors.confirmPassword}
+            </ErrorRegister>
+          ) : null}
+          <PasswordStrengthBar
+            scoreWords={[
+              'too short',
+              'weak',
+              'insecure',
+              'secure',
+              'god password',
+            ]}
+            barColors={['#ff868d', '#ffc727', '#9e40ba', '#7000ff', 'green']}
+            password={formik.values.password}
+          />
+        </InputWrapper>
+        <div className="button-wrapper">
+          <Button type="submit" text="Register" isGradient={true} />
+          <Button type="button" text="LogIn" isGradient={false} />
+        </div>
+      </FormRegister>
+    </Card>
   );
 };
 

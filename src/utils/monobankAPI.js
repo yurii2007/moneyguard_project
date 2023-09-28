@@ -7,8 +7,6 @@ async () => {
 }
 */
 
-
-
 import axios from 'axios';
 
 const monoAPI = axios.create({
@@ -33,7 +31,11 @@ const getCurrency = async () => {
   try {
     const { data } = await monoAPI.get('bank/currency');
     const toLS = data
-      .filter(el =>(+el.currencyCodeA === 978 && +el.currencyCodeB === 980) || +el.currencyCodeA === 840)
+      .filter(
+        el =>
+          (+el.currencyCodeA === 978 && +el.currencyCodeB === 980) ||
+          +el.currencyCodeA === 840
+      )
       .map(el =>
         el.currencyCodeA === 978
           ? {
@@ -55,4 +57,4 @@ const getCurrency = async () => {
     return error.message;
   }
 };
-export default getCurrency
+export default getCurrency;

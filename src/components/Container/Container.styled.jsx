@@ -13,12 +13,13 @@ export const breakpoints = {
 export const ContainerStyle = styled.div`
   min-width: ${size.mobile};
   padding-inline: 20px;
-  @media ${breakpoints.tablet} {
+  margin: 0 auto;
+  @media screen and ${breakpoints.tablet} {
     max-width: 704px;
     padding-inline: 32px;
   }
 
-  @media ${breakpoints.desktop} {
+  @media screen and ${breakpoints.desktop} {
     max-width: 1248px;
     padding-inline: 16px;
   }

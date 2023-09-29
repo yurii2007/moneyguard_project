@@ -5,17 +5,20 @@ import { Button } from 'components/ModalButton/ModalButton';
 import * as Yup from 'yup';
 import {
   Card,
-  ErrorRegister,
-  InputRegister,
   InputWrapper,
   LogoWrapper,
-  TitleRegisters,
-  FormRegister,
   IconWrapper,
+  TitleLogin,
+  FormLogin,
+  InputLogin,
+  ErrorLogin,
 } from './LoginForm.styled';
 import { ReactComponent as EmailIcon } from '../../images/svg/form-email.svg';
 import { ReactComponent as LockIcon } from '../../images/svg/form-password.svg';
 import { ReactComponent as LogoIcon } from '../../images/svg/logo.svg';
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
@@ -44,28 +47,28 @@ export const LoginForm = () => {
         const response = await dispatch(logIn(userCredentials));
 
         if (response.payload === 'Request failed with status code 403') {
-          alert('Access Forbidden: Provided password is incorrect.');
+          toast.error('Access Forbidden: Provided password is incorrect.');
         } else if (response.payload === 'Request failed with status code 404') {
-          alert('Access Forbidden: User with such email not found.');
+          toast.error('Access Forbidden: User with such email not found.');
         } else {
-          alert('Successfully logged in!');
+          toast.success('Successfully logged in!');
         }
       } catch (error) {
-        alert('An error occurred:', error);
+        toast.error(`An error occurred: ${error.message}`);
       }
     },
   });
 
   return (
     <Card>
-      <FormRegister onSubmit={formik.handleSubmit}>
+      <FormLogin onSubmit={formik.handleSubmit}>
         <LogoWrapper>
           <LogoIcon className="logo-register" />
-          <TitleRegisters>Money Guard</TitleRegisters>
+          <TitleLogin>Money Guard</TitleLogin>
         </LogoWrapper>
         <InputWrapper>
           <label htmlFor="email"></label>
-          <InputRegister
+          <InputLogin
             placeholder="E-mail"
             type="text"
             id="email"
@@ -81,14 +84,12 @@ export const LoginForm = () => {
           </IconWrapper>
 
           {formik.touched.email && formik.errors.email ? (
-            <ErrorRegister className="error">
-              {formik.errors.email}
-            </ErrorRegister>
+            <ErrorLogin className="error">{formik.errors.email}</ErrorLogin>
           ) : null}
         </InputWrapper>
         <InputWrapper>
           <label htmlFor="password"></label>
-          <InputRegister
+          <InputLogin
             placeholder="Password"
             type="password"
             id="password"
@@ -102,16 +103,27 @@ export const LoginForm = () => {
             <LockIcon />
           </IconWrapper>
           {formik.touched.password && formik.errors.password ? (
-            <ErrorRegister className="error">
-              {formik.errors.password}
-            </ErrorRegister>
+            <ErrorLogin className="error">{formik.errors.password}</ErrorLogin>
           ) : null}
         </InputWrapper>
         <div className="button-wrapper">
           <Button type="submit" text="LogIn" isGradient={true} />
           <Button type="button" text="Register" isGradient={false} />
         </div>
-      </FormRegister>
+      </FormLogin>
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
+      ;
     </Card>
   );
 };

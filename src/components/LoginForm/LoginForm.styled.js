@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import backLoginTablet from '../../images/png/money-tablet.png';
 import backLoginDesktop from '../../images/png/money-desktop.png';
+import backRegisterTabletRetina from '../../images/png/money-tabletx2.png';
+import backRegisterDesktopRetina from '../../images/png/money-desktopx2.png';
 
 export const Card = styled.div`
   background: radial-gradient(
@@ -14,6 +16,12 @@ export const Card = styled.div`
 
     background-image: url(${backLoginTablet});
 
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+      background-image: url(${backRegisterTabletRetina});
+      background-size: cover;
+      background-position: center;
+    }
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -24,10 +32,16 @@ export const Card = styled.div`
   }
   @media screen and (min-width: 1280px) {
     background-image: url(${backLoginDesktop});
+
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+      background-image: url(${backRegisterDesktopRetina});
+      background-size: cover;
+      background-position: center;
+    }
   }
 `;
 
-export const TitleRegisters = styled.h2`
+export const TitleLogin = styled.h2`
   font-family: Poppins;
   color: var(--white-color);
   line-height: 1.5;
@@ -44,11 +58,11 @@ export const TitleRegisters = styled.h2`
   }
 `;
 
-export const FormRegister = styled.form`
-  padding-top: 97px;
+export const FormLogin = styled.form`
+  padding-top: 23px;
   padding-left: 20px;
   padding-right: 20px;
-  padding-bottom: 98px;
+  padding-bottom: 23px;
 
   .button-wrapper > button:hover {
     background: transparent !important;
@@ -73,6 +87,7 @@ export const FormRegister = styled.form`
     background-color: rgba(255, 255, 255, 0.1);
 
     box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(50px);
   }
 
   .button-wrapper {
@@ -104,7 +119,7 @@ export const InputWrapper = styled.div`
   margin-bottom: 40px;
 `;
 
-export const InputRegister = styled.input`
+export const InputLogin = styled.input`
   width: 100%;
   background-color: transparent;
   border: none;
@@ -120,9 +135,8 @@ export const InputRegister = styled.input`
 
   transition: border-color 0.3s, border-radius 0.3s, border-bottom 0.3s;
 
-  &:hover:focus {
+  &:focus {
     outline: none;
-    border: none;
     border-bottom: solid 1px #ffc727;
   }
 `;
@@ -133,9 +147,9 @@ export const IconWrapper = styled.div`
   margin-left: 10px;
 `;
 
-export const ErrorRegister = styled.div`
+export const ErrorLogin = styled.div`
   margin-top: 5px;
-  color: red;
+  color: #ffc727;
   text-align: center;
   line-height: 1.5;
   font-size: 14px;

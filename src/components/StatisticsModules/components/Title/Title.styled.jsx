@@ -11,4 +11,7 @@ export const TitleStyle = styled.h1`
   @media screen and (min-width: 768px) {
     padding-bottom: 20px;
   }
+  @media screen and (min-width: 1280px) {
+    margin-left: 14px;
+  }
 `;

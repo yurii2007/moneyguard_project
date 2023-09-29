@@ -12,15 +12,20 @@ export const breakpoints = {
 
 export const ContainerStyle = styled.div`
   min-width: ${size.mobile};
-  padding-inline: 20px;
+  padding: 0 20px;
   margin: 0 auto;
   @media screen and ${breakpoints.tablet} {
-    max-width: 704px;
-    padding-inline: 32px;
+    width: ${size.tablet};
+    padding: 0 32px;
   }
 
   @media screen and ${breakpoints.desktop} {
-    max-width: 1248px;
-    padding-inline: 16px;
+    width: ${({ Size }) =>
+      (Size === 'main' && '1280px') || (Size === 'statistics' && '800px')};
+    padding: ${({ Size }) =>
+      (Size === 'main' && '12 0 16px0px') ||
+      (Size === 'statistics' && '32px 16px 0 70px')};
   }
 `;
+
+//

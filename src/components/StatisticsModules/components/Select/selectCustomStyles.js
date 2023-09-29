@@ -11,7 +11,7 @@ export const customSelect = {
     borderRadius: '8px',
 
     '@media (max-width: 767px)': {
-      maxWidth: '440px',
+      maxWidth: '280px',
       width: '100%',
     },
     '@media (min-width: 768px) and (max-width: 1279px)': {

@@ -19,6 +19,7 @@ import { ReactComponent as LogoIcon } from '../../images/svg/logo.svg';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Link } from 'react-router-dom';
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
@@ -108,7 +109,7 @@ export const LoginForm = () => {
         </InputWrapper>
         <div className="button-wrapper">
           <Button type="submit" text="LogIn" isGradient={true} />
-          <Button type="button" text="Register" isGradient={false} />
+          <Link to='/register'>Register</Link>
         </div>
       </FormLogin>
       <ToastContainer
@@ -123,7 +124,6 @@ export const LoginForm = () => {
         pauseOnHover
         theme="dark"
       />
-      ;
     </Card>
   );
 };

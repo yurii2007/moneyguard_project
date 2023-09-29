@@ -14,33 +14,25 @@ import line_desc_mob_1x from '../../images/sideBarImages/line_desc_mob_1x.png';
 import line_desc_mob_2x from '../../images/sideBarImages/line_desc_mob_2x.png';
 
 export const MainContainer = styled.div`
-  @media screen and (min-width: 320px) {
-  }
-
   @media screen and (min-width: 768px) {
     display: flex;
     justify-content: center;
   }
 
   @media screen and (min-width: 1280px) {
-    display: block !important;
+    display: block;
     width: 481px;
-    height: 641px;
-    border-right: 1px solid white;
   }
 `;
 
 export const UpperContainer = styled.div`
-  @media screen and (min-width: 320px) {
-  }
-
   @media screen and (min-width: 768px) {
     width: 336px;
     margin: 0 32px 20px 32px;
   }
 
   @media screen and (min-width: 1280px) {
-    display: block !important;
+    display: block;
     padding-bottom: 32px;
     width: 480px;
     height: 246px;
@@ -57,7 +49,6 @@ export const DownContainer = styled.div`
     display: block;
     width: 336px;
     height: 214px;
-    margin-right: 32px;
     background-color: var(--select-background-color);
     border-radius: 0 0 8px 8px;
   }

@@ -5,7 +5,7 @@ import { Graphics, Line } from 'components/SideBar/SideBar.styled';
 import SideCurrency from 'components/SideBar/SideCurrency/SideCurrency';
 
 function Currency() {
-  const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
+  const isMobile = useMediaQuery({ query: '(max-width: 767.9px)' });
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -13,11 +13,11 @@ function Currency() {
   });
 
   return (
-    <div>
+    <>
       <SideCurrency />
       <Graphics />
       <Line />
-    </div>
+    </>
   );
 }
 

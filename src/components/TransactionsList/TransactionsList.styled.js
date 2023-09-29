@@ -1,9 +1,7 @@
 import styled from 'styled-components';
 
 export const StyledTransactionsList = styled.div`
-  height: 308px;
   margin: 0 auto;
-  width: 715px;
   position: relative;
   overflow-y: overlay;
 

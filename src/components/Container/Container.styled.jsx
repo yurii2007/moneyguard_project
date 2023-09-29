@@ -12,19 +12,17 @@ export const breakpoints = {
 
 export const ContainerStyle = styled.div`
   min-width: ${size.mobile};
-  padding: 0 20px;
   margin: 0 auto;
+  padding: ${({Size}) => Size === 'main' && '32px 0'};
   @media screen and ${breakpoints.tablet} {
-    width: ${size.tablet};
-    padding: 0 32px;
+    padding-top: 20px;
   }
 
   @media screen and ${breakpoints.desktop} {
-    width: ${({ Size }) =>
-      (Size === 'main' && '1280px') || (Size === 'statistics' && '800px')};
+    width: ${({ Size }) => (Size === 'statistics' && '800px')};
     padding: ${({ Size }) =>
-      (Size === 'main' && '12 0 16px0px') ||
-      (Size === 'statistics' && '32px 16px 0 70px')};
+      (Size === 'main' && '46px 0 0 70px') ||
+      (Size === 'statistics' && '32px 0 0 54px')};
   }
 `;
 

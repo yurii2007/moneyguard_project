@@ -6,7 +6,9 @@ import PrivateRoute from './Routes/PrivateRoute';
 import LoginPage from 'pages/LoginPage';
 import RegisterPage from 'pages/RegisterPage';
 import { refreshUser } from 'redux/auth/AuthThunk';
+import Layout from './Layout/Layout';
 import { LayoutContainer } from './LayoutContainer/LayoutContainer';
+
 const Home = React.lazy(() => import('pages/Home'));
 const StatisticsPage = React.lazy(() => import('pages/StatisticsPage'));
 const Currency = React.lazy(() => import('pages/Currency'));

@@ -64,11 +64,30 @@ export const FormLogin = styled.form`
   padding-right: 20px;
   padding-bottom: 23px;
 
-  .button-wrapper > button:hover {
+  .button-wrapper > button:hover,
+  .button-wrapper > a:hover {
     background: transparent !important;
     color: #ffc727 !important;
     outline: 1px solid #ffc727;
     transition: background 0.3s, color 0.3s, outline 0.3s;
+  }
+  .button-wrapper > a {
+    display: block;
+    width: 300px;
+    padding-block: 13px;
+    @media screen and (max-width: 767.9px) {
+      width: 280px;
+    }
+    border: none;
+    border-radius: 20px;
+    box-shadow: 1px 9px 15px 0px rgba(0, 0, 0, 0.2);
+    background: var(--main-font-color);
+    color: #623f8b;
+    text-align: center;
+    font-size: 18px;
+    line-height: normal;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
   }
 
   .button-wrapper > button {

@@ -21,6 +21,7 @@ import { ReactComponent as LogoIcon } from '../../images/svg/logo.svg';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Link } from 'react-router-dom';
 
 <ToastContainer
   position="bottom-center"
@@ -186,7 +187,7 @@ export const RegisterForm = () => {
         </InputWrapper>
         <div className="button-wrapper">
           <Button type="submit" text="Register" isGradient={true} />
-          <Button type="button" text="LogIn" isGradient={false} />
+          <Link to='/login'>Login</Link>
         </div>
       </FormRegister>
     </Card>

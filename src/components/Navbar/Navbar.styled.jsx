@@ -48,8 +48,11 @@ background-image: url(/moneyguard_project/static/media/MobileBg.7e4e1fe8ebaf9577
                 
 
                 .navBtn{                
-                background-color: var(--main-font-color);
+                background: radial-gradient(circle,
+                rgba(255, 255, 255, 1) 50%,
+                rgba(56, 63, 142, 0.1) 30%);
                 }
+
                 .navBtn path{
                 fill: #4A56E2;
                 fill-opacity: 1;
@@ -108,9 +111,12 @@ background-image: url(/moneyguard_project/static/media/MobileBg.7e4e1fe8ebaf9577
             color: var(--main-font-color);
                     }
 
-                .navBtn{
-                background-color: var(--main-font-color);
-                    }
+                .navBtn{                
+                background: radial-gradient(circle,
+                rgba(255, 255, 255, 1) 50%,
+                rgba(56, 63, 142, 0.1) 30%);
+                }
+                
                 .navBtn path{
                 fill: #4A56E2;
                 fill-opacity: 1;
@@ -163,8 +169,10 @@ background-image: url(/moneyguard_project/static/media/MobileBg.7e4e1fe8ebaf9577
         }
 
         &.active {
-            .navBtn{
-            background-color: var(--main-font-color);
+             .navBtn{                
+                background: radial-gradient(circle,
+                rgba(255, 255, 255, 1) 50%,
+                rgba(56, 63, 142, 0.1) 30%);
                 }
             .navBtn path{
             fill: #4A56E2;
@@ -176,9 +184,7 @@ background-image: url(/moneyguard_project/static/media/MobileBg.7e4e1fe8ebaf9577
     .navBtn path:hover {
             fill-opacity: 1;
                 } 
-   /* .navBtn path{
-    fill-opacity: 1;
-   } */
+  
     
 }
 `;

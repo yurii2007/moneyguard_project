@@ -8,21 +8,23 @@ export const Navigation = () => {
   return (
     <NavContainer>
       <ul className="menu">
-        <li>
+        <li >
           <NavLink className="navLink" to="home">
-            <HomeIcon className="navBtn" />
+            <HomeIcon className="navBtn"/>
             <span className="navSign">Home</span>
           </NavLink>
         </li>
-        <li>
-          <NavLink className="navLink" to="statistics">
-            <StatisticIcon className="navBtn" />
-            <span className="navSign">Statistics</span>
-          </NavLink>
+      
+        <li >
+              <NavLink className="navLink" to="statistics">
+              <StatisticIcon className="navBtn"/>
+              <span className="navSign">Statistics</span>
+        </NavLink>
         </li>
+
         <li className="currency">
-          <NavLink className="navLink" to="currency">
-            <UsdIcon className="navBtn" />
+          <NavLink className="navLink" to="/currency" >
+            <UsdIcon className="navBtn"/>
           </NavLink>
         </li>
       </ul>

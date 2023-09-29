@@ -97,7 +97,6 @@ export const NavContainer = styled.nav`
       width: 50px;
     }
     .
-
   
   } */
 // .nav-link {

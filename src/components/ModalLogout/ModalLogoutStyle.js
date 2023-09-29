@@ -29,6 +29,11 @@ export const ModalLogoutStyle = styled.div`
     backdrop-filter: blur(50px);
     transition: 0.4s all;
   }
+  @media screen and (max-width: 767.9px) {
+    .modal-content {
+      width: 100%;
+    }
+  }
   @media screen and (min-width: 768px) {
     backdrop-filter: blur(3.5px);
     top: 0;
@@ -36,7 +41,6 @@ export const ModalLogoutStyle = styled.div`
       width: 533px;
       border-radius: 8px;
       height: 447px;
-      transition: 0.4s all;
     }
   }
 

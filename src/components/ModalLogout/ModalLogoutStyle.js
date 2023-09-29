@@ -1,12 +1,11 @@
 import styled from 'styled-components';
 
 export const ModalLogoutStyle = styled.div`
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
   background: rgba(34, 13, 91, 0.23);
-  backdrop-filter: blur(3.5px);
   position: fixed;
-  top: 0;
+  top: 61.38px;
   left: 0;
   display: flex;
   align-items: center;
@@ -14,19 +13,25 @@ export const ModalLogoutStyle = styled.div`
   opacity: 0;
   transition: 0.5s;
   z-index: 1000;
+
   .active {
     opacity: 1;
   }
 
   .modal-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     min-width: 320px;
-    height: calc(100vh - 61.38px);
+    height: 100vh;
     background: rgba(255, 255, 255, 0.1);
     box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
     backdrop-filter: blur(50px);
     transition: 0.4s all;
   }
   @media screen and (min-width: 768px) {
+    backdrop-filter: blur(3.5px);
+    top: 0;
     .modal-content {
       width: 533px;
       border-radius: 8px;
@@ -36,23 +41,15 @@ export const ModalLogoutStyle = styled.div`
   }
 
   .text-logout {
+    width: 214px;
     color: var(--white-color);
     text-align: center;
-    margin-top: 239px;
     margin-bottom: 40px;
-    padding-left: 53px;
-    padding-right: 53px;
     font-size: 18px;
     line-height: 27px;
   }
 
-  .close-icon {
-    width: 15px;
-    height: 15px;
-  }
-
   .modal-element {
-    padding-top: 60px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -66,7 +63,7 @@ export const ModalLogoutStyle = styled.div`
     .logo-modal {
       width: 36px;
       height: 36px;
-      display: contents;
+      display: block;
     }
   }
   .logo-text {
@@ -74,7 +71,7 @@ export const ModalLogoutStyle = styled.div`
   }
   @media screen and (min-width: 768px) {
     .logo-text {
-      display: contents;
+      display: block;
       margin-bottom: 52px;
       font-size: 27px;
       line-height: 40px;

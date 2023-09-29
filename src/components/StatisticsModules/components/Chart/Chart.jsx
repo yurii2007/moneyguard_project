@@ -10,7 +10,7 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 const ChartComponent = ({ transactions }) => {
   const { income, summary } = useTransaction();
-  if (!transactions || !income || !summary) {
+  if (!transactions) {
     return (
       <div style={{ paddingBottom: '32px' }}>
         <div style={{ margin: '0 auto', width: '250px' }}>

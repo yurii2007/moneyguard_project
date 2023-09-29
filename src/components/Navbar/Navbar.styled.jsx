@@ -4,11 +4,14 @@ import styled from "styled-components";
 
 export const NavContainer = styled.nav`
     
-    background: linear-gradient(220deg, rgba(109, 84, 235, 0.60) 28.31%, rgba(101, 35, 146, 0.60) 66.76%);
+background-image: url(/moneyguard_project/static/media/MobileBg.7e4e1fe8ebaf957790c5.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
 
  @media screen and (min-width: 768px) {
         padding: 40px 0 0 0;
         .menu{
+            list-style: none;
             width: 100%;
             flex-direction: column;
             gap: 12px;
@@ -19,33 +22,56 @@ export const NavContainer = styled.nav`
             display: none;
         }
         .navLink {
+            text-decoration: none;
             display: flex;
             gap: 20px;
             align-items: center;
             width: 150px;
-        }
 
-        .navBtn {
+             .navBtn {
             border-radius: 4px;
             width: 24px;
             height: 24px;
-        }
-
-        .navSign {
+            }
+            .navSign {
             font-size: 18px;
+            font-style: normal;
+            font-weight: 400;
             color: var(--main-font-color);
-        }
+            }
 
-        .hiddenItem {
-            display: none;
+            &.active {
+                .navSign{
+                font-weight: 700;
+                color: var(--main-font-color);
+                }
+                
+
+                .navBtn{                
+                background-color: var(--main-font-color);
+                }
+                .navBtn path{
+                fill: #4A56E2;
+                fill-opacity: 1;
+                    } 
+            }
+        }          
+
+       .navLink:hover .navSign{
+            font-weight: 700;
         }
-        //some css classes
+        .navBtn path:hover {
+            fill-opacity: 1;
+                } 
+        
+        
     }
 
     @media screen and (max-width: 767.9px) {
         padding: 40px 0 0 0;
 
         .menu{
+            list-style: none;
             width: 100%;
             flex-direction: column;
             gap: 12px;
@@ -57,34 +83,54 @@ export const NavContainer = styled.nav`
         }
 
         .navLink {
+            text-decoration: none;
             display: flex;
             gap: 20px;
             align-items: center;
             width: 150px;
-        }
 
-        .navBtn {
+            .navBtn {
             border-radius: 4px;
             width: 24px;
-            height: 24px;
+            height: 24px; 
+            }
 
-        }
-
-        .navSign {
+            .navSign {
+            font-style: normal;
+            font-weight: 400;
             font-size: 18px;
             color: var(--main-font-color);
-        }
+            }
 
-         .hiddenItem {
-            display: none;
-        }
+            &.active {
+                .navSign{
+            font-weight: 700;
+            color: var(--main-font-color);
+                    }
 
-        //some css classes
+                .navBtn{
+                background-color: var(--main-font-color);
+                    }
+                .navBtn path{
+                fill: #4A56E2;
+                fill-opacity: 1;
+                    } 
+            }
+        } 
+
+         .navLink:hover .navSign{
+            font-weight: 700;
+        }
+        .navBtn path:hover {
+            fill-opacity: 1;
+                }            
+        
     }   
 
 @media screen and (max-width: 320px){
     padding: 12px 0 0 0;
     .menu{
+        list-style: none;
         width: 320px; 
         margin: 0;
         flex-direction: row;
@@ -99,43 +145,42 @@ export const NavContainer = styled.nav`
         }
 
     .navLink {
-        
+        text-decoration: none;
         gap: 0px;
         align-items: center;
-        width: 50px;        
-       
-        
-    }
+        width: 50px; 
 
-    .navBtn{
+        .navBtn{
         width: 44px;
         height: 44px;
         border-radius: 8px;
         //background-color: red;
         //fill: rgba(255, 255, 255, 0.4);
-    }
-   
-    .navSign {
+        }
+
+        .navSign {
         display: none;
+        }
+
+        &.active {
+            .navBtn{
+            background-color: var(--main-font-color);
+                }
+            .navBtn path{
+            fill: #4A56E2;
+            fill-opacity: 1;
+                } 
+        }
     }
+
+    .navBtn path:hover {
+            fill-opacity: 1;
+                } 
+   /* .navBtn path{
+    fill-opacity: 1;
+   } */
+    
 }
 `;
 
 
-
-// .nav-link {
-// font-size: 24px;
-//  }
-
-    /* .link {
-    font-size: 24px;
-    text-decoration: none;
-    color: inherit;
-    font-weight: 900;
-}
-
-.navigationContainer {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-} */

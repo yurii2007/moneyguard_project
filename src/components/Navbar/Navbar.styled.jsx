@@ -1,117 +1,152 @@
 import styled from 'styled-components';
+//import { NavLink } from "react-router-dom";
 
 export const NavContainer = styled.nav`
-  padding-block: 12px;
-  .navBtn {
-    width: 44px;
-    height: 44px;
-    border-radius: 8px;
-    //fill: rgba(255, 255, 255, 0.4);
-  }
-  .navSign {
-    display: none;
-  }
+  padding: 12px 0;
   .menu {
+    list-style: none;
+    margin: 0;
+    flex-direction: row;
     display: flex;
+    gap: 32px;
     justify-content: center;
     align-items: center;
-    gap: 32px;
   }
-  @media screen and (min-width: 768px) {
-    padding: 42px 0 30px 0;
-    .currency {
-      display: none;
-    }
-    .menu {
-      flex-direction: column;
-      align-items: start;
-      gap: 12px;
-    }
-    .navLink {
-      display: flex;
-      gap: 20px;
-      align-items: center;
-    }
+  .currency {
+    display: block;
+  }
+  .navLink {
+    text-decoration: none;
+    gap: 0px;
+    align-items: center;
+    width: 50px;
     .navBtn {
-      border-radius: 4px;
-      width: 24px;
-      height: 24px;
+      width: 44px;
+      height: 44px;
+      border-radius: 8px;
     }
     .navSign {
-      display: block;
-      font-size: 18px;
-      color: var(--main-font-color);
+      display: none;
     }
-    .active {
-      font-weight: 700;
+    &.active {
+      .navBtn {
+        background: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 1) 50%,
+          rgba(56, 63, 142, 0.1) 30%
+        );
+      }
+      .navBtn path {
+        fill: #4a56e2;
+        fill-opacity: 1;
+      }
     }
   }
-  @media screen and (min-width: 1280px) {
-    padding-left: 16px;
+  .navBtn path:hover {
+    fill-opacity: 1;
   }
-`;
-/*
   @media screen and (min-width: 768px) {
-    padding: 40px 0 0 0;
-  }
-  @media screen and (max-width: 1279.9px) {
-    padding: 40px 0 0 0;
+    padding: 40px 0 28px 0;
+
     .menu {
-      width: 100%;
+      list-style: none;
       flex-direction: column;
+      align-items: flex-start;
       gap: 12px;
     }
     .currency {
       display: none;
     }
     .navLink {
+      text-decoration: none;
       display: flex;
       gap: 20px;
       align-items: center;
       width: 150px;
+      .navBtn {
+        border-radius: 4px;
+        width: 24px;
+        height: 24px;
+      }
+      .navSign {
+        display: inline;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        color: var(--main-font-color);
+      }
+      &.active {
+        .navSign {
+          font-weight: 700;
+          color: var(--main-font-color);
+        }
+        .navBtn {
+          background: radial-gradient(
+            circle,
+            rgba(255, 255, 255, 1) 50%,
+            rgba(56, 63, 142, 0.1) 30%
+          );
+        }
+        .navBtn path {
+          fill: #4a56e2;
+          fill-opacity: 1;
+        }
+      }
     }
-    .navBtn {
-      border-radius: 4px;
-      width: 24px;
-      height: 24px;
+    .navLink:hover .navSign {
+      font-weight: 700;
     }
-    .navSign {
-      font-size: 18px;
-      color: var(--main-font-color);
+  }
+  @media screen and (min-width: 1280px) {
+    padding: 40px 0 28px 16px;
+    .menu {
+      list-style: none;
+      width: 100%;
+      flex-direction: column;
+      gap: 12px;
+      margin-left: 16px;
     }
-    .hiddenItem {
+
+    .currency {
       display: none;
     }
-    //some css classes
-  }
-
-  @media screen and (max-width: 767.9px) {
-    padding: 12px 0 0 0;
-    
-    .currency {
-      display: block;
-    }
     .navLink {
-      gap: 0px;
+      text-decoration: none;
+      display: flex;
+      gap: 20px;
       align-items: center;
-      width: 50px;
+      width: 150px;
+
+      .navBtn {
+        border-radius: 4px;
+        width: 24px;
+        height: 24px;
+      }
+      .navSign {
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        color: var(--main-font-color);
+      }
+
+      &.active {
+        .navSign {
+          font-weight: 700;
+          color: var(--main-font-color);
+        }
+
+        .navBtn {
+          background: radial-gradient(
+            circle,
+            rgba(255, 255, 255, 1) 50%,
+            rgba(56, 63, 142, 0.1) 30%
+          );
+        } 
+      }
     }
-    .
-  
-  } */
-// .nav-link {
-// font-size: 24px;
-//  }
 
-/* .link {
-    font-size: 24px;
-    text-decoration: none;
-    color: inherit;
-    font-weight: 900;
-}
-
-.navigationContainer {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-} */
+    .navLink:hover .navSign {
+      font-weight: 700;
+    }
+  }
+`;

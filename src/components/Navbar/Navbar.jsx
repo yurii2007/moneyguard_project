@@ -23,7 +23,7 @@ export const Navigation = () => {
         </li>
 
         <li className="currency">
-          <NavLink className="navLink" to="/currency" >
+          <NavLink className="navLink" to="currency" >
             <UsdIcon className="navBtn"/>
           </NavLink>
         </li>

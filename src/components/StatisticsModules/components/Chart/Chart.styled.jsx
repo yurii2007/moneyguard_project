@@ -34,7 +34,7 @@ export const TotalContainer = styled.div`
       min-height: 336px;
       min-width: 336px;
     }
-    @media (max-width: 767px) {
+    @media (max-width: 768px) {
       min-height: 240px;
       max-height: 440px;
       height: 100%;
@@ -51,7 +51,7 @@ export const Total = styled.div`
   line-height: normal;
   position: absolute;
   transform: translate(-50%, -50%);
-  @media (max-width: 767px) {
+  @media (max-width: 768px) {
     font-size: 18px;
     font-weight: 600;
     top: 46%;

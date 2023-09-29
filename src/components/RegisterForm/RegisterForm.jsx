@@ -19,6 +19,22 @@ import { ReactComponent as EmailIcon } from '../../images/svg/form-email.svg';
 import { ReactComponent as LockIcon } from '../../images/svg/form-password.svg';
 import { ReactComponent as LogoIcon } from '../../images/svg/logo.svg';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+<ToastContainer
+  position="bottom-center"
+  autoClose={5000}
+  hideProgressBar={false}
+  newestOnTop={false}
+  closeOnClick
+  rtl={false}
+  pauseOnFocusLoss
+  draggable
+  pauseOnHover
+  theme="dark"
+/>;
+
 export const RegisterForm = () => {
   const dispatch = useDispatch();
 
@@ -55,12 +71,12 @@ export const RegisterForm = () => {
         const response = await dispatch(register(userCredentials));
 
         if (response.payload === 'Request failed with status code 409') {
-          alert('Access Forbidden: User with such email already exists');
+          toast.error('Access Forbidden: User with such email already exists');
         } else {
-          alert('Successfully logged in!');
+          toast.success('Successfully logged in!');
         }
       } catch (error) {
-        alert('An error occurred:', error);
+        toast.error('An error occurred: ' + error.message);
       }
     },
   });

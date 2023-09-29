@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import backRegisterTablet from '../../images/png/dollar-tablet.png';
 import backRegisterDesktop from '../../images/png/dollar-desktop.png';
+import backRegisterTabletRetina from '../../images/png/dollar-tabletx2.png';
+import backRegisterDesktopRetina from '../../images/png/dollar-desktopx2.png';
 
 export const Card = styled.div`
   background: radial-gradient(
@@ -21,8 +23,22 @@ export const Card = styled.div`
     background-repeat: no-repeat;
     background-size: cover;
 
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+      background-image: url(${backRegisterTabletRetina});
+      background-size: cover;
+      background-position: center;
+    }
+
     @media screen and (min-width: 1280px) {
       background-image: url(${backRegisterDesktop});
+      background-position: center;
+      background-size: cover;
+
+      @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+        background-image: url(${backRegisterDesktopRetina});
+        background-size: cover;
+        background-position: center;
+      }
     }
   }
 `;
@@ -50,34 +66,15 @@ export const FormRegister = styled.form`
   padding-right: 20px;
   padding-bottom: 23px;
 
+  .button-wrapper > button:hover {
+    background: transparent !important;
+    color: #ffc727 !important;
+    outline: 1px solid #ffc727;
+    transition: background 0.3s, color 0.3s, outline 0.3s;
+  }
+
   .button-wrapper > button {
     margin-bottom: 20px;
-    position: relative;
-  }
-
-  .button-wrapper > button:hover,
-  .button-wrapper > button:focus {
-    background: transparent !important;
-    box-shadow: none;
-    color: #ffc727 !important;
-  }
-
-  .button-wrapper > button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 100%;
-    background-color: transparent;
-    transition: width 0.5s ease-in-out;
-  }
-
-  .button-wrapper > button:hover::before,
-  .button-wrapper > button:focus::before {
-    width: 100%;
-
-    border-bottom: 1px solid #ffc727;
   }
 
   @media screen and (min-width: 768px) {

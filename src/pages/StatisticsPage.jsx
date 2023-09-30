@@ -14,7 +14,7 @@ import { useTransaction } from 'utils/useTransaction';
 const StatisticsPage = () => {
   const { transactions } = useTransaction();
   return (
-    <Container Size="statistics">
+    <Container size="statistics">
       <StatisticsPageStyledBox>
         <ChartBox>
           <Title>Statistics</Title>

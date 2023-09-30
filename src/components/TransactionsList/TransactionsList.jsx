@@ -1,3 +1,4 @@
+import { ReactComponent as SvgAdd } from '../../images/svg/plus.svg';
 import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -74,7 +75,7 @@ const TransactionsList = () => {
       </StyledTransactionsList>
 
       <button onClick={onAddTransaction}>
-        <span>+</span>
+        <span><SvgAdd width='10px'height='10px'/></span>
         {/* <svg>
           <use href='../../images/svg/plus.svg'></use>
         </svg> */}

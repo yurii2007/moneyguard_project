@@ -3,8 +3,9 @@ import {
   delTransactionThunk,
   updTransactionThunk,
 } from 'redux/finance/financeThunks';
-import { GoPencil } from 'react-icons/go';
+
 import { useState } from 'react';
+import { ReactComponent as SvgUpdate } from '../../../images/svg/edit-button.svg';
 
 export const TransactionsItem = ({
   id,
@@ -48,7 +49,7 @@ export const TransactionsItem = ({
       |
       <span>
         <button onClick={() => setIsEditing(true)}>
-          <GoPencil />
+          <SvgUpdate width='10px' height='10px' />
         </button>
         <button onClick={() => onDelete(id)}>Delete</button>
       </span>

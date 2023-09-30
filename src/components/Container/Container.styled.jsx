@@ -15,8 +15,7 @@ export const ContainerStyle = styled.div`
   margin: 0 auto;
   padding: ${({ Size }) => Size === 'main' && '32px 0'};
   position: relative;
-  outline: solid red;
-  height: 100%;
+  // height: 100%;
   @media screen and ${breakpoints.tablet} {
     padding-top: 20px;
   }

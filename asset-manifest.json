@@ -1,12 +1,11 @@
 {
   "files": {
     "main.css": "/moneyguard_project/static/css/main.7d7c3c4c.css",
-    "main.js": "/moneyguard_project/static/js/main.574de11a.js",
-    "static/js/920.e6b892c6.chunk.js": "/moneyguard_project/static/js/920.e6b892c6.chunk.js",
-    "static/js/221.59265bc8.chunk.js": "/moneyguard_project/static/js/221.59265bc8.chunk.js",
+    "main.js": "/moneyguard_project/static/js/main.3a2f7a7e.js",
+    "static/js/503.139a1de9.chunk.js": "/moneyguard_project/static/js/503.139a1de9.chunk.js",
+    "static/js/221.32883a69.chunk.js": "/moneyguard_project/static/js/221.32883a69.chunk.js",
     "static/js/27.a939903e.chunk.js": "/moneyguard_project/static/js/27.a939903e.chunk.js",
     "static/js/461.8c739e07.chunk.js": "/moneyguard_project/static/js/461.8c739e07.chunk.js",
-    "static/js/763.2abc0a8d.chunk.js": "/moneyguard_project/static/js/763.2abc0a8d.chunk.js",
     "static/media/money-desktopx2.png": "/moneyguard_project/static/media/money-desktopx2.bfee06b320a1799a3ab4.png",
     "static/media/dollar-desktopx2.png": "/moneyguard_project/static/media/dollar-desktopx2.00a4009285b6e0247efb.png",
     "static/media/money-tabletx2.png": "/moneyguard_project/static/media/money-tabletx2.5ac160785735ecf5adef.png",
@@ -27,25 +26,26 @@
     "static/media/mobile-nav-usd.svg": "/moneyguard_project/static/media/mobile-nav-usd.ca4a5480ecf0eab1e0eb6fabcb5a1f92.svg",
     "static/media/logo.svg": "/moneyguard_project/static/media/logo.4fb5aad5d40aabc43d63454aeb3460d5.svg",
     "static/media/exit-icon.svg": "/moneyguard_project/static/media/exit-icon.25ecf6dd539a06a104e825ff97ba65b7.svg",
+    "static/media/edit-button.svg": "/moneyguard_project/static/media/edit-button.9c8d1ca991a66ba0985f94ca141f6a5f.svg",
     "static/media/form-password.svg": "/moneyguard_project/static/media/form-password.d8ed4af1f4184841c760a81bb0889673.svg",
     "static/media/form-user.svg": "/moneyguard_project/static/media/form-user.feb408468475d1734d9a889932f6ee7b.svg",
     "static/media/form-email.svg": "/moneyguard_project/static/media/form-email.cf41fb486519448076c456872d6b2e7a.svg",
     "static/media/homepage-icon.svg": "/moneyguard_project/static/media/homepage-icon.1d9b0ed6b8838108a667dbfb1c03d2c9.svg",
     "static/media/top-part.svg": "/moneyguard_project/static/media/top-part.0bf7cd987022c874e692b9806a66b2de.svg",
+    "static/media/plus.svg": "/moneyguard_project/static/media/plus.93821996776efc82e3ef67a22a10198b.svg",
     "static/media/right-top-part.svg": "/moneyguard_project/static/media/right-top-part.234b2c1c661e62cea33790c5e5995f43.svg",
     "static/media/left-mid-part.svg": "/moneyguard_project/static/media/left-mid-part.caf144cb448e0b610e161c6ed6d4ce8a.svg",
     "static/media/left-bottom-part.svg": "/moneyguard_project/static/media/left-bottom-part.c9cfa8c83a2cdc87589417e8b586ffd1.svg",
     "static/media/right-bottom-part.svg": "/moneyguard_project/static/media/right-bottom-part.ec07fda7d9ab133f7b181eae52c15c89.svg",
     "main.7d7c3c4c.css.map": "/moneyguard_project/static/css/main.7d7c3c4c.css.map",
-    "main.574de11a.js.map": "/moneyguard_project/static/js/main.574de11a.js.map",
-    "920.e6b892c6.chunk.js.map": "/moneyguard_project/static/js/920.e6b892c6.chunk.js.map",
-    "221.59265bc8.chunk.js.map": "/moneyguard_project/static/js/221.59265bc8.chunk.js.map",
+    "main.3a2f7a7e.js.map": "/moneyguard_project/static/js/main.3a2f7a7e.js.map",
+    "503.139a1de9.chunk.js.map": "/moneyguard_project/static/js/503.139a1de9.chunk.js.map",
+    "221.32883a69.chunk.js.map": "/moneyguard_project/static/js/221.32883a69.chunk.js.map",
     "27.a939903e.chunk.js.map": "/moneyguard_project/static/js/27.a939903e.chunk.js.map",
-    "461.8c739e07.chunk.js.map": "/moneyguard_project/static/js/461.8c739e07.chunk.js.map",
-    "763.2abc0a8d.chunk.js.map": "/moneyguard_project/static/js/763.2abc0a8d.chunk.js.map"
+    "461.8c739e07.chunk.js.map": "/moneyguard_project/static/js/461.8c739e07.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.7d7c3c4c.css",
-    "static/js/main.574de11a.js"
+    "static/js/main.3a2f7a7e.js"
   ]
 }

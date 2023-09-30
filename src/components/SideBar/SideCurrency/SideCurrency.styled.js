@@ -18,20 +18,16 @@ export const Table = styled.table`
 export const Category = styled.div`
   @media screen and (min-width: 320px) {
     display: flex;
-    background: rgba(255, 255, 255, 0.2);
-    padding: 13px 20px 13px 20px;
+    background: var(--transparency-20);
+    padding: 13px 20px;
     justify-content: space-around;
   }
 
   @media screen and (min-width: 768px) {
-    display: flex;
-    background: rgba(255, 255, 255, 0.2);
-    padding: 12px 20px 12px 20px;
+    padding: 12px 20px;
   }
 
   @media screen and (min-width: 1280px) {
-    display: flex;
-    background: rgba(255, 255, 255, 0.2);
     padding: 16px 131px 16px 62px;
   }
 `;
@@ -98,17 +94,11 @@ export const CurrencyTable = styled.td`
   }
 
   @media screen and (min-width: 768px) {
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
     padding-right: 90px;
     padding-top: 8px;
   }
 
   @media screen and (min-width: 1280px) {
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
     padding-right: 88px;
     padding-top: 24px;
   }
@@ -124,17 +114,11 @@ export const CurrencyBuy = styled.td`
   }
 
   @media screen and (min-width: 768px) {
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
     padding-right: 80px;
     padding-top: 8px;
   }
 
   @media screen and (min-width: 1280px) {
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
     padding-right: 61px;
     padding-top: 24px;
   }
@@ -142,10 +126,6 @@ export const CurrencyBuy = styled.td`
 
 export const CurrencySell = styled.td`
   @media screen and (min-width: 320px) {
-    padding-top: 8px;
-  }
-
-  @media screen and (min-width: 768px) {
     padding-top: 8px;
   }
 

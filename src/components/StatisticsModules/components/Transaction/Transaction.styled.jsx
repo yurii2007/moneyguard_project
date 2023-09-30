@@ -61,10 +61,10 @@ export const SumTitleItem = styled.li`
 `;
 export const Total = styled.p`
   &.income {
-    color: #ffb627;
+    color: var(--yellow);
   }
 
   &.expense {
-    color: #ff868d;
+    color: var(--dashboard-text);
   }
 `;

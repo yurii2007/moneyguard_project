@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const BalanceWrapper = styled.div`
     padding: 10px 32px;
     border-radius: 8px;
-    background: rgba(82, 59, 126, 0.6);
+    background: var(--background-table);
     box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
     backdrop-filter: blur(50px);
   .balance-head {

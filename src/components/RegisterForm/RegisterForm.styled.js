@@ -16,7 +16,7 @@ export const Card = styled.div`
   );
 
   @media screen and (min-width: 768px) {
-    background-color: #101010;
+    background-color: var(--background);
 
     display: flex;
     justify-content: center;
@@ -48,7 +48,6 @@ export const Card = styled.div`
 `;
 
 export const TitleRegisters = styled.h2`
-  font-family: Poppins;
   color: var(--white-color);
   line-height: 1.5;
   font-size: 19px;
@@ -65,10 +64,7 @@ export const TitleRegisters = styled.h2`
 `;
 
 export const FormRegister = styled.form`
-  padding-top: 23px;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-bottom: 23px;
+  padding: 23px 20px;
 
   .button-wrapper > button,
   .button-wrapper > button:hover,
@@ -107,7 +103,7 @@ export const FormRegister = styled.form`
     border-radius: 20px;
     box-shadow: 1px 9px 15px 0px rgba(0, 0, 0, 0.2);
     background: var(--main-font-color);
-    color: #623f8b;
+    color: var(--button-text-color);
     text-align: center;
     font-size: 18px;
     line-height: normal;
@@ -120,15 +116,12 @@ export const FormRegister = styled.form`
   }
 
   @media screen and (min-width: 768px) {
-    padding-top: 40px;
-    padding-left: 62px;
-    padding-right: 62px;
-    padding-bottom: 40px;
+    padding: 40px 62px;
 
     width: 533px;
     margin: 0 auto;
     border-radius: 8px;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: var(--transparency-10);
 
     box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
     backdrop-filter: blur(50px);
@@ -174,7 +167,7 @@ export const InputRegister = styled.input`
   width: 100%;
   background-color: transparent;
   border: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  border-bottom: 1px solid var(--transparency-40);
   line-height: 1.5;
   font-size: 18px;
   font-weight: 400;

@@ -69,7 +69,7 @@ export const HeaderStyled = styled.header`
 
   .user-name {
     margin-right: 8px;
-    color: rgba(255, 255, 255, 0.6);
+    color: var(--transparency-60);
   }
 
   @media screen and (min-width: 768px) {
@@ -83,7 +83,7 @@ export const HeaderStyled = styled.header`
     .divider {
       margin-right: 12px;
       height: 30px;
-      border: 1px solid rgba(255, 255, 255, 0.6);
+      border: 1px solid var(--transparency-60);
     }
   }
 
@@ -107,7 +107,7 @@ export const HeaderStyled = styled.header`
   @media screen and (min-width: 768px) {
     .text-exit {
       display: contents;
-      color: rgba(255, 255, 255, 0.6);
+      color: var(--transparency-60);
       width: 31px;
       height: 28px;
       font-size: 16px;

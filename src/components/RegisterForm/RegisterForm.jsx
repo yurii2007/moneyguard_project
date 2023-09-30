@@ -18,10 +18,13 @@ import { ReactComponent as UserIcon } from '../../images/svg/form-user.svg';
 import { ReactComponent as EmailIcon } from '../../images/svg/form-email.svg';
 import { ReactComponent as LockIcon } from '../../images/svg/form-password.svg';
 import { ReactComponent as LogoIcon } from '../../images/svg/logo.svg';
+import { ReactComponent as Shield } from '../../images/svg/shield.svg';
+import { ReactComponent as CloseShield } from '../../images/svg/close.shield.svg';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 <ToastContainer
   position="bottom-center"
@@ -37,6 +40,8 @@ import { Link } from 'react-router-dom';
 />;
 
 export const RegisterForm = () => {
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const dispatch = useDispatch();
 
   const formik = useFormik({
@@ -82,6 +87,13 @@ export const RegisterForm = () => {
     },
   });
 
+  function togglePasswordVisibility() {
+    setShowPassword(prev => !prev);
+  }
+
+  function toggleConfirmPasswordVisibility() {
+    setShowConfirmPassword(prev => !prev);
+  }
   return (
     <Card>
       <FormRegister onSubmit={formik.handleSubmit}>
@@ -91,7 +103,7 @@ export const RegisterForm = () => {
         </LogoWrapper>
         <InputWrapper>
           <label htmlFor="username"></label>
-
+          <UserIcon className="icons-login" />
           <InputRegister
             placeholder="Name"
             type="text"
@@ -102,9 +114,6 @@ export const RegisterForm = () => {
             onBlur={formik.handleBlur}
             required
           />
-          <IconWrapper>
-            <UserIcon />
-          </IconWrapper>
           {formik.touched.username && formik.errors.username ? (
             <ErrorRegister className="error">
               {formik.errors.username}
@@ -113,6 +122,7 @@ export const RegisterForm = () => {
         </InputWrapper>
         <InputWrapper>
           <label htmlFor="email"></label>
+          <EmailIcon className="icons-login" />
           <InputRegister
             placeholder="E-mail"
             type="text"
@@ -123,9 +133,6 @@ export const RegisterForm = () => {
             onBlur={formik.handleBlur}
             required
           />
-          <IconWrapper>
-            <EmailIcon />
-          </IconWrapper>
           {formik.touched.email && formik.errors.email ? (
             <ErrorRegister className="error">
               {formik.errors.email}
@@ -134,9 +141,10 @@ export const RegisterForm = () => {
         </InputWrapper>
         <InputWrapper>
           <label htmlFor="password"></label>
+          <LockIcon className="icons-login" />
           <InputRegister
             placeholder="Password"
-            type="password"
+            type={showPassword ? 'text' : 'password'}
             id="password"
             name="password"
             value={formik.values.password}
@@ -144,8 +152,8 @@ export const RegisterForm = () => {
             onBlur={formik.handleBlur}
             required
           />
-          <IconWrapper>
-            <LockIcon />
+          <IconWrapper className="btn" onClick={togglePasswordVisibility}>
+            {showPassword ? <CloseShield /> : <Shield />}
           </IconWrapper>
           {formik.touched.password && formik.errors.password ? (
             <ErrorRegister className="error">
@@ -155,9 +163,10 @@ export const RegisterForm = () => {
         </InputWrapper>
         <InputWrapper>
           <label htmlFor="confirmPassword"></label>
+          <LockIcon className="icons-login" />
           <InputRegister
             placeholder="Confirm password"
-            type="password"
+            type={showConfirmPassword ? 'text' : 'password'}
             id="confirmPassword"
             name="confirmPassword"
             value={formik.values.confirmPassword}
@@ -165,8 +174,11 @@ export const RegisterForm = () => {
             onBlur={formik.handleBlur}
             required
           />
-          <IconWrapper>
-            <LockIcon />
+          <IconWrapper
+            className="btn"
+            onClick={toggleConfirmPasswordVisibility}
+          >
+            {showConfirmPassword ? <CloseShield /> : <Shield />}
           </IconWrapper>
           {formik.touched.confirmPassword && formik.errors.confirmPassword ? (
             <ErrorRegister className="error">
@@ -187,7 +199,7 @@ export const RegisterForm = () => {
         </InputWrapper>
         <div className="button-wrapper">
           <Button type="submit" text="Register" isGradient={true} />
-          <Link to='/login'>Login</Link>
+          <Link to="/login">Login</Link>
         </div>
       </FormRegister>
     </Card>

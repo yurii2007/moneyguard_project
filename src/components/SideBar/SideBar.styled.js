@@ -6,12 +6,12 @@ import currency_table_2x from '../../images/sideBarImages/currency_tablet@2x.png
 import currency_mobile from '../../images/sideBarImages/currency_mobile.png';
 import currency_mobile_2x from '../../images/sideBarImages/currency_mobile.png';
 
-import line_desc_1x from '../../images/sideBarImages/line_desc_1x.png';
-import line_desc_2x from '../../images/sideBarImages/line_desc_2x.png';
-import line_desc_tab_1x from '../../images/sideBarImages/line_desc_tab_1x.png';
-import line_desc_tab_2x from '../../images/sideBarImages/line_desc_tab_2x.png';
-import line_desc_mob_1x from '../../images/sideBarImages/line_desc_mob_1x.png';
-import line_desc_mob_2x from '../../images/sideBarImages/line_desc_mob_2x.png';
+import line_desc_1x from '../../images/sideBarImages/nline_desc_1x.png';
+import line_desc_2x from '../../images/sideBarImages/nline_desc_2x.png';
+import line_desc_tab_1x from '../../images/sideBarImages/nline_desc_tab_1x.png';
+import line_desc_tab_2x from '../../images/sideBarImages/nline_desc_tab_2x.png';
+import line_desc_mob_1x from '../../images/sideBarImages/nline_desc_mob_1x.png';
+import line_desc_mob_2x from '../../images/sideBarImages/nline_desc_mob_2x.png';
 
 export const MainContainer = styled.div`
   @media screen and (min-width: 768px) {
@@ -107,7 +107,7 @@ export const Line = styled.div`
     margin: 0 auto;
     background-image: url(${line_desc_mob_1x});
     width: 320px;
-    height: 70px;
+    height: 74px;
     top: -110px;
     @media (min-device-pixel-ratio: 2) {
       background-image: url(${line_desc_mob_2x});
@@ -118,7 +118,7 @@ export const Line = styled.div`
     position: relative;
     background-image: url(${line_desc_tab_1x});
     width: 336px;
-    height: 72px;
+    height: 74px;
     top: -100px;
     @media (min-device-pixel-ratio: 2) {
       background-image: url(${line_desc_tab_2x});
@@ -129,7 +129,7 @@ export const Line = styled.div`
     position: relative;
     background-image: url(${line_desc_1x});
     width: 480px;
-    height: 102px;
+    height: 106px;
     top: -190px;
     @media (min-device-pixel-ratio: 2) {
       background-image: url(${line_desc_2x});

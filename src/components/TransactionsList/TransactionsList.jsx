@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { StyledTransactionsList } from './TransactionsList.styled';
+import { StyledTransactionsList, Wraper } from './TransactionsList.styled';
 import { TransactionsItem } from 'components/TransactionsList/TransactionsItem/TransactionsItem';
 import {
   createTransactionThunk,
@@ -31,9 +31,8 @@ const TransactionsList = () => {
   };
 
   return (
-    <StyledTransactionsList>
-      <button onClick={onAddTransaction}>Add test transaction</button>
-      {Array.isArray(transactions) && transactions.length > 0 ? (
+    <Wraper>
+      <StyledTransactionsList>
         <table>
           <thead>
             <tr>
@@ -46,25 +45,42 @@ const TransactionsList = () => {
             </tr>
           </thead>
           <tbody>
-            {transactions.map(
-              ({ id, transactionDate, type, categoryId, comment, amount }) => (
-                <TransactionsItem
-                  key={id}
-                  id={id}
-                  transactionDate={transactionDate}
-                  type={type}
-                  categoryId={categoryId}
-                  comment={comment}
-                  amount={amount}
-                />
+            {Array.isArray(transactions) && transactions.length > 0 ? (
+              transactions.map(
+                ({
+                  id,
+                  transactionDate,
+                  type,
+                  categoryId,
+                  comment,
+                  amount,
+                }) => (
+                  <TransactionsItem
+                    key={id}
+                    id={id}
+                    transactionDate={transactionDate}
+                    type={type}
+                    categoryId={categoryId}
+                    comment={comment}
+                    amount={amount}
+                  />
+                )
               )
+            ) : (
+              <p>There are no transactions added!</p>
             )}
           </tbody>
         </table>
-      ) : (
-        <thead>There are no transactions added!</thead>
-      )}
-    </StyledTransactionsList>
+      </StyledTransactionsList>
+
+      <button onClick={onAddTransaction}>
+        <span>+</span>
+        {/* <svg>
+          <use href='../../images/svg/plus.svg'></use>
+        </svg> */}
+        {/* <img src="../../images/svg/plus.svg" alt="" /> */}
+      </button>
+    </Wraper>
   );
 };
 

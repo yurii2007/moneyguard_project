@@ -28,3 +28,23 @@ export const optionsYear = [
   { value: '2011', label: '2011' },
   { value: '2010', label: '2010' },
 ];
+
+export const monthNames = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
+const date = new Date();
+
+export const currentMonth = date.getMonth() + 1;
+export const currentYear = date.getFullYear();
+export const monthName = monthNames[date.getMonth()];

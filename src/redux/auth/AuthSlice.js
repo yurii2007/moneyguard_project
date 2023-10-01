@@ -1,4 +1,10 @@
-import { register, logIn, logOut, refreshUser } from './AuthThunk';
+import {
+  register,
+  logIn,
+  logOut,
+  refreshUser,
+  refreshUserBalance,
+} from './AuthThunk';
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
@@ -25,6 +31,10 @@ const handleFulfilledRefresh = (state, { payload }) => {
   state.error = '';
   state.user = payload;
   state.isAuth = true;
+};
+
+const handleFulfilledRefreshBalance = (state, { payload }) => {
+  state.user.balance = payload.balance;
 };
 
 const handleRejected = state => {
@@ -55,7 +65,8 @@ const authSlice = createSlice({
       .addCase(logOut.fulfilled, handleLogOut)
       .addCase(refreshUser.fulfilled, handleFulfilledRefresh)
       .addCase(refreshUser.pending, handlePending)
-      .addCase(refreshUser.rejected, handleRejected);
+      .addCase(refreshUser.rejected, handleRejected)
+      .addCase(refreshUserBalance.fulfilled, handleFulfilledRefreshBalance);
   },
 });
 

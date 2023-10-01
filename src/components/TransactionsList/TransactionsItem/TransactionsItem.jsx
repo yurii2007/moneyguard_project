@@ -49,7 +49,7 @@ export const TransactionsItem = ({
       |
       <span>
         <button onClick={() => setIsEditing(true)}>
-          <SvgUpdate width='10px' height='10px' />
+          <SvgUpdate width='10px' height='10px'/>
         </button>
         <button onClick={() => onDelete(id)}>Delete</button>
       </span>

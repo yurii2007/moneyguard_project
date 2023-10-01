@@ -16,6 +16,7 @@ import FilterButton from '../FilterButton/FilterButton';
 const Transaction = () => {
   const { transactions, summary, income } = useTransaction();
   const [data, setData] = useState(transactions);
+
   useEffect(() => {
     setData(transactions);
   }, [transactions]);
@@ -35,7 +36,6 @@ const Transaction = () => {
 
     setData(newData);
   };
-
   return (
     <>
       <HeaderTransaction>
@@ -44,18 +44,20 @@ const Transaction = () => {
         <HeaderTitle>Sum</HeaderTitle>
       </HeaderTransaction>
       <TransactionList>
-        {data?.map(item => {
-          const color =
-            colorStatistics.find(category => category.name === item.name)
-              ?.color || '';
-          return (
-            <TransactionItemComponent
-              key={nanoid()}
-              color={color}
-              item={item}
-            />
-          );
-        })}
+        {data
+          ?.filter(item => item.name !== 'Income')
+          .map(item => {
+            const color =
+              colorStatistics.find(category => category.name === item.name)
+                ?.color || '';
+            return (
+              <TransactionItemComponent
+                key={nanoid()}
+                color={color}
+                item={item}
+              />
+            );
+          })}
       </TransactionList>
       <SumTitleList>
         <SumTitleItem>

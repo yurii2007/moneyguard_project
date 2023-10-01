@@ -5,6 +5,7 @@ export const TransactionListTable = ({
   transactions,
   defineCategory,
   handleDelete,
+  openUpdating,
 }) => {
   return (
     <TableStyle>
@@ -29,7 +30,7 @@ export const TransactionListTable = ({
               <td>{amount}</td>
               <td>
                 <div>
-                  <button className="edit-button">
+                  <button className="edit-button" onClick={openUpdating}>
                     <EditButton width={14} height={14} />
                   </button>
                   <button

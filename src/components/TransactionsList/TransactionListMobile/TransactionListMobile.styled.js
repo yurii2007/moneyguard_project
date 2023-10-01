@@ -50,7 +50,7 @@ export const TransactionMobileList = styled.ul`
     line-height: normal;
     letter-spacing: 0.32px;
     svg {
-        margin-right: 4px;
+      margin-right: 4px;
     }
   }
 `;

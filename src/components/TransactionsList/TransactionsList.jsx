@@ -1,7 +1,8 @@
-import { ReactComponent as SvgAdd } from '../../images/svg/plus.svg';
 import { useEffect } from 'react';
+import { AiOutlinePlus } from 'react-icons/ai';
 import { useDispatch, useSelector } from 'react-redux';
 import {
+  createTransactionThunk,
   delTransactionThunk,
   fetchAllTransactionsThunk,
   getTransactionCategoriesThunk,
@@ -10,11 +11,12 @@ import { useMediaQuery } from 'react-responsive';
 import { TransactionListMobile } from './TransactionListMobile/TransactionListMobile';
 import { TransactionListTable } from './TransactionListTable/TransactionListTable';
 import { selectCategories } from 'redux/selectors';
+import { TransactionWrapper } from './TransactionsList.styled';
 
 const TransactionsList = () => {
   const dispatch = useDispatch();
   const transactions = useSelector(state => state.transactions.data);
-  
+
   const isMobile = useMediaQuery({ query: '(max-width: 767.9px)' });
   const categories = useSelector(selectCategories);
 
@@ -23,30 +25,35 @@ const TransactionsList = () => {
     dispatch(getTransactionCategoriesThunk());
   }, [dispatch]);
 
-  const defineCategory = id => categories?.find(category => category.id === id).name;
+  const defineCategory = id =>
+    categories?.find(category => category.id === id).name;
 
-const onDelete = transactionId => {
+  const onDelete = transactionId => {
     dispatch(delTransactionThunk(transactionId));
   };
 
-  // const onAddTransaction = () => {
-  //   dispatch(
-  //     createTransactionThunk({
-  //       transactionDate: '2023-09-28',
-  //       type: 'EXPENSE',
-  //       categoryId: '3caa7ba0-79c0-40b9-ae1f-de1af1f6e386',
-  //       comment: 'Car',
-  //       amount: -150,
-  //     })
-  //   );
-  // };
+  const onAddTransaction = () => {
+    dispatch(
+      createTransactionThunk({
+        transactionDate: '2023-09-28',
+        type: 'EXPENSE',
+        categoryId: '3caa7ba0-79c0-40b9-ae1f-de1af1f6e386',
+        comment: 'Car',
+        amount: -150,
+      })
+    );
+  };
 
-  if(transactions?.length === 0) return <p>No transactions</p>
+  if (transactions?.length === 0) return <p>No transactions</p>;
 
   return (
-    <>
+    <TransactionWrapper>
       {isMobile ? (
-        <TransactionListMobile transactions={transactions} defineCategory={defineCategory} handleDelete={onDelete} />
+        <TransactionListMobile
+          transactions={transactions}
+          defineCategory={defineCategory}
+          handleDelete={onDelete}
+        />
       ) : (
         <TransactionListTable
           transactions={transactions}
@@ -54,14 +61,16 @@ const onDelete = transactionId => {
           handleDelete={onDelete}
         ></TransactionListTable>
       )}
-      <SvgAdd width={20} height={20} />
-    </>
+      <button className='transaction-add-button' onClick={onAddTransaction}>
+        <AiOutlinePlus />
+      </button>
+    </TransactionWrapper>
     // <Wrapper>
     //   <StyledTransactionsList>
     //     {Array.isArray(transactions) && transactions.length > 0 ? (
     //       <table>
     //         <thead>
-    //           
+    //
     //         </thead>
     //         <tbody>
     //           {transactions.map(
@@ -85,10 +94,6 @@ const onDelete = transactionId => {
     //       <p>There are no transactions added!</p>
     //     )}
     //   </StyledTransactionsList>
-
-    //   <button onClick={onAddTransaction}>
-    //     <SvgAdd width="10px" height="10px" />
-    //   </button>
     // </Wrapper>
   );
 };

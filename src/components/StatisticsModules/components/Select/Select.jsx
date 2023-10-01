@@ -1,16 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import Select from 'react-select';
-import { optionsMonth, optionsYear } from './selectOptions';
+import {
+  currentMonth,
+  currentYear,
+  monthName,
+  optionsMonth,
+  optionsYear,
+} from './selectOptions';
 import { SelectBox } from './Select.styled';
 import { customSelect } from './selectCustomStyles';
 import { useDispatch } from 'react-redux';
 import { getTransaction } from 'redux/Transaction/transactionOperation';
 
 const SelectComponent = () => {
-  const date = new Date();
   const dispatch = useDispatch();
-  const [month, setMonth] = useState(date.getMonth() + 1);
-  const [year, setYear] = useState(date.getFullYear());
+
+  const [month, setMonth] = useState(currentMonth);
+  const [year, setYear] = useState(currentYear);
 
   useEffect(() => {
     dispatch(getTransaction({ month: Number(month), year: Number(year) }));
@@ -19,6 +25,7 @@ const SelectComponent = () => {
   return (
     <SelectBox>
       <Select
+        defaultValue={{ value: month, label: monthName }}
         onChange={event => {
           setMonth(event.value);
         }}
@@ -27,6 +34,7 @@ const SelectComponent = () => {
         isSearchable={false}
       />
       <Select
+        defaultValue={{ value: year, label: year }}
         onChange={event => {
           setYear(event.value);
         }}

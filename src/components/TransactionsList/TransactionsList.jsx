@@ -2,52 +2,59 @@ import { ReactComponent as SvgAdd } from '../../images/svg/plus.svg';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  createTransactionThunk,
   fetchAllTransactionsThunk,
   getTransactionCategoriesThunk,
 } from 'redux/finance/financeThunks';
 import { useMediaQuery } from 'react-responsive';
 import { TransactionListMobile } from './TransactionListMobile/TransactionListMobile';
+import { TransactionListTable } from './TransactionListTable/TransactionListTable';
+import { selectCategories } from 'redux/selectors';
 
 const TransactionsList = () => {
   const dispatch = useDispatch();
   const transactions = useSelector(state => state.transactions.data);
   const isMobile = useMediaQuery({ query: '(max-width: 767.9px)' });
+  const categories = useSelector(selectCategories);
+
+  const defineCategory = id => categories?.find(category => category.id === id).name;
 
   useEffect(() => {
     dispatch(fetchAllTransactionsThunk());
     dispatch(getTransactionCategoriesThunk());
   }, [dispatch]);
 
-  const onAddTransaction = () => {
-    dispatch(
-      createTransactionThunk({
-        transactionDate: '2023-09-28',
-        type: 'EXPENSE',
-        categoryId: '3caa7ba0-79c0-40b9-ae1f-de1af1f6e386',
-        comment: 'Car',
-        amount: -150,
-      })
-    );
-  };
+  // const onAddTransaction = () => {
+  //   dispatch(
+  //     createTransactionThunk({
+  //       transactionDate: '2023-09-28',
+  //       type: 'EXPENSE',
+  //       categoryId: '3caa7ba0-79c0-40b9-ae1f-de1af1f6e386',
+  //       comment: 'Car',
+  //       amount: -150,
+  //     })
+  //   );
+  // };
+
+  if(!transactions && !(transactions?.length > 0)) return <p>No transactions</p>
 
   return (
     <>
-      {isMobile ? <TransactionListMobile transactions={transactions} /> : <></>}
+      {isMobile ? (
+        <TransactionListMobile transactions={transactions} defineCategory={defineCategory} />
+      ) : (
+        <TransactionListTable
+          transactions={transactions}
+          defineCategory={defineCategory}
+        ></TransactionListTable>
+      )}
+      <SvgAdd width={20} height={20} />
     </>
     // <Wrapper>
     //   <StyledTransactionsList>
     //     {Array.isArray(transactions) && transactions.length > 0 ? (
     //       <table>
     //         <thead>
-    //           <tr>
-    //             <th>Date</th>
-    //             <th>Type</th>
-    //             <th>Category</th>
-    //             <th>Comment</th>
-    //             <th>Sum</th>
-    //             <th></th>
-    //           </tr>
+    //           
     //         </thead>
     //         <tbody>
     //           {transactions.map(

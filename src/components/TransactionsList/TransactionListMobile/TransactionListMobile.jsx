@@ -1,17 +1,9 @@
-import { useSelector } from 'react-redux';
-import { selectCategories } from 'redux/selectors';
-
-export const TransactionListMobile = ({ transactions }) => {
-  const categories = useSelector(selectCategories);
-
-  const defineCategory = id =>
-    categories?.find(category => category.id === id).name;
-
+export const TransactionListMobile = ({ transactions, defineCategory }) => {
   return (
-    <ul>
+    <ul style={{display: 'flex', flexDirection: 'column'}}>
       {transactions?.map(
         ({ id, transactionDate, type, categoryId, comment, amount }) => (
-          <li key={id} style={{ display: 'flex' }}>
+          <li key={id} style={{ display: 'flex', flexDirection: 'column' }}>
             <div>
               <p>Date</p>
               <p>{transactionDate}</p>

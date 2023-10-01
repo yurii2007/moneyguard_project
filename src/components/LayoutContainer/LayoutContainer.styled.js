@@ -16,7 +16,7 @@ export const DashboardPage = styled.aside`
     flex-direction: column;
     justify-content: flex-start;
     gap: 32px;
-    border-right: 1px solid rgba(255, 255, 255, 0.6);
+    border-right: 1px solid var(--transparency-60);
   }
 `;
 

@@ -2,6 +2,7 @@ import { ModalLogoutStyle } from '../ModalLogout/ModalLogoutStyle';
 import { useDispatch } from 'react-redux';
 import { logOut } from 'redux/auth/AuthThunk';
 import { ReactComponent as ReactLogo } from '../../images/svg/logo.svg';
+
 export const ModalLogout = ({ active, setActive }) => {
   const dispatch = useDispatch();
 

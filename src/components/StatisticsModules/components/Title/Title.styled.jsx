@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
 export const TitleStyle = styled.h1`
-  color: #fbfbfb;
-  font-family: Poppins;
+  color: var(--white);
   font-size: 30px;
   font-weight: 400;
   @media screen and (max-width: 767px) {

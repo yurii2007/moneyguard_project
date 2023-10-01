@@ -1,4 +1,5 @@
 import { getMonoCurrency } from '../utils/newMonobankAPI';
+import { format} from 'date-fns'
 
 function parseMono(arr) {
   const rez = [
@@ -23,3 +24,5 @@ async function getCurrency() {
   return parseMono(data.slice(0, 2));
 }
 export default getCurrency;
+
+export const parseDate = date => format(date,'yyyy-MM-dd')

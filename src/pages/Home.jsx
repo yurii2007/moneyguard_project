@@ -5,7 +5,7 @@ import React from 'react';
 const Home = () => {
   return (
     <>
-      <Container Size="main">
+      <Container size="main">
         <TransactionsList />
       </Container>
     </>

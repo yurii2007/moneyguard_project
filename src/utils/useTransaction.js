@@ -3,7 +3,7 @@ import {
   selectTransactions,
   selectExpenseSummary,
   selectIncomeSummary,
-} from 'redux/Transaction/transactionSelectors';
+} from 'redux/selectors';
 
 export const useTransaction = () => {
   const transactions = useSelector(selectTransactions);

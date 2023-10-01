@@ -24,10 +24,15 @@ export const ModalLogoutStyle = styled.div`
     justify-content: center;
     min-width: 320px;
     height: 100vh;
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--transparency-10);
     box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
     backdrop-filter: blur(50px);
     transition: 0.4s all;
+  }
+  @media screen and (max-width: 767.9px) {
+    .modal-content {
+      width: 100%;
+    }
   }
   @media screen and (min-width: 768px) {
     backdrop-filter: blur(3.5px);
@@ -36,7 +41,6 @@ export const ModalLogoutStyle = styled.div`
       width: 533px;
       border-radius: 8px;
       height: 447px;
-      transition: 0.4s all;
     }
   }
 
@@ -81,7 +85,7 @@ export const ModalLogoutStyle = styled.div`
   }
   .buttonlog {
     background: var(--main-font-color);
-    color: #623f8b;
+    color: var(--button-text-color);
     width: 300px;
     padding-block: 13px;
     @media screen and (max-width: 767.9px) {

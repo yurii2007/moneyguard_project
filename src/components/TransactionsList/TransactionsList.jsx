@@ -2,6 +2,7 @@ import { ReactComponent as SvgAdd } from '../../images/svg/plus.svg';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
+  delTransactionThunk,
   fetchAllTransactionsThunk,
   getTransactionCategoriesThunk,
 } from 'redux/finance/financeThunks';
@@ -13,15 +14,20 @@ import { selectCategories } from 'redux/selectors';
 const TransactionsList = () => {
   const dispatch = useDispatch();
   const transactions = useSelector(state => state.transactions.data);
+  
   const isMobile = useMediaQuery({ query: '(max-width: 767.9px)' });
   const categories = useSelector(selectCategories);
-
-  const defineCategory = id => categories?.find(category => category.id === id).name;
 
   useEffect(() => {
     dispatch(fetchAllTransactionsThunk());
     dispatch(getTransactionCategoriesThunk());
   }, [dispatch]);
+
+  const defineCategory = id => categories?.find(category => category.id === id).name;
+
+const onDelete = transactionId => {
+    dispatch(delTransactionThunk(transactionId));
+  };
 
   // const onAddTransaction = () => {
   //   dispatch(
@@ -35,16 +41,17 @@ const TransactionsList = () => {
   //   );
   // };
 
-  if(!transactions && !(transactions?.length > 0)) return <p>No transactions</p>
+  if(transactions?.length === 0) return <p>No transactions</p>
 
   return (
     <>
       {isMobile ? (
-        <TransactionListMobile transactions={transactions} defineCategory={defineCategory} />
+        <TransactionListMobile transactions={transactions} defineCategory={defineCategory} handleDelete={onDelete} />
       ) : (
         <TransactionListTable
           transactions={transactions}
           defineCategory={defineCategory}
+          handleDelete={onDelete}
         ></TransactionListTable>
       )}
       <SvgAdd width={20} height={20} />

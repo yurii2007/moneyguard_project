@@ -1,4 +1,4 @@
-export const TransactionListTable = ({ transactions, defineCategory }) => {
+export const TransactionListTable = ({ transactions, defineCategory, handleDelete }) => {
   return (
     <table>
       <thead>
@@ -21,7 +21,7 @@ export const TransactionListTable = ({ transactions, defineCategory }) => {
               <td>{amount}</td>
               <td>
                 <div>
-                  <button>Delete</button>
+                  <button onClick={()=>handleDelete(id)}>Delete</button>
                   <button>Edit</button>
                 </div>
               </td>

@@ -24,9 +24,10 @@ const TransactionsList = () => {
   const categories = useSelector(selectCategories);
 
   useEffect(() => {
+    document.body.style.overflow = isUpdating ? 'hidden' : 'auto';
     dispatch(fetchAllTransactionsThunk());
     dispatch(getTransactionCategoriesThunk());
-  }, [dispatch]);
+  }, [dispatch, isUpdating]);
 
   const openUpdModal = obj => {
     setUpdObject(obj);

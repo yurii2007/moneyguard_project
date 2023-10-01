@@ -20,30 +20,31 @@ export const TransactionListTable = ({
         </tr>
       </thead>
       <tbody>
-        {transactions?.map(
-          ({ id, transactionDate, type, categoryId, comment, amount }) => (
-            <tr key={id}>
-              <td>{transactionDate}</td>
-              <td>{type === 'EXPENSE' ? '-' : '+'}</td>
-              <td>{defineCategory(categoryId)}</td>
-              <td>{comment}</td>
-              <td>{amount}</td>
-              <td>
-                <div>
-                  <button className="edit-button" onClick={openUpdating}>
-                    <EditButton width={14} height={14} />
-                  </button>
-                  <button
-                    className="delete-button"
-                    onClick={() => handleDelete(id)}
-                  >
-                    Delete
-                  </button>
-                </div>
-              </td>
-            </tr>
-          )
-        )}
+        {transactions?.map(transaction => (
+          <tr key={transaction.id}>
+            <td>{transaction.transactionDate}</td>
+            <td>{transaction.type === 'EXPENSE' ? '-' : '+'}</td>
+            <td>{defineCategory(transaction.categoryId)}</td>
+            <td>{transaction.comment}</td>
+            <td>{transaction.amount}</td>
+            <td>
+              <div>
+                <button
+                  className="edit-button"
+                  onClick={() => openUpdating(transaction)}
+                >
+                  <EditButton width={14} height={14} />
+                </button>
+                <button
+                  className="delete-button"
+                  onClick={() => handleDelete(transaction.id)}
+                >
+                  Delete
+                </button>
+              </div>
+            </td>
+          </tr>
+        ))}
       </tbody>
     </TableStyle>
   );

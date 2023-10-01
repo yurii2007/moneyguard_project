@@ -14,9 +14,9 @@ export async function fetchAllTransactions() {
   return data;
 }
 
-export async function updTransaction({ transactionId, ...transactionData }) {
+export async function updTransaction(id, transactionData) {
   const { data } = await instance.patch(
-    `/transactions/${transactionId}`,
+    `/transactions/${id}`,
     transactionData
   );
   return data;
@@ -70,14 +70,15 @@ export const fetchAllTransactionsThunk = createAsyncThunk(
 
 export const updTransactionThunk = createAsyncThunk(
   'finance/updTransactionThunk',
-  async (transaction, thunkAPI) => {
+  async ({id, data}, thunkAPI) => {
     const state = thunkAPI.getState();
     const token = state.auth.token;
     instance.defaults.headers.common.Authorization = `Bearer ${token}`;
     try {
-      return await updTransaction(transaction);
+      const res = await updTransaction(id,data);
+      return res
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.response.data);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );

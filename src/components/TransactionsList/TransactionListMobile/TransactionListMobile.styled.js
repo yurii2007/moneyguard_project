@@ -28,6 +28,7 @@ export const TransactionMobileList = styled.ul`
     font-weight: 600;
   }
   .transaction-desc {
+    text-align: right;
     font-size: 16px;
   }
   .delete-button {

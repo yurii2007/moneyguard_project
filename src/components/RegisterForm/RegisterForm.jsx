@@ -64,7 +64,6 @@ export const RegisterForm = () => {
         const response = await dispatch(register(userCredentials));
 
         if (response.payload === 'Request failed with status code 409') {
-          console.log(response.payload);
           toast.error('Access Forbidden: User with such email already exists');
         } else {
           toast.success('Successfully logged in!');

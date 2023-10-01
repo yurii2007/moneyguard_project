@@ -26,19 +26,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
-<ToastContainer
-  position="bottom-center"
-  autoClose={5000}
-  hideProgressBar={false}
-  newestOnTop={false}
-  closeOnClick
-  rtl={false}
-  pauseOnFocusLoss
-  draggable
-  pauseOnHover
-  theme="dark"
-/>;
-
 export const RegisterForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -77,6 +64,7 @@ export const RegisterForm = () => {
         const response = await dispatch(register(userCredentials));
 
         if (response.payload === 'Request failed with status code 409') {
+          console.log(response.payload);
           toast.error('Access Forbidden: User with such email already exists');
         } else {
           toast.success('Successfully logged in!');
@@ -202,6 +190,19 @@ export const RegisterForm = () => {
           <Link to="/login">Login</Link>
         </div>
       </FormRegister>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
+      ;
     </Card>
   );
 };

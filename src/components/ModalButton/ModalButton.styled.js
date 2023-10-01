@@ -14,4 +14,10 @@ export const ButtonStyled = styled.button`
   line-height: normal;
   letter-spacing: 1.8px;
   text-transform: uppercase;
+  background: ${({ variant }) =>
+    variant === 'gradient'
+      ? 'var(--btn-gradient-color)'
+      : 'var(--main-font-color)'};
+  color: ${({ variant }) =>
+    variant === 'gradient' ? 'var(--white-color)' : '#623F8B'};
 `;

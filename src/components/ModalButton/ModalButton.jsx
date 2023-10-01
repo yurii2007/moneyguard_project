@@ -11,7 +11,7 @@ export const Button = ({ type = 'button', text, isGradient }) => {
         color: '#623F8B',
       };
   return (
-    <ButtonStyled type={type} style={styles}>
+    <ButtonStyled variant={'gradient'} type={type}>
       {text}
     </ButtonStyled>
   );

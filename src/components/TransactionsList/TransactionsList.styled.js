@@ -27,7 +27,7 @@ export const Wraper = styled.div`
 
   @media only screen and (min-width: 1280px) {
     div + button {
-      bottom: 20px;
+      bottom: -50px;
     }
   }
 `;
@@ -162,7 +162,7 @@ export const StyledTransactionsList = styled.div`
       bottom: 0;
     }
 
-    th + div {
+    span + div {
       position: absolute;
       left: -60%;
       bottom: 12px;
@@ -224,12 +224,12 @@ export const StyledTransactionsList = styled.div`
       overflow: hidden;
     }
 
-    th {
+    span {
       padding: 0;
       font-weight: 600;
       text-align: left;
     }
-    th:first-child {
+    span:first-child {
       border-top-left-radius: 8px;
       border-bottom-left-radius: 8px;
       text-align: left;
@@ -237,23 +237,23 @@ export const StyledTransactionsList = styled.div`
       width: 91px;
     }
 
-    th:nth-child(2) {
+    span:nth-child(2) {
       text-align: center;
     }
 
-    th:nth-child(3) {
+    span:nth-child(3) {
       width: 146px;
     }
 
-    th:nth-child(4) {
+    span:nth-child(4) {
       width: 135px;
     }
 
-    th:nth-child(5) {
+    span:nth-child(5) {
       text-align: right;
     }
 
-    th:last-child {
+    span:last-child {
       border-top-right-radius: 8px;
       border-bottom-right-radius: 8px;
       width: 141px;
@@ -268,7 +268,7 @@ export const StyledTransactionsList = styled.div`
       font-size: 16px;
       font-weight: 600;
     }
-    tbody tr {
+    tbody div {
       color: var(--white, #fbfbfb);
       font-family: Poppins;
       font-size: 14px;
@@ -317,7 +317,7 @@ export const StyledTransactionsList = styled.div`
       padding-right: 6px;
     }
 
-    div > button {
+    span > button {
       background-color: transparent;
       border: none;
       fill: white;

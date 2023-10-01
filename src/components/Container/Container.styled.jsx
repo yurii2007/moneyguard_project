@@ -14,6 +14,8 @@ export const ContainerStyle = styled.div`
   min-width: ${size.mobile};
   margin: 0 auto;
   padding: ${({ size }) => size === 'main' && '32px 0'};
+  position: relative;
+
   @media screen and ${breakpoints.tablet} {
     padding-top: 20px;
   }
@@ -25,5 +27,3 @@ export const ContainerStyle = styled.div`
       (size === 'statistics' && '32px 0 0 54px')};
   }
 `;
-
-//

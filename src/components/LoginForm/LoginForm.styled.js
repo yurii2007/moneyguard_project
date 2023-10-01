@@ -5,6 +5,10 @@ import backRegisterTabletRetina from '../../images/png/money-tabletx2.png';
 import backRegisterDesktopRetina from '../../images/png/money-desktopx2.png';
 
 export const Card = styled.div`
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+
   background: radial-gradient(
     circle at center center,
     rgba(47, 21, 176, 0.73),
@@ -64,28 +68,45 @@ export const FormLogin = styled.form`
   padding-right: 20px;
   padding-bottom: 23px;
 
+  .button-wrapper > button,
   .button-wrapper > button:hover,
-  .button-wrapper > a:hover {
+  .button-wrapper > button:focus {
+    transition: background 0.6s, color 0.6s, outline 0.6s;
+  }
+
+  .button-wrapper > button:hover,
+  .button-wrapper > button:focus {
     background: transparent !important;
     color: #ffc727 !important;
     outline: 1px solid #ffc727;
-    transition: background 0.3s, color 0.3s, outline 0.3s;
   }
+
+  .button-wrapper > a,
+  .button-wrapper > a:hover,
+  .button-wrapper > a:focus {
+    transition: background 0.6s, color 0.6s, outline 0.6s;
+  }
+
+  .button-wrapper > a:hover,
+  .button-wrapper > a:focus {
+    background: transparent !important;
+    color: #ffc727 !important;
+    outline: 1px solid #ffc727;
+  }
+
   .button-wrapper > a {
-    display: block;
     width: 300px;
     padding-block: 13px;
     @media screen and (max-width: 767.9px) {
       width: 280px;
     }
-    border: none;
     border-radius: 20px;
     box-shadow: 1px 9px 15px 0px rgba(0, 0, 0, 0.2);
     background: var(--main-font-color);
-    color: #623f8b;
+    color: var(--button-text-color);
     text-align: center;
     font-size: 18px;
-    line-height: normal;
+    line-height: 1.5;
     letter-spacing: 1.8px;
     text-transform: uppercase;
   }
@@ -133,9 +154,16 @@ export const LogoWrapper = styled.div`
 `;
 
 export const InputWrapper = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   margin-bottom: 40px;
+
+  .icons-login {
+    position: absolute;
+    width: 24px;
+    margin-left: 10px;
+  }
 `;
 
 export const InputLogin = styled.input`
@@ -152,7 +180,7 @@ export const InputLogin = styled.input`
   position: relative;
   outline: none;
 
-  transition: border-color 0.3s, border-radius 0.3s, border-bottom 0.3s;
+  transition: border-color 0.4s, border-radius 0.4s, border-bottom 0.4s;
 
   &:focus {
     outline: none;
@@ -162,8 +190,10 @@ export const InputLogin = styled.input`
 
 export const IconWrapper = styled.div`
   position: absolute;
-  width: 24px;
-  margin-left: 10px;
+  width: 22px;
+  right: 0;
+  margin-right: 10px;
+  cursor: pointer;
 `;
 
 export const ErrorLogin = styled.div`

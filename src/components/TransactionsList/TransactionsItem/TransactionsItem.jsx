@@ -45,7 +45,7 @@ export const TransactionsItem = ({
   return (
     <div>
       <span>{transactionDate}</span> |<span>{type}</span> |
-      <span>{categoryId}</span> | <span>{comment}</span> | <span>{amount}</span>{' '}
+      <span>{categoryId}</span> | <span>{comment}</span> | <span>{amount}</span>
       |
       <span>
         <button onClick={() => setIsEditing(true)}>

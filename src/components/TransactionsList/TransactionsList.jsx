@@ -1,18 +1,18 @@
 import { ReactComponent as SvgAdd } from '../../images/svg/plus.svg';
-import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { StyledTransactionsList, Wraper } from './TransactionsList.styled';
-import { TransactionsItem } from 'components/TransactionsList/TransactionsItem/TransactionsItem';
 import {
   createTransactionThunk,
   fetchAllTransactionsThunk,
   getTransactionCategoriesThunk,
 } from 'redux/finance/financeThunks';
+import { useMediaQuery } from 'react-responsive';
+import { TransactionListMobile } from './TransactionListMobile/TransactionListMobile';
 
 const TransactionsList = () => {
   const dispatch = useDispatch();
   const transactions = useSelector(state => state.transactions.data);
+  const isMobile = useMediaQuery({ query: '(max-width: 767.9px)' });
 
   useEffect(() => {
     dispatch(fetchAllTransactionsThunk());
@@ -32,70 +32,190 @@ const TransactionsList = () => {
   };
 
   return (
-    <Wraper>
-      <StyledTransactionsList>
-        <table>
-          <thead>
-            <tr>
-              <th>Date</th>
-              <th>Type</th>
-              <th>Category</th>
-              <th>Comment</th>
-              <th>Sum</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {Array.isArray(transactions) && transactions.length > 0 ? (
-              transactions.map(
-                ({
-                  id,
-                  transactionDate,
-                  type,
-                  categoryId,
-                  comment,
-                  amount,
-                }) => (
-                  <TransactionsItem
-                    key={id}
-                    id={id}
-                    transactionDate={transactionDate}
-                    type={type}
-                    categoryId={categoryId}
-                    comment={comment}
-                    amount={amount}
-                  />
-                )
-              )
-            ) : (
-              <p>There are no transactions added!</p>
-            )}
-          </tbody>
-        </table>
-      </StyledTransactionsList>
+    <>
+      {isMobile ? <TransactionListMobile transactions={transactions} /> : <></>}
+    </>
+    // <Wrapper>
+    //   <StyledTransactionsList>
+    //     {Array.isArray(transactions) && transactions.length > 0 ? (
+    //       <table>
+    //         <thead>
+    //           <tr>
+    //             <th>Date</th>
+    //             <th>Type</th>
+    //             <th>Category</th>
+    //             <th>Comment</th>
+    //             <th>Sum</th>
+    //             <th></th>
+    //           </tr>
+    //         </thead>
+    //         <tbody>
+    //           {transactions.map(
+    //             ({
+    //
+    //             }) => (
+    //               <TransactionsItem
+    //                 key={id}
+    //                 id={id}
+    //                 transactionDate={transactionDate}
+    //                 type={type}
+    //                 categoryId={categoryId}
+    //                 comment={comment}
+    //                 amount={amount}
+    //               />
+    //             )
+    //           )}{' '}
+    //         </tbody>
+    //       </table>
+    //     ) : (
+    //       <p>There are no transactions added!</p>
+    //     )}
+    //   </StyledTransactionsList>
 
-      <button onClick={onAddTransaction}>
-        <span><SvgAdd width='10px'height='10px'/></span>
-        {/* <svg>
-          <use href='../../images/svg/plus.svg'></use>
-        </svg> */}
-        {/* <img src="../../images/svg/plus.svg" alt="" /> */}
-      </button>
-    </Wraper>
+    //   <button onClick={onAddTransaction}>
+    //     <SvgAdd width="10px" height="10px" />
+    //   </button>
+    // </Wrapper>
   );
 };
 
-TransactionsList.propTypes = {
-  transactions: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      transactionDate: PropTypes.string.isRequired,
-      type: PropTypes.string.isRequired,
-      categoryId: PropTypes.string.isRequired,
-      comment: PropTypes.string.isRequired,
-      amount: PropTypes.number.isRequired,
-    })
-  ),
-};
-
 export default TransactionsList;
+
+/*
+   <>
+     {isMobile &&
+         sortedTransactions.map(
+             ({
+                 id,
+                 transactionDate,
+                 type,
+                 categoryId,
+                 comment,
+                 amount,
+             }) => (
+                 <StyledTransactionsList
+                     key={id}
+                     className={type.toLowerCase()}
+                 >
+                     <ul>
+                         <li>
+                             <b>Date</b>
+                             <p>{formatDate(transactionDate)}</p>
+                         </li>
+                         <li>
+                             <b>Type</b>
+                             <p>{type === 'EXPENSE' ? '-' : '+'}</p>
+                         </li>
+                         <li>
+                             <b>Category</b>
+                             <p>{findCategoryName(categoryId)}</p>
+                         </li>
+                         <li>
+                             <b>Comment</b>
+                             <p>{formatComment(comment)}</p>
+                         </li>
+                         <li>
+                             <b>Sum</b>
+                             <p>{Math.abs(amount)}</p>
+                         </li>
+                         <li>
+                             <button
+                                 className="delete"
+                                 type="button"
+                                 onClick={() => onDelete(id)}
+                             >
+                                 Delete
+                             </button>
+                             <button
+                                 className="edit"
+                                 type="button"
+                                 onClick={() =>
+                                     onEditTransaction({
+                                         id,
+                                         transactionDate,
+                                         type,
+                                         categoryId,
+                                         comment,
+                                         amount,
+                                     })
+                                 }
+                             >
+                                 <GoPencil />
+                                 Edit
+                             </button>
+                         </li>
+                     </ul>
+                 </StyledTransactionsList>
+             )
+         )}
+     {isDesktopOrTablet && (
+         <StyledTransactionsList>
+             <table>
+                 <thead>
+                     <tr>
+                         <th>Date</th>
+                         <th>Type</th>
+                         <th>Category</th>
+                         <th>Comment</th>
+                         <th>Sum</th>
+                         <th></th>
+                     </tr>
+                 </thead>
+                 <tbody>
+                     {transactions &&
+                         sortedTransactions.map(
+                             ({
+                                 id,
+                                 transactionDate,
+                                 type,
+                                 categoryId,
+                                 comment,
+                                 amount,
+                             }) => (
+                                 <tr key={id}>
+                                     <td>
+                                         {formatDate(transactionDate)}
+                                     </td>
+                                     <td>
+                                         {type === 'EXPENSE' ? '-' : '+'}
+                                     </td>
+                                     <td>
+                                         {findCategoryName(categoryId)}
+                                     </td>
+                                     <td>{formatComment(comment)}</td>
+                                     <td className={type.toLowerCase()}>
+                                         {Math.abs(amount)}
+                                     </td>
+                                     <td>
+                                         <button
+                                             className="edit"
+                                             type="button"
+                                             onClick={() =>
+                                                 onEditTransaction({
+                                                     id,
+                                                     transactionDate,
+                                                     type,
+                                                     categoryId,
+                                                     comment,
+                                                     amount,
+                                                 })
+                                             }
+                                         >
+                                             <GoPencil />
+                                         </button>
+                                         <button
+                                             className="delete"
+                                             type="button"
+                                             onClick={() => onDelete(id)}
+                                         >
+                                             Delete
+                                         </button>
+                                     </td>
+                                 </tr>
+                             )
+                         )}
+                 </tbody>
+             </table>
+         </StyledTransactionsList>
+     )}
+ </> */

@@ -7,6 +7,7 @@ export const TransactionMobileList = styled.ul`
   gap: 8px;
 
   li {
+    position: relative;
     padding: 0 20px 0 15px;
     background-color: var(--btn-gradient-color);
     border-radius: 10px;

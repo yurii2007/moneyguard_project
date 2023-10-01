@@ -1,6 +1,13 @@
-export const TransactionListTable = ({ transactions, defineCategory, handleDelete }) => {
+import { ReactComponent as EditButton } from '../../../images/svg/edit-button.svg';
+import { TableStyle } from './TransactionListTable.styled';
+
+export const TransactionListTable = ({
+  transactions,
+  defineCategory,
+  handleDelete,
+}) => {
   return (
-    <table>
+    <TableStyle>
       <thead>
         <tr>
           <th>Date</th>
@@ -8,6 +15,7 @@ export const TransactionListTable = ({ transactions, defineCategory, handleDelet
           <th>Category</th>
           <th>Comment</th>
           <th>Sum</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -21,14 +29,21 @@ export const TransactionListTable = ({ transactions, defineCategory, handleDelet
               <td>{amount}</td>
               <td>
                 <div>
-                  <button onClick={()=>handleDelete(id)}>Delete</button>
-                  <button>Edit</button>
+                  <button className="edit-button">
+                    <EditButton width={14} height={14} />
+                  </button>
+                  <button
+                    className="delete-button"
+                    onClick={() => handleDelete(id)}
+                  >
+                    Delete
+                  </button>
                 </div>
               </td>
             </tr>
           )
         )}
       </tbody>
-    </table>
+    </TableStyle>
   );
 };

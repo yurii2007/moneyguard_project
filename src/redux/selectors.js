@@ -15,3 +15,5 @@ export const selectExpenseSummary = state => state.transaction.expenseSummary;
 export const selectIncomeSummary = state => state.transaction.incomeSummary;
 
 export const selectCategories = state => state.transactions.categories;
+
+export const selectAllTransactions = state => state.transactions.data;

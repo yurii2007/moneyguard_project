@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import { AiOutlinePlus } from 'react-icons/ai';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  createTransactionThunk,
   delTransactionThunk,
   fetchAllTransactionsThunk,
   getTransactionCategoriesThunk,
@@ -14,20 +13,25 @@ import { selectAllTransactions, selectCategories } from 'redux/selectors';
 import { TransactionWrapper } from './TransactionsList.styled';
 import { useState } from 'react';
 import { UpdateModal } from './UpdateModal/UpdateModal';
+import { AddModal } from './AddModal/AddModal';
 
 const TransactionsList = () => {
   const [isUpdating, setIsUpdating] = useState(false);
+  const [isAdding, setIsAdding] = useState(false);
   const [modalUpdObject, setUpdObject] = useState(null);
+  const isMobile = useMediaQuery({ query: '(max-width: 767.9px)' });
   const dispatch = useDispatch();
   const transactions = useSelector(selectAllTransactions);
-  const isMobile = useMediaQuery({ query: '(max-width: 767.9px)' });
   const categories = useSelector(selectCategories);
 
   useEffect(() => {
-    document.body.style.overflow = isUpdating ? 'hidden' : 'auto';
+    document.body.style.overflow = isUpdating || isAdding ? 'hidden' : 'auto';
     dispatch(fetchAllTransactionsThunk());
     dispatch(getTransactionCategoriesThunk());
-  }, [dispatch, isUpdating]);
+  }, [dispatch, isUpdating, isAdding]);
+
+  const openAddModal = () => setIsAdding(true);
+  const closeAddModal = () => setIsAdding(false);
 
   const openUpdModal = obj => {
     setUpdObject(obj);
@@ -44,23 +48,11 @@ const TransactionsList = () => {
     dispatch(delTransactionThunk(transactionId));
   };
 
-  const onAddTransaction = () => {
-    dispatch(
-      createTransactionThunk({
-        transactionDate: '2023-09-28',
-        type: 'EXPENSE',
-        categoryId: '3caa7ba0-79c0-40b9-ae1f-de1af1f6e386',
-        comment: 'Test',
-        amount: -50,
-      })
-    );
-  };
-
   if (transactions?.length === 0) {
     return (
       <TransactionWrapper>
         <p>No transactions</p>
-        <button className="transaction-add-button" onClick={onAddTransaction}>
+        <button className="transaction-add-button" onClick={openAddModal}>
           <AiOutlinePlus />
         </button>
       </TransactionWrapper>
@@ -73,6 +65,11 @@ const TransactionsList = () => {
         <UpdateModal
           updatingTransaction={modalUpdObject}
           selfDestruction={closeUpdModal}
+        />
+      )}
+      {isAdding && (
+        <AddModal
+        closeModal={closeAddModal}
         />
       )}
       <TransactionWrapper>
@@ -91,7 +88,7 @@ const TransactionsList = () => {
             openUpdating={openUpdModal}
           ></TransactionListTable>
         )}
-        <button className="transaction-add-button" onClick={onAddTransaction}>
+        <button className="transaction-add-button" onClick={openAddModal}>
           <AiOutlinePlus />
         </button>
       </TransactionWrapper>

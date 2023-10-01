@@ -17,10 +17,10 @@ export const DatePickerForm = ({ name }) => {
         closeOnSelect={true}
         onChange={values => {
           if (isValid(values)) {
-            setFieldValue(field.name, values, format(values, 'yyyy-mm-dd'));
+            setFieldValue(field.name, values, format(values, 'yyyy-MM-dd'));
           }
         }}
-        dateFormat="yyyy.mm.dd"
+        dateFormat="yyyy-MM-dd"
       />
       <Calendar />
     </StyledDateWrapper>

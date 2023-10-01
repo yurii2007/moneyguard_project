@@ -16,7 +16,10 @@ export const UpdateModal = ({ selfDestruction, updatingTransaction }) => {
         type: updatingTransaction.type,
         categoryId: updatingTransaction.categoryId,
         comment: values.comment,
-        amount: updatingTransaction.type === "INCOME" ? +values.amount : -values.amount,
+        amount:
+          updatingTransaction.type === 'INCOME'
+            ? Math.abs(values.amount)
+            : -values.amount,
       },
     };
     dispatch(updTransactionThunk(data));
@@ -51,12 +54,16 @@ export const UpdateModal = ({ selfDestruction, updatingTransaction }) => {
           >
             <h3>Edit transaction</h3>
             <div>
-              <span active={(updatingTransaction.type === 'INCOME').toString()}>
+              <span
+                className={
+                  updatingTransaction.type === 'INCOME' ? 'active' : ''
+                }
+              >
                 Income
               </span>
               /
               <span
-                active={(updatingTransaction.type === 'EXPENSE').toString()}
+                active={updatingTransaction.type === 'EXPENSE' ? 'active' : ''}
               >
                 Expense
               </span>
@@ -79,16 +86,14 @@ export const UpdateModal = ({ selfDestruction, updatingTransaction }) => {
                   type="number"
                   autoComplete="off"
                   value={values.amount}
-                  onChange={value =>
-                    setFieldValue('amount', value.target.value)
-                  }
+                  onChange={evt => setFieldValue('amount', evt.target.value)}
                   onBlur={handleBlur}
                   onKeyUp={handleBlur}
                 />
               </div>
               <div>
                 <DatePickerForm
-                  dateFormat="dd.mm.yyyy"
+                  dateFormat="dd-MM-yyyy"
                   name="date"
                   type="date"
                   timeFormat={false}
@@ -103,7 +108,7 @@ export const UpdateModal = ({ selfDestruction, updatingTransaction }) => {
                 type="text"
                 autoComplete="off"
                 value={values.comment}
-                onChange={value => setFieldValue('comment', value.target.value)}
+                onChange={evt => setFieldValue('comment', evt.target.value)}
               />
             </div>
             <button type="submit">Save</button>

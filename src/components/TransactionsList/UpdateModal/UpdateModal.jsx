@@ -16,6 +16,7 @@ import DatePickerForm from '../DatePicker/DatePicker';
 import getCategoryName from '../categories';
 import { updTransactionThunk } from 'redux/finance/financeThunks';
 import { parseDate } from 'utils/helpers';
+import { refreshUserBalance } from 'redux/auth/AuthThunk';
 
 import { refreshUserBalance } from 'redux/auth/AuthThunk';
 

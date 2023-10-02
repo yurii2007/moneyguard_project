@@ -11,7 +11,7 @@ export const TransactionMobileList = styled.ul`
     padding: 0 20px 0 15px;
     background-color: var(--btn-gradient-color);
     border-radius: 10px;
-    border-left: 5px solid var(--dashboard-text);
+    // border-left: 5px solid var(--dashboard-text);
     color: var(--white);
   }
   li > div {

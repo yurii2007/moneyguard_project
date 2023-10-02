@@ -64,6 +64,10 @@ export const DownContainer = styled.div`
 export const Graphics = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
+  position: relative;
+  .currency-value {
+    display: none;
+  }
   @media screen and (min-width: 320px) {
     margin: 0 auto;
     margin-top: 20px;
@@ -93,6 +97,22 @@ export const Graphics = styled.div`
     height: 167px;
     border-radius: 0;
     background-image: url(${currency_desk});
+    .currency-value {
+      display: inline-block;
+      position: absolute;
+      font-size: 12px;
+      line-height: 18px;
+      color: var(--dashboard-text);
+    }
+    span:first-child {
+      top: -13px;
+      left: 46px;
+    }
+    span:last-child {
+      right: 96px;
+      top: -45px;
+    }
+
     @media (min-device-pixel-ratio: 2) {
       background-image: url(${currency_desk_2x});
     }

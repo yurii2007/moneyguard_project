@@ -2,7 +2,6 @@ import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
 import {
   CancelButton,
-  EditButton,
   HeaderText,
   InputEditor,
   SaveButton,
@@ -17,7 +16,6 @@ import DatePickerForm from '../DatePicker/DatePicker';
 import getCategoryName from '../categories';
 import { updTransactionThunk } from 'redux/finance/financeThunks';
 import { parseDate } from 'utils/helpers';
-import { Button } from 'components/ModalButton/ModalButton';
 
 export const UpdateModal = ({ selfDestruction, updatingTransaction }) => {
   const dispatch = useDispatch();

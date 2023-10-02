@@ -1,11 +1,14 @@
 import styled from 'styled-components';
 
 export const StyledDateWrapper = styled.div`
+  position: relative;
+  margin-bottom: 40px;
+  border-bottom: 1px solid var(--transparency-60);
   && {
     input {
       position: relative;
       border: none;
-      border-bottom: 1px solid var(--transparency-60);
+
       font-size: 18px;
       color: var(--white);
       background-color: transparent;
@@ -38,4 +41,14 @@ export const StyledDateWrapper = styled.div`
       }
     }
   }
+`;
+
+export const IconWrapper = styled.div`
+  position: absolute;
+  width: 22px;
+  top: 0;
+  right: 0;
+  margin-right: 10px;
+
+  fill: var(--icon-violet);
 `;

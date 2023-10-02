@@ -7,6 +7,7 @@ import DatePickerForm from '../DatePicker/DatePicker';
 import { parseDate } from 'utils/helpers';
 import { selectCategories } from 'redux/selectors';
 import { Checkbox } from './Checkbox/Checkbox';
+import { HeaderText } from './AddModal.syled';
 import { ErrorText } from './AddModal.syled';
 
 export const AddModal = ({ closeModal }) => {
@@ -70,7 +71,7 @@ export const AddModal = ({ closeModal }) => {
               handleSubmit(e);
             }}
           >
-            <h2>Add Transaction</h2>
+            <HeaderText>Add Transaction</HeaderText>
             <Checkbox
               type="checkbox"
               name="type"

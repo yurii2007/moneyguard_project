@@ -7,6 +7,7 @@ import backRegisterDesktopRetina from '../../images/png/dollar-desktopx2.png';
 export const Card = styled.div`
   min-height: 100vh;
   display: flex;
+  justify-content: center;
   align-items: center;
 
   background: radial-gradient(

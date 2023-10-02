@@ -1,10 +1,23 @@
 import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
-import { UpdateWrapper } from './UpdateModal.styled';
+import {
+  CancelButton,
+  EditButton,
+  HeaderText,
+  InputEditor,
+  SaveButton,
+  UpdateWrapper,
+  WrapperButton,
+  WrapperCategories,
+  WrapperChanges,
+  WrapperComment,
+  WrapperInputEditor,
+} from './UpdateModal.styled';
 import DatePickerForm from '../DatePicker/DatePicker';
 import getCategoryName from '../categories';
 import { updTransactionThunk } from 'redux/finance/financeThunks';
 import { parseDate } from 'utils/helpers';
+import { Button } from 'components/ModalButton/ModalButton';
 
 export const UpdateModal = ({ selfDestruction, updatingTransaction }) => {
   const dispatch = useDispatch();
@@ -52,8 +65,8 @@ export const UpdateModal = ({ selfDestruction, updatingTransaction }) => {
               handleSubmit(e);
             }}
           >
-            <h3>Edit transaction</h3>
-            <div>
+            <HeaderText>Edit transaction</HeaderText>
+            <WrapperChanges>
               <span
                 className={
                   updatingTransaction.type === 'INCOME' ? 'active' : ''
@@ -69,40 +82,40 @@ export const UpdateModal = ({ selfDestruction, updatingTransaction }) => {
               >
                 Expense
               </span>
-            </div>
+            </WrapperChanges>
 
-            <div>
+            <WrapperCategories>
               <textarea
                 name="category"
                 autoComplete="off"
                 value={getCategoryName(updatingTransaction.categoryId)}
                 readOnly
               />
-            </div>
+            </WrapperCategories>
+
+            <WrapperInputEditor>
+              <InputEditor
+                placeholder="0.00"
+                title="Please put the transaction value"
+                name="value"
+                type="number"
+                autoComplete="off"
+                value={values.amount}
+                onChange={evt => setFieldValue('amount', evt.target.value)}
+                onBlur={handleBlur}
+                onKeyUp={handleBlur}
+              />
+            </WrapperInputEditor>
             <div>
-              <div>
-                <input
-                  placeholder="0.00"
-                  title="Please put the transaction value"
-                  name="value"
-                  type="number"
-                  autoComplete="off"
-                  value={values.amount}
-                  onChange={evt => setFieldValue('amount', evt.target.value)}
-                  onBlur={handleBlur}
-                  onKeyUp={handleBlur}
-                />
-              </div>
-              <div>
-                <DatePickerForm
-                  dateFormat="dd-MM-yyyy"
-                  name="date"
-                  type="date"
-                  timeFormat={false}
-                />
-              </div>
+              <DatePickerForm
+                dateFormat="dd-MM-yyyy"
+                name="date"
+                type="date"
+                timeFormat={false}
+              />
             </div>
-            <div>
+
+            <WrapperComment>
               <textarea
                 placeholder="Comment"
                 title="Please describe your transaction."
@@ -112,11 +125,13 @@ export const UpdateModal = ({ selfDestruction, updatingTransaction }) => {
                 value={values.comment}
                 onChange={evt => setFieldValue('comment', evt.target.value)}
               />
-            </div>
-            <button type="submit">Save</button>
-            <button type="button" onClick={selfDestruction}>
-              Cancel
-            </button>
+            </WrapperComment>
+            <WrapperButton>
+              <SaveButton type="submit">Save</SaveButton>
+              <CancelButton type="button" onClick={selfDestruction}>
+                Cancel
+              </CancelButton>
+            </WrapperButton>
           </form>
         )}
       </Formik>

@@ -1,13 +1,13 @@
 import 'react-datepicker/dist/react-datepicker.css';
 import { format, isValid } from 'date-fns';
 import { useField, useFormikContext } from 'formik';
-import { StyledDateWrapper } from './DatePicker.styled';
+import { IconWrapper, StyledDateWrapper } from './DatePicker.styled';
 import { ReactComponent as Calendar } from 'images/svg/calendar.svg';
 import DatePicker from 'react-datepicker';
 
 export const DatePickerForm = ({ name }) => {
-    const [field] = useField(name);
-    const {setFieldValue} = useFormikContext();
+  const [field] = useField(name);
+  const { setFieldValue } = useFormikContext();
 
   return (
     <StyledDateWrapper>
@@ -22,7 +22,9 @@ export const DatePickerForm = ({ name }) => {
         }}
         dateFormat="yyyy-MM-dd"
       />
-      <Calendar />
+      <IconWrapper>
+        <Calendar />
+      </IconWrapper>
     </StyledDateWrapper>
   );
 };

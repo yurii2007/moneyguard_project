@@ -63,7 +63,9 @@ export const UpdateModal = ({ selfDestruction, updatingTransaction }) => {
               </span>
               /
               <span
-                active={updatingTransaction.type === 'EXPENSE' ? 'active' : ''}
+                className={
+                  updatingTransaction.type === 'EXPENSE' ? 'active' : ''
+                }
               >
                 Expense
               </span>

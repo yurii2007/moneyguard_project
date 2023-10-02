@@ -5,6 +5,7 @@ import { Formik } from 'formik';
 import DatePickerForm from '../DatePicker/DatePicker';
 import { parseDate } from 'utils/helpers';
 import { selectCategories } from 'redux/selectors';
+import { Checkbox } from './Checkbox/Checkbox';
 
 export const AddModal = ({ closeModal }) => {
   const categories = useSelector(selectCategories);
@@ -52,18 +53,16 @@ export const AddModal = ({ closeModal }) => {
             }}
           >
             <h2>Add Transaction</h2>
-            <div>
-              <input
-                type="checkbox"
-                name="type"
-                checked={values.type}
-                onChange={evt => {
-                  setFieldValue('type', evt.target.checked);
-                }}
-                onBlur={handleBlur}
-                onKeyUp={handleBlur}
-              />
-            </div>
+            <Checkbox
+              type="checkbox"
+              name="type"
+              checked={values.type}
+              onChange={evt => {
+                setFieldValue('type', evt.target.checked);
+              }}
+              onBlur={handleBlur}
+              onKeyUp={handleBlur}
+            />
             {values.type && (
               <div>
                 <select

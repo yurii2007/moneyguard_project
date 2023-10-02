@@ -16,6 +16,7 @@ import DatePickerForm from '../DatePicker/DatePicker';
 import getCategoryName from '../categories';
 import { updTransactionThunk } from 'redux/finance/financeThunks';
 import { parseDate } from 'utils/helpers';
+import { refreshUserBalance } from 'redux/auth/AuthThunk';
 
 export const UpdateModal = ({ selfDestruction, updatingTransaction }) => {
   const dispatch = useDispatch();
@@ -33,7 +34,9 @@ export const UpdateModal = ({ selfDestruction, updatingTransaction }) => {
             : -values.amount,
       },
     };
-    dispatch(updTransactionThunk(data));
+    dispatch(updTransactionThunk(data))
+      .unwrap()
+      .then(() => dispatch(refreshUserBalance()));
   };
 
   const unmountModal = e => {

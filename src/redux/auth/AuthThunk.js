@@ -52,7 +52,7 @@ export const refreshUser = createAsyncThunk(
     const state = thunkAPI.getState();
     const prevToken = state.auth.token;
 
-    if(!prevToken) return thunkAPI.rejectWithValue('Unauthorized')
+    if (!prevToken) return thunkAPI.rejectWithValue('Unauthorized');
 
     try {
       setAuthToken(prevToken);

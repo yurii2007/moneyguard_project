@@ -7,6 +7,7 @@ import backRegisterDesktopRetina from '../../images/png/money-desktopx2.png';
 export const Card = styled.div`
   min-height: 100vh;
   display: flex;
+  justify-content: center;
   align-items: center;
 
   background: radial-gradient(
@@ -113,7 +114,7 @@ export const FormLogin = styled.form`
 
   @media screen and (min-width: 768px) {
     padding: 40px 62px;
-  
+
     width: 533px;
     margin: 0 auto;
     border-radius: 8px;

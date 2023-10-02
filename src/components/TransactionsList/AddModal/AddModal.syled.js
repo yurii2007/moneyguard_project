@@ -215,4 +215,7 @@ export const CancelButton = styled.button`
     color: #ffc727 !important;
     outline: 1px solid #ffc727;
   }
+`
+export const ErrorText = styled.p`
+  color: red;
 `;

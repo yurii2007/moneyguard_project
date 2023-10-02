@@ -10,7 +10,7 @@ export const TransactionListMobile = ({
   return (
     <TransactionMobileList>
       {transactions?.map(transaction => (
-        <li key={transaction.id}>
+        <li style={{borderLeft: `5px solid ${transaction.categoryId === '063f1132-ba5d-42b4-951d-44011ca46262' ? 'var(--yellow)' : 'var(--dashboard-text)'}`}} key={transaction.id}>
           <div>
             <p className="transaction-head">Date</p>
             <p className="transaction-desc">{transaction.transactionDate}</p>

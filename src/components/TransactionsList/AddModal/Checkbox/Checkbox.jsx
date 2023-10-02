@@ -8,15 +8,15 @@ export const Checkbox = ({ ...props }) => {
 
   return (
     <TogglerStyles active={checked.toString()}>
-      <p className={`${checked ? 'secondary-text' : 'active-type-text'}`}>
+      <p className={`${checked ? 'secondary-text' : 'active-text-yellow'}`}>
         Income
       </p>
       <label htmlFor="type">
         <input id='type' {...field} {...props} />
-        <CiCirclePlus className='plus' size={44} />
         <CiCircleMinus className='minus'  size={44} />
+        <CiCirclePlus className='plus' size={44} />
       </label>
-      <p className={`${checked ? 'active-type-text' : 'secondary-text'}`}>
+      <p className={`${checked ? 'active-text-dashboard' : 'secondary-text'}`}>
         Expense
       </p>
     </TogglerStyles>

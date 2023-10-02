@@ -20,7 +20,7 @@ export const DatePickerForm = ({ name }) => {
             setFieldValue(field.name, values, format(values, 'yyyy-MM-dd'));
           }
         }}
-        dateFormat="yyyy-MM-dd"
+        dateFormat="dd.MM.yyyy"
       />
       <IconWrapper>
         <Calendar />

@@ -10,9 +10,15 @@ export const TogglerStyles = styled.div`
   line-height: 24px;
   .secondary-text {
     color: var(--white-color);
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.25);
   }
-  .active-type-text {
+  .active-text-dashboard {
+    color: var(--dashboard-text);
+    text-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+  }
+  .active-text-yellow {
     color: var(--yellow);
+    text-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
   }
   label {
     position: relative;
@@ -22,18 +28,24 @@ export const TogglerStyles = styled.div`
     background: var(--white-color);
     svg {
       position: absolute;
-      background: var(--yellow);
+      background: var(--dashboard-text);
       border-radius: 50%;
       top: -2px;
+      left: 40px;
+      transition: left 500ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    input:not(:checked) + .minus,
+    input:not(:checked) + .minus ~ svg {
+      left: 0;
+      background: var(--yellow);
     }
     .minus {
-      display: ${props => (props.active === 'true' ? '' : 'none')};
+      opacity: ${props => (props.active === 'true' ? '1' : '0')};
     }
     .plus {
-      display: ${props => (props.active === 'true' ? 'none' : '')};
+      opacity: ${props => (props.active === 'true' ? '0' : '1')};
     }
   }
-
   input {
     position: absolute;
     width: 1px;

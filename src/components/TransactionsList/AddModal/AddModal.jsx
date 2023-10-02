@@ -7,7 +7,16 @@ import DatePickerForm from '../DatePicker/DatePicker';
 import { parseDate } from 'utils/helpers';
 import { selectCategories } from 'redux/selectors';
 import { Checkbox } from './Checkbox/Checkbox';
-import { HeaderText } from './AddModal.syled';
+import {
+  CancelButton,
+  HeaderText,
+  InputEditor,
+  SaveButton,
+  WrapperButton,
+  WrapperCategories,
+  WrapperComment,
+  WrapperInputEditor,
+} from './AddModal.syled';
 import { ErrorText } from './AddModal.syled';
 import { refreshUserBalance } from 'redux/auth/AuthThunk';
 
@@ -86,7 +95,7 @@ export const AddModal = ({ closeModal }) => {
               onKeyUp={handleBlur}
             />
             {values.type && (
-              <div>
+              <WrapperCategories>
                 <select
                   name="category"
                   placeholder="Select a category"
@@ -99,10 +108,10 @@ export const AddModal = ({ closeModal }) => {
                   ))}
                 </select>
                 <ErrorText>{errors.category}</ErrorText>
-              </div>
+              </WrapperCategories>
             )}
-            <div>
-              <input
+            <WrapperInputEditor>
+              <InputEditor
                 placeholder="0.00"
                 title="Please put the transaction value"
                 name="value"
@@ -116,7 +125,7 @@ export const AddModal = ({ closeModal }) => {
               {touched.amount && errors.amount && (
                 <ErrorText>{errors.amount}</ErrorText>
               )}
-            </div>
+            </WrapperInputEditor>
             <div>
               <DatePickerForm
                 dateFormat="dd.mm.yyyy"
@@ -128,21 +137,28 @@ export const AddModal = ({ closeModal }) => {
                 <ErrorText>{errors.transactionDate}</ErrorText>
               )}
             </div>
-            <div>
-              <input
+            <WrapperComment>
+              <textarea
                 placeholder="Comment"
                 title="Leave the description here"
                 name="comment"
-                type="textarea"
+                type="text"
                 autoComplete="off"
                 value={values.comment}
                 onChange={evt => setFieldValue('comment', evt.target.value)}
                 onBlur={handleBlur}
                 onKeyUp={handleBlur}
               />
+            </WrapperComment>
+            <WrapperButton>
+              <SaveButton type="submit">Add</SaveButton>
+              <CancelButton type="button" onClick={closeModal}>
+                Cancel
+              </CancelButton>
+            </WrapperButton>
+            <div>
               <ErrorText>{errors.comment}</ErrorText>
             </div>
-            <button type="submit">Add transaction</button>
           </form>
         )}
       </Formik>

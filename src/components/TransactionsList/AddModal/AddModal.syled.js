@@ -107,6 +107,20 @@ export const WrapperCategories = styled.div`
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
+  border: none;
+  outline: none;
+
+  select {
+    background-color: transparent;
+    color: var(--white, #fbfbfb);
+    font-family: Poppins;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.5;
+    border: none;
+    outline: none;
+  }
 
   border-bottom: 1px solid var(--transparency-60);
 
@@ -133,18 +147,26 @@ export const InputEditor = styled.input`
 `;
 
 export const WrapperComment = styled.div`
-  color: var(--white, #fbfbfb);
-  font-family: Poppins;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1.5;
-
   border-bottom: 1px solid var(--transparency-60);
   margin-bottom: 40px;
 
   textarea {
-    height: auto;
+    resize: none;
+    overflow-y: hidden;
+    transition: height 0.2s;
+    background-color: transparent;
+    border: none;
+    color: var(--white);
+    padding-left: 20px;
+    height: 24px;
+  }
+
+  textarea:focus {
+    outline: none;
+  }
+
+  textarea {
+    height: 52px;
   }
 `;
 
@@ -215,7 +237,7 @@ export const CancelButton = styled.button`
     color: #ffc727 !important;
     outline: 1px solid #ffc727;
   }
-`
+`;
 export const ErrorText = styled.p`
   color: red;
 `;

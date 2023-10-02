@@ -18,6 +18,7 @@ import {
   WrapperInputEditor,
 } from './AddModal.syled';
 import { ErrorText } from './AddModal.syled';
+import { refreshUserBalance } from 'redux/auth/AuthThunk';
 
 export const AddModal = ({ closeModal }) => {
   const categories = useSelector(selectCategories);
@@ -33,7 +34,9 @@ export const AddModal = ({ closeModal }) => {
       comment: values.comment,
       amount: values.type ? -values.amount : Math.abs(values.amount),
     };
-    dispatch(createTransactionThunk(formattingData));
+    dispatch(createTransactionThunk(formattingData))
+      .unwrap()
+      .then(() => dispatch(refreshUserBalance()));
   };
 
   const unmountModal = e => {
@@ -153,6 +156,9 @@ export const AddModal = ({ closeModal }) => {
                 Cancel
               </CancelButton>
             </WrapperButton>
+            <div>
+              <ErrorText>{errors.comment}</ErrorText>
+            </div>
           </form>
         )}
       </Formik>

@@ -14,6 +14,7 @@ import { TransactionWrapper } from './TransactionsList.styled';
 import { useState } from 'react';
 import { UpdateModal } from './UpdateModal/UpdateModal';
 import { AddModal } from './AddModal/AddModal';
+import { refreshUserBalance } from 'redux/auth/AuthThunk';
 
 const TransactionsList = () => {
   const [isUpdating, setIsUpdating] = useState(false);
@@ -42,10 +43,13 @@ const TransactionsList = () => {
     setIsUpdating(false);
   };
 
-  const defineCategory = id => categories?.find(category => category.id === id).name;
+  const defineCategory = id =>
+    categories?.find(category => category.id === id).name;
 
   const onDelete = transactionId => {
-    dispatch(delTransactionThunk(transactionId));
+    dispatch(delTransactionThunk(transactionId))
+      .unwrap()
+      .then(() => dispatch(refreshUserBalance()));
   };
 
   return (
@@ -56,27 +60,25 @@ const TransactionsList = () => {
           selfDestruction={closeUpdModal}
         />
       )}
-      {isAdding && (
-        <AddModal
-        closeModal={closeAddModal}
-        />
-      )}
+      {isAdding && <AddModal closeModal={closeAddModal} />}
       <TransactionWrapper>
-        {transactions?.length > 0 ? (isMobile ? (
-          <TransactionListMobile
-            transactions={transactions}
-            defineCategory={defineCategory}
-            handleDelete={onDelete}
-            openUpdating={openUpdModal}
-          />
-        ) : (
-          <TransactionListTable
-            transactions={transactions}
-            defineCategory={defineCategory}
-            handleDelete={onDelete}
-            openUpdating={openUpdModal}
-          ></TransactionListTable>
-        )):null}
+        {transactions?.length > 0 ? (
+          isMobile ? (
+            <TransactionListMobile
+              transactions={transactions}
+              defineCategory={defineCategory}
+              handleDelete={onDelete}
+              openUpdating={openUpdModal}
+            />
+          ) : (
+            <TransactionListTable
+              transactions={transactions}
+              defineCategory={defineCategory}
+              handleDelete={onDelete}
+              openUpdating={openUpdModal}
+            ></TransactionListTable>
+          )
+        ) : null}
         <button className="transaction-add-button" onClick={openAddModal}>
           <AiOutlinePlus />
         </button>

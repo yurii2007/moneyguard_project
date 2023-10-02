@@ -17,8 +17,21 @@ import getCategoryName from '../categories';
 import { updTransactionThunk } from 'redux/finance/financeThunks';
 import { parseDate } from 'utils/helpers';
 import { refreshUserBalance } from 'redux/auth/AuthThunk';
+import { useEffect } from 'react';
 
 export const UpdateModal = ({ selfDestruction, updatingTransaction }) => {
+  useEffect(() => {
+    const handleKeyDown = event => {
+      if (event.code === 'Escape') {
+        selfDestruction();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [selfDestruction]);
+
   const dispatch = useDispatch();
   const submitForm = async values => {
     const data = {

@@ -19,8 +19,20 @@ import {
 } from './AddModal.syled';
 import { ErrorText } from './AddModal.syled';
 import { refreshUserBalance } from 'redux/auth/AuthThunk';
+import { useEffect } from 'react';
 
 export const AddModal = ({ closeModal }) => {
+  useEffect(() => {
+    const handleKeyDown = event => {
+      if (event.code === 'Escape') {
+        closeModal();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [closeModal]);
   const categories = useSelector(selectCategories);
   const dispatch = useDispatch();
 

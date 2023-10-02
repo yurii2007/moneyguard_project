@@ -31,7 +31,7 @@ export const AddModal = ({ closeModal }) => {
     <UpdateWrapper onClick={unmountModal}>
       <Formik
         initialValues={{
-          type: false,
+          type: true,
           amount: 0.0,
           transactionDate: new Date(Date.now()),
           comment: '',
@@ -64,7 +64,7 @@ export const AddModal = ({ closeModal }) => {
                 onKeyUp={handleBlur}
               />
             </div>
-            {!values.type && (
+            {values.type && (
               <div>
                 <select
                   name="category"

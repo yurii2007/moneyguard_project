@@ -2,10 +2,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { UpdateWrapper } from '../UpdateModal/UpdateModal.styled';
 import { createTransactionThunk } from 'redux/finance/financeThunks';
 import { Formik } from 'formik';
+import { object, string, date, bool, mixed, number } from 'yup';
 import DatePickerForm from '../DatePicker/DatePicker';
 import { parseDate } from 'utils/helpers';
 import { selectCategories } from 'redux/selectors';
 import { Checkbox } from './Checkbox/Checkbox';
+import { ErrorText } from './AddModal.syled';
 
 export const AddModal = ({ closeModal }) => {
   const categories = useSelector(selectCategories);
@@ -33,11 +35,20 @@ export const AddModal = ({ closeModal }) => {
       <Formik
         initialValues={{
           type: true,
-          amount: 0.0,
+          amount: '',
           transactionDate: new Date(Date.now()),
           comment: '',
-          category: 'c9d9e447-1b83-4238-8712-edc77b18b739',
+          category: '',
         }}
+        validationSchema={object({
+          type: bool(),
+          category: mixed().required('Please choose transaction category.'),
+          amount: number()
+            .typeError('Transaction value must be a number')
+            .required('Please provide transaction value.'),
+          transactionDate: date().required('Please provide transaction date.'),
+          comment: string().notRequired(),
+        })}
         onSubmit={(values, { setSubmitting, resetForm }) => {
           submitForm(values);
           resetForm();
@@ -45,7 +56,14 @@ export const AddModal = ({ closeModal }) => {
           closeModal();
         }}
       >
-        {({ handleSubmit, values, setFieldValue, handleBlur }) => (
+        {({
+          handleSubmit,
+          values,
+          setFieldValue,
+          handleBlur,
+          errors,
+          touched,
+        }) => (
           <form
             onSubmit={e => {
               e.preventDefault();
@@ -67,18 +85,20 @@ export const AddModal = ({ closeModal }) => {
               <div>
                 <select
                   name="category"
+                  placeholder="Select a category"
                   onChange={evt => setFieldValue('category', evt.target.value)}
                 >
                   {categories?.map(category => (
                     <option
                       key={category.id}
                       value={category.id}
-                      defaultValue={'c9d9e447-1b83-4238-8712-edc77b18b739'}
+                      //defaultValue={'c9d9e447-1b83-4238-8712-edc77b18b739'}
                     >
                       {category.name}
                     </option>
                   ))}
                 </select>
+                <ErrorText>{errors.category}</ErrorText>
               </div>
             )}
             <div>
@@ -92,8 +112,10 @@ export const AddModal = ({ closeModal }) => {
                 onChange={evt => setFieldValue('amount', evt.target.value)}
                 onBlur={handleBlur}
                 onKeyUp={handleBlur}
-                required
               />
+              {touched.amount && errors.amount && (
+                <ErrorText>{errors.amount}</ErrorText>
+              )}
             </div>
             <div>
               <DatePickerForm
@@ -102,6 +124,9 @@ export const AddModal = ({ closeModal }) => {
                 type="date"
                 timeFormat={false}
               />
+              {errors.transactionDate && (
+                <ErrorText>{errors.transactionDate}</ErrorText>
+              )}
             </div>
             <div>
               <input
@@ -114,7 +139,6 @@ export const AddModal = ({ closeModal }) => {
                 onChange={evt => setFieldValue('comment', evt.target.value)}
                 onBlur={handleBlur}
                 onKeyUp={handleBlur}
-                required
               />
             </div>
             <button type="submit">Add transaction</button>

@@ -18,8 +18,6 @@ import { updTransactionThunk } from 'redux/finance/financeThunks';
 import { parseDate } from 'utils/helpers';
 import { refreshUserBalance } from 'redux/auth/AuthThunk';
 
-import { refreshUserBalance } from 'redux/auth/AuthThunk';
-
 export const UpdateModal = ({ selfDestruction, updatingTransaction }) => {
   const dispatch = useDispatch();
   const submitForm = async values => {

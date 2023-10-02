@@ -48,17 +48,6 @@ const TransactionsList = () => {
     dispatch(delTransactionThunk(transactionId));
   };
 
-  if (transactions?.length === 0) {
-    return (
-      <TransactionWrapper>
-        <p>No transactions</p>
-        <button className="transaction-add-button" onClick={openAddModal}>
-          <AiOutlinePlus />
-        </button>
-      </TransactionWrapper>
-    );
-  }
-
   return (
     <>
       {isUpdating && (
@@ -73,7 +62,7 @@ const TransactionsList = () => {
         />
       )}
       <TransactionWrapper>
-        {isMobile ? (
+        {transactions?.length > 0 ? (isMobile ? (
           <TransactionListMobile
             transactions={transactions}
             defineCategory={defineCategory}
@@ -87,7 +76,7 @@ const TransactionsList = () => {
             handleDelete={onDelete}
             openUpdating={openUpdModal}
           ></TransactionListTable>
-        )}
+        )):null}
         <button className="transaction-add-button" onClick={openAddModal}>
           <AiOutlinePlus />
         </button>

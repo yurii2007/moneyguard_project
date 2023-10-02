@@ -38,7 +38,7 @@ export const AddModal = ({ closeModal }) => {
           amount: '',
           transactionDate: new Date(Date.now()),
           comment: '',
-          category: '',
+          category: 'c9d9e447-1b83-4238-8712-edc77b18b739',
         }}
         validationSchema={object({
           type: bool(),
@@ -47,7 +47,7 @@ export const AddModal = ({ closeModal }) => {
             .typeError('Transaction value must be a number')
             .required('Please provide transaction value.'),
           transactionDate: date().required('Please provide transaction date.'),
-          comment: string().notRequired(),
+          comment: string().required(),
         })}
         onSubmit={(values, { setSubmitting, resetForm }) => {
           submitForm(values);
@@ -89,11 +89,7 @@ export const AddModal = ({ closeModal }) => {
                   onChange={evt => setFieldValue('category', evt.target.value)}
                 >
                   {categories?.map(category => (
-                    <option
-                      key={category.id}
-                      value={category.id}
-                      //defaultValue={'c9d9e447-1b83-4238-8712-edc77b18b739'}
-                    >
+                    <option key={category.id} value={category.id}>
                       {category.name}
                     </option>
                   ))}

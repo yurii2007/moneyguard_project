@@ -1,5 +1,6 @@
 import { ReactComponent as EditButton } from '../../../images/svg/edit-button.svg';
 import { TableStyle } from './TransactionListTable.styled';
+import { useTranslation } from 'react-i18next';
 
 export const TransactionListTable = ({
   transactions,
@@ -7,15 +8,16 @@ export const TransactionListTable = ({
   handleDelete,
   openUpdating,
 }) => {
+  const { t } = useTranslation();
   return (
     <TableStyle>
       <thead>
         <tr>
-          <th>Date</th>
-          <th>Type</th>
-          <th>Category</th>
-          <th>Comment</th>
-          <th>Sum</th>
+          <th>{t('date')}</th>
+          <th>{t('type')}</th>
+          <th>{t('category')}</th>
+          <th>{t('comment')}</th>
+          <th>{t('sum')}</th>
           <th></th>
         </tr>
       </thead>
@@ -39,7 +41,7 @@ export const TransactionListTable = ({
                   className="delete-button"
                   onClick={() => handleDelete(transaction.id)}
                 >
-                  Delete
+                  {t('btnDel')}
                 </button>
               </div>
             </td>

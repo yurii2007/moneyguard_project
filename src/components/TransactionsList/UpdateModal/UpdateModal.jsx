@@ -95,11 +95,11 @@ export const UpdateModal = ({ selfDestruction, updatingTransaction }) => {
           >
             <HeaderText>Edit transaction</HeaderText>
             <WrapperChanges>
-              <ChangesActiveTypeIncome activetype={updatingTransaction.type}>
+              <ChangesActiveTypeIncome $activetype={updatingTransaction.type}>
                 Income
               </ChangesActiveTypeIncome>
               /
-              <ChangesActiveTypeExpense activetype={updatingTransaction.type}>
+              <ChangesActiveTypeExpense $activetype={updatingTransaction.type}>
                 Expense
               </ChangesActiveTypeExpense>
             </WrapperChanges>

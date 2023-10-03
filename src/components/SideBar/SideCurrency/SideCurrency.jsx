@@ -2,6 +2,7 @@ import { toast } from 'react-toastify';
 import { useEffect, useState } from 'react';
 import getCurrency from '../../../utils/helpers';
 import LoaderCurrency from 'components/Loader/LoaderCurrency';
+import { useTranslation } from 'react-i18next';
 import {
   Category,
   Currency,
@@ -16,7 +17,7 @@ import {
 const SideCurrency = () => {
   const [dataCurrency, setDataCurrency] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-
+  const { t } = useTranslation();
   useEffect(() => {
     const localDate = localStorage.getItem('currencyDate');
     const localDataCurrency = localStorage.getItem('currency');
@@ -53,9 +54,9 @@ const SideCurrency = () => {
       {!!dataCurrency && (
         <>
           <Category>
-            <Currency>Currency</Currency>
-            <Purchase>Purchase</Purchase>
-            <Sale>Sale</Sale>
+            <Currency>{t('currency')}</Currency>
+            <Purchase>{t('purchase')}</Purchase>
+            <Sale>{t('sale')}</Sale>
           </Category>
           <Table>
             <tbody>

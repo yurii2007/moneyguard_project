@@ -1,4 +1,5 @@
 import { Container } from 'components/Container/Container';
+import { useTranslation } from 'react-i18next';
 import {
   ChartBox,
   StatisticsPageStyledBox,
@@ -12,12 +13,13 @@ import React from 'react';
 import { useTransaction } from 'utils/useTransaction';
 
 const StatisticsPage = () => {
+  const { t } = useTranslation();
   const { transactions } = useTransaction();
   return (
     <Container size="statistics">
       <StatisticsPageStyledBox>
         <ChartBox>
-          <Title>Statistics</Title>
+          <Title>{t('stat')}</Title>
           <ChartComponent transactions={transactions} />
         </ChartBox>
         <TransactionBox>

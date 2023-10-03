@@ -1,0 +1,18 @@
+{
+  "home": "Home",
+  "stat": "Statistics",
+  "balance": "your balance",
+  "date": "Date",
+  "type": "Type",
+  "category": "Category",
+  "comment": "Comment",
+  "sum": "Sum",
+  "currency": "Currency",
+  "purchase": "Purchase",
+  "sale": "Sale",
+  "exit": "Exit",
+  "btnDel": "Delete",
+  "btnEdit": "Edit",
+  "expence": "Expenses",
+  "income": "Income"
+}

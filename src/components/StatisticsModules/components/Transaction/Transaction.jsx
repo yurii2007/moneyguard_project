@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { nanoid } from 'nanoid';
+import { useTranslation } from 'react-i18next';
 import {
   HeaderTitle,
   HeaderTransaction,
@@ -16,7 +17,7 @@ import FilterButton from '../FilterButton/FilterButton';
 const Transaction = () => {
   const { transactions, summary, income } = useTransaction();
   const [data, setData] = useState(transactions);
-
+  const { t } = useTranslation();
   useEffect(() => {
     setData(transactions);
   }, [transactions]);
@@ -39,9 +40,9 @@ const Transaction = () => {
   return (
     <>
       <HeaderTransaction>
-        <HeaderTitle>Category</HeaderTitle>
+        <HeaderTitle>{t('category')}</HeaderTitle>
         <FilterButton handleFilterData={handleFilterData} />
-        <HeaderTitle>Sum</HeaderTitle>
+        <HeaderTitle>{t('sum')}</HeaderTitle>
       </HeaderTransaction>
       <TransactionList>
         {data
@@ -61,11 +62,11 @@ const Transaction = () => {
       </TransactionList>
       <SumTitleList>
         <SumTitleItem>
-          <p>Expenses:</p>
+          <p>{t('expence')}:</p>
           <Total className="expense">{Math.abs(summary).toFixed(2)}</Total>
         </SumTitleItem>
         <SumTitleItem>
-          <p>Income:</p>
+          <p>{t('income')}:</p>
           <Total className="income">{Math.abs(income).toFixed(2)}</Total>
         </SumTitleItem>
       </SumTitleList>

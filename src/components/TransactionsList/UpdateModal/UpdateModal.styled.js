@@ -97,10 +97,10 @@ export const WrapperChanges = styled.div`
 `;
 
 export const ChangesActiveTypeIncome = styled.span`
-  color: ${({ activetype }) => activetype === 'INCOME' && '#FFB627'};
+  color: ${({ $activetype }) => $activetype === 'INCOME' && '#FFB627'};
 `;
 export const ChangesActiveTypeExpense = styled.span`
-  color: ${({ activetype }) => activetype === 'EXPENSE' && '#FF868D'};
+  color: ${({ $activetype }) => $activetype === 'EXPENSE' && '#FF868D'};
 `;
 export const WrapperCategories = styled.div`
   color: var(--white, #fbfbfb);

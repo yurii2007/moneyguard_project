@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { UpdateWrapper } from '../UpdateModal/UpdateModal.styled';
 import { createTransactionThunk } from 'redux/finance/financeThunks';
 import { Formik } from 'formik';
 import Select from 'react-select';
@@ -12,6 +11,7 @@ import { Checkbox } from './Checkbox/Checkbox';
 import {
   BtnClose,
   CancelButton,
+  FormStyles,
   HeaderText,
   InputEditor,
   SaveButton,
@@ -19,24 +19,15 @@ import {
   WrapperCategories,
   WrapperComment,
   WrapperInputEditor,
+  WrapperTablet,
 } from './AddModal.syled';
 import { ErrorText } from './AddModal.syled';
 import { refreshUserBalance } from 'redux/auth/AuthThunk';
-import { useEffect } from 'react';
 import { customSelectStyles } from './customerStylesSelect';
+import { useModal } from 'components/ModalContext/ModalContext';
 
-export const AddModal = ({ closeModal }) => {
-  useEffect(() => {
-    const handleKeyDown = event => {
-      if (event.code === 'Escape') {
-        closeModal();
-      }
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [closeModal]);
+export const AddModal = () => {
+  const { modalClose } = useModal();
   const categories = useSelector(selectCategories);
   const dispatch = useDispatch();
 
@@ -47,7 +38,7 @@ export const AddModal = ({ closeModal }) => {
       categoryId: values.type
         ? values.category.id
         : '063f1132-ba5d-42b4-951d-44011ca46262',
-      comment: values.comment,
+      comment: values.comment.trim(),
       amount: values.type ? -values.amount : Math.abs(values.amount),
     };
     dispatch(createTransactionThunk(formattingData))
@@ -55,15 +46,8 @@ export const AddModal = ({ closeModal }) => {
       .then(() => dispatch(refreshUserBalance()));
   };
 
-  const unmountModal = e => {
-    if (e.target === e.currentTarget) closeModal();
-  };
-
   return (
-    <UpdateWrapper onClick={unmountModal}>
-      <BtnClose type="button" onClick={() => closeModal()}>
-        <IoIosClose />
-      </BtnClose>
+    <>
       <Formik
         initialValues={{
           type: true,
@@ -83,13 +67,13 @@ export const AddModal = ({ closeModal }) => {
             .typeError('Transaction value must be a number')
             .required('Please provide transaction value.'),
           transactionDate: date().required('Please provide transaction date.'),
-          comment: string().required('Please add commit.'),
+          comment: string().required('Please add comment.'),
         })}
         onSubmit={(values, { setSubmitting, resetForm }) => {
           submitForm(values);
           resetForm();
           setSubmitting(false);
-          closeModal();
+          modalClose();
         }}
       >
         {({
@@ -100,12 +84,15 @@ export const AddModal = ({ closeModal }) => {
           errors,
           touched,
         }) => (
-          <form
+          <FormStyles
             onSubmit={e => {
               e.preventDefault();
               handleSubmit(e);
             }}
           >
+            <BtnClose type="button" onClick={modalClose}>
+              <IoIosClose size={44} />
+            </BtnClose>
             <HeaderText>Add Transaction</HeaderText>
             <Checkbox
               type="checkbox"
@@ -134,32 +121,34 @@ export const AddModal = ({ closeModal }) => {
                 <ErrorText>{errors.category}</ErrorText>
               </WrapperCategories>
             )}
-            <WrapperInputEditor>
-              <InputEditor
-                placeholder="0.00"
-                title="Please put the transaction value"
-                name="value"
-                autoComplete="off"
-                value={values.amount}
-                onChange={evt => setFieldValue('amount', evt.target.value)}
-                onBlur={handleBlur}
-                onKeyUp={handleBlur}
-              />
-              {touched.amount && errors.amount && (
-                <ErrorText>{errors.amount}</ErrorText>
-              )}
-            </WrapperInputEditor>
-            <div>
-              <DatePickerForm
-                dateFormat="dd.mm.yyyy"
-                name="transactionDate"
-                type="date"
-                timeFormat={false}
-              />
-              {errors.transactionDate && (
-                <ErrorText>{errors.transactionDate}</ErrorText>
-              )}
-            </div>
+            <WrapperTablet>
+              <WrapperInputEditor>
+                <InputEditor
+                  placeholder="0.00"
+                  title="Please put the transaction value"
+                  name="value"
+                  autoComplete="off"
+                  value={values.amount}
+                  onChange={evt => setFieldValue('amount', evt.target.value)}
+                  onBlur={handleBlur}
+                  onKeyUp={handleBlur}
+                />
+                {touched.amount && errors.amount && (
+                  <ErrorText>{errors.amount}</ErrorText>
+                )}
+              </WrapperInputEditor>
+              <div>
+                <DatePickerForm
+                  dateFormat="dd.mm.yyyy"
+                  name="transactionDate"
+                  type="date"
+                  timeFormat={false}
+                />
+                {errors.transactionDate && (
+                  <ErrorText>{errors.transactionDate}</ErrorText>
+                )}
+              </div>
+            </WrapperTablet>
             <WrapperComment>
               <textarea
                 placeholder="Comment"
@@ -176,14 +165,14 @@ export const AddModal = ({ closeModal }) => {
             </WrapperComment>
             <WrapperButton>
               <SaveButton type="submit">Add</SaveButton>
-              <CancelButton type="button" onClick={closeModal}>
+              <CancelButton type="button" onClick={modalClose}>
                 Cancel
               </CancelButton>
             </WrapperButton>
             <div></div>
-          </form>
+          </FormStyles>
         )}
       </Formik>
-    </UpdateWrapper>
+    </>
   );
 };

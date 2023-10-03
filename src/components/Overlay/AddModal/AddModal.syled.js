@@ -153,12 +153,7 @@ export const SaveButton = styled.button`
 
   margin-bottom: 20px;
 
-  &:hover {
-    background: transparent;
-    color: #ffc727;
-    outline: 1px solid #ffc727;
-  }
-
+  &:hover,
   &:focus {
     background: transparent;
     color: #ffc727;
@@ -184,12 +179,7 @@ export const CancelButton = styled.button`
   text-transform: uppercase;
   background: var(--white, #fbfbfb);
 
-  &:hover {
-    background: transparent;
-    color: #ffc727;
-    outline: 1px solid #ffc727;
-  }
-
+  &:hover,
   &:focus {
     background: transparent;
     color: #ffc727;

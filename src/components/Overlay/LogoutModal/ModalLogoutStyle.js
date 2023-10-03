@@ -34,6 +34,12 @@ export const LogoutStyles = styled.div`
     line-height: normal;
     letter-spacing: 1.8px;
     text-transform: uppercase;
+    &:hover,
+    &:focus {
+      background: transparent;
+      color: #ffc727;
+      outline: 1px solid #ffc727;
+    }
   }
   .logout {
     background: var(--btn-gradient-color);

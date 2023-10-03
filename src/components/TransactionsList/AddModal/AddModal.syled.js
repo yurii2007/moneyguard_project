@@ -137,13 +137,16 @@ export const InputEditor = styled.input`
   font-family: Poppins;
   font-size: 18px;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 400;
   line-height: 1.5;
   padding-left: 20px;
 
   background-color: transparent;
   border: none;
   outline: none;
+  &::placeholder {
+    color: var(--white, #fbfbfb);
+  }
 `;
 
 export const WrapperComment = styled.div`
@@ -151,6 +154,11 @@ export const WrapperComment = styled.div`
   margin-bottom: 40px;
 
   textarea {
+    font-family: Poppins;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.5;
     resize: none;
     overflow-y: hidden;
     transition: height 0.2s;
@@ -159,6 +167,9 @@ export const WrapperComment = styled.div`
     color: var(--white);
     padding-left: 20px;
     height: 24px;
+    &::placeholder {
+      color: var(--white, #fbfbfb);
+    }
   }
 
   textarea:focus {
@@ -240,4 +251,34 @@ export const CancelButton = styled.button`
 `;
 export const ErrorText = styled.p`
   color: red;
+`;
+export const BtnClose = styled.button`
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 20px;
+  height: 20px;
+  border: none;
+  background: none;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+
+  & svg {
+    color: #fbfbfb;
+    width: 20px;
+    height: 20px;
+    position: relative;
+  }
+
+  :hover,
+  :focus {
+    outline: none;
+    border: none;
+  }
+  @media (max-width: 767px) {
+    & svg {
+      display: none;
+    }
+  }
 `;

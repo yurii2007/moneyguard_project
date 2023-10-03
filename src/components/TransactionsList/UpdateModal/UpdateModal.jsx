@@ -1,7 +1,11 @@
 import { Formik } from 'formik';
+import { object, string, date, bool, number } from 'yup';
 import { useDispatch } from 'react-redux';
+import { IoIosClose } from 'react-icons/io';
 import {
   CancelButton,
+  ChangesActiveTypeExpense,
+  ChangesActiveTypeIncome,
   HeaderText,
   InputEditor,
   SaveButton,
@@ -18,6 +22,7 @@ import { updTransactionThunk } from 'redux/finance/financeThunks';
 import { parseDate } from 'utils/helpers';
 import { refreshUserBalance } from 'redux/auth/AuthThunk';
 import { useEffect } from 'react';
+import { BtnClose } from '../AddModal/AddModal.syled';
 
 export const UpdateModal = ({ selfDestruction, updatingTransaction }) => {
   useEffect(() => {
@@ -57,6 +62,9 @@ export const UpdateModal = ({ selfDestruction, updatingTransaction }) => {
   };
   return (
     <UpdateWrapper onClick={unmountModal}>
+      <BtnClose type="button" onClick={() => selfDestruction()}>
+        <IoIosClose />
+      </BtnClose>
       <Formik
         initialValues={{
           type: updatingTransaction.type === 'EXPENSE' ? true : false,
@@ -64,6 +72,12 @@ export const UpdateModal = ({ selfDestruction, updatingTransaction }) => {
           date: updatingTransaction.transactionDate,
           comment: updatingTransaction.comment,
         }}
+        validationSchema={object({
+          type: bool(),
+          amount: number().typeError('Transaction value must be a number'),
+          date: date(),
+          comment: string(),
+        })}
         onSubmit={(values, { setSubmitting, resetForm }) => {
           submitForm(values);
           resetForm();
@@ -81,21 +95,13 @@ export const UpdateModal = ({ selfDestruction, updatingTransaction }) => {
           >
             <HeaderText>Edit transaction</HeaderText>
             <WrapperChanges>
-              <span
-                className={
-                  updatingTransaction.type === 'INCOME' ? 'active' : ''
-                }
-              >
+              <ChangesActiveTypeIncome activetype={updatingTransaction.type}>
                 Income
-              </span>
+              </ChangesActiveTypeIncome>
               /
-              <span
-                className={
-                  updatingTransaction.type === 'EXPENSE' ? 'active' : ''
-                }
-              >
+              <ChangesActiveTypeExpense activetype={updatingTransaction.type}>
                 Expense
-              </span>
+              </ChangesActiveTypeExpense>
             </WrapperChanges>
 
             <WrapperCategories>
@@ -112,7 +118,6 @@ export const UpdateModal = ({ selfDestruction, updatingTransaction }) => {
                 placeholder="0.00"
                 title="Please put the transaction value"
                 name="value"
-                type="number"
                 autoComplete="off"
                 value={values.amount}
                 onChange={evt => setFieldValue('amount', evt.target.value)}

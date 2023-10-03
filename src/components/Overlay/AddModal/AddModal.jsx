@@ -38,7 +38,7 @@ export const AddModal = () => {
       categoryId: values.type
         ? values.category.id
         : '063f1132-ba5d-42b4-951d-44011ca46262',
-      comment: values.comment,
+      comment: values.comment.trim(),
       amount: values.type ? -values.amount : Math.abs(values.amount),
     };
     dispatch(createTransactionThunk(formattingData))

@@ -37,7 +37,7 @@ export const UpdateModal = () => {
         transactionDate: parseDate(new Date(values.date)),
         type: editTransaction.type,
         categoryId: editTransaction.categoryId,
-        comment: values.comment,
+        comment: values.comment.trim(),
         amount:
           editTransaction.type === 'INCOME'
             ? Math.abs(values.amount)

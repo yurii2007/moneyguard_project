@@ -1,12 +1,12 @@
 {
   "files": {
     "main.css": "/moneyguard_project/static/css/main.20623880.css",
-    "main.js": "/moneyguard_project/static/js/main.eb3f11f4.js",
-    "static/js/904.91021151.chunk.js": "/moneyguard_project/static/js/904.91021151.chunk.js",
-    "static/js/641.a81e70d6.chunk.js": "/moneyguard_project/static/js/641.a81e70d6.chunk.js",
+    "main.js": "/moneyguard_project/static/js/main.9f253cb0.js",
+    "static/js/904.320002d9.chunk.js": "/moneyguard_project/static/js/904.320002d9.chunk.js",
+    "static/js/641.02ba45fd.chunk.js": "/moneyguard_project/static/js/641.02ba45fd.chunk.js",
     "static/js/27.205e351b.chunk.js": "/moneyguard_project/static/js/27.205e351b.chunk.js",
     "static/js/820.0eff7a07.chunk.js": "/moneyguard_project/static/js/820.0eff7a07.chunk.js",
-    "static/js/421.46574232.chunk.js": "/moneyguard_project/static/js/421.46574232.chunk.js",
+    "static/js/421.84252cda.chunk.js": "/moneyguard_project/static/js/421.84252cda.chunk.js",
     "static/media/money-desktopx2.png": "/moneyguard_project/static/media/money-desktopx2.bfee06b320a1799a3ab4.png",
     "static/media/dollar-desktopx2.png": "/moneyguard_project/static/media/dollar-desktopx2.00a4009285b6e0247efb.png",
     "static/media/money-tabletx2.png": "/moneyguard_project/static/media/money-tabletx2.5ac160785735ecf5adef.png",
@@ -32,6 +32,7 @@
     "static/media/edit-button.svg": "/moneyguard_project/static/media/edit-button.9c8d1ca991a66ba0985f94ca141f6a5f.svg",
     "static/media/form-password.svg": "/moneyguard_project/static/media/form-password.d8ed4af1f4184841c760a81bb0889673.svg",
     "static/media/form-user.svg": "/moneyguard_project/static/media/form-user.feb408468475d1734d9a889932f6ee7b.svg",
+    "static/media/getFetch.cjs": "/moneyguard_project/static/media/getFetch.40f37ddea2378391108f.cjs",
     "static/media/calendar.svg": "/moneyguard_project/static/media/calendar.3cf17254a8c8400da1ee56a9d448818c.svg",
     "static/media/form-email.svg": "/moneyguard_project/static/media/form-email.cf41fb486519448076c456872d6b2e7a.svg",
     "static/media/homepage-icon.svg": "/moneyguard_project/static/media/homepage-icon.1d9b0ed6b8838108a667dbfb1c03d2c9.svg",
@@ -41,15 +42,15 @@
     "static/media/left-bottom-part.svg": "/moneyguard_project/static/media/left-bottom-part.c9cfa8c83a2cdc87589417e8b586ffd1.svg",
     "static/media/right-bottom-part.svg": "/moneyguard_project/static/media/right-bottom-part.ec07fda7d9ab133f7b181eae52c15c89.svg",
     "main.20623880.css.map": "/moneyguard_project/static/css/main.20623880.css.map",
-    "main.eb3f11f4.js.map": "/moneyguard_project/static/js/main.eb3f11f4.js.map",
-    "904.91021151.chunk.js.map": "/moneyguard_project/static/js/904.91021151.chunk.js.map",
-    "641.a81e70d6.chunk.js.map": "/moneyguard_project/static/js/641.a81e70d6.chunk.js.map",
+    "main.9f253cb0.js.map": "/moneyguard_project/static/js/main.9f253cb0.js.map",
+    "904.320002d9.chunk.js.map": "/moneyguard_project/static/js/904.320002d9.chunk.js.map",
+    "641.02ba45fd.chunk.js.map": "/moneyguard_project/static/js/641.02ba45fd.chunk.js.map",
     "27.205e351b.chunk.js.map": "/moneyguard_project/static/js/27.205e351b.chunk.js.map",
     "820.0eff7a07.chunk.js.map": "/moneyguard_project/static/js/820.0eff7a07.chunk.js.map",
-    "421.46574232.chunk.js.map": "/moneyguard_project/static/js/421.46574232.chunk.js.map"
+    "421.84252cda.chunk.js.map": "/moneyguard_project/static/js/421.84252cda.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.20623880.css",
-    "static/js/main.eb3f11f4.js"
+    "static/js/main.9f253cb0.js"
   ]
 }

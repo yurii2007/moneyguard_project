@@ -19,12 +19,12 @@ export const optionsMonthUa = [
   { value: '4', label: 'Квітень' },
   { value: '5', label: 'Травень' },
   { value: '6', label: 'Червень' },
-  { value: '7', label: 'Ліпень' },
+  { value: '7', label: 'Липень' },
   { value: '8', label: 'Серпень' },
   { value: '9', label: 'Вересень' },
   { value: '10', label: 'Жовтень' },
   { value: '11', label: 'Листопад' },
-  { value: '12', label: 'Грудент' },
+  { value: '12', label: 'Грудень' },
 ];
 export const optionsYear = [
   { value: '2023', label: '2023' },

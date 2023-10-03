@@ -38,7 +38,7 @@ export const StyledDateWrapper = styled.div`
       }
     }
     @media screen and (min-width: 768px) {
-      height: 29.8px;
+      height: 29px;
     }
   }
 `;

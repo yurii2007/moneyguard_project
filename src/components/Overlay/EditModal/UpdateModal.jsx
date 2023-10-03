@@ -3,24 +3,27 @@ import { object, string, date, bool, number } from 'yup';
 import { useDispatch } from 'react-redux';
 import { IoIosClose } from 'react-icons/io';
 import {
-  CancelButton,
   ChangesActiveTypeExpense,
   ChangesActiveTypeIncome,
+  WrapperCategories,
+  WrapperComment,
+} from './UpdateModal.styled';
+import {
+  CancelButton,
   HeaderText,
   InputEditor,
   SaveButton,
   WrapperButton,
-  WrapperCategories,
   WrapperChanges,
-  WrapperComment,
   WrapperInputEditor,
-} from './UpdateModal.styled';
+  WrapperTablet,
+} from '../AddModal/AddModal.syled';
 import DatePickerForm from '../DatePicker/DatePicker';
 import getCategoryName from '../../TransactionsList/categories';
 import { updTransactionThunk } from 'redux/finance/financeThunks';
 import { parseDate } from 'utils/helpers';
 import { refreshUserBalance } from 'redux/auth/AuthThunk';
-import { BtnClose } from '../AddModal/AddModal.syled';
+import { BtnClose, FormStyles } from '../AddModal/AddModal.syled';
 import { useModal } from 'components/ModalContext/ModalContext';
 
 export const UpdateModal = () => {
@@ -47,9 +50,6 @@ export const UpdateModal = () => {
   };
   return (
     <>
-      <BtnClose type="button" onClick={modalClose}>
-        <IoIosClose />
-      </BtnClose>
       <Formik
         initialValues={{
           type: editTransaction.type === 'EXPENSE' ? true : false,
@@ -72,52 +72,58 @@ export const UpdateModal = () => {
         enableReinitialize
       >
         {({ handleSubmit, values, setFieldValue, handleBlur }) => (
-          <form
+          <FormStyles
             onSubmit={e => {
               e.preventDefault();
               handleSubmit(e);
             }}
           >
+            <BtnClose type="button" onClick={modalClose}>
+              <IoIosClose size={44} />
+            </BtnClose>
             <HeaderText>Edit transaction</HeaderText>
             <WrapperChanges>
-              <ChangesActiveTypeIncome activetype={editTransaction.type}>
+              <ChangesActiveTypeIncome $activetype={editTransaction.type}>
                 Income
               </ChangesActiveTypeIncome>
-              /
-              <ChangesActiveTypeExpense activetype={editTransaction.type}>
+              &#x2F;
+              <ChangesActiveTypeExpense $activetype={editTransaction.type}>
                 Expense
               </ChangesActiveTypeExpense>
             </WrapperChanges>
 
-            <WrapperCategories>
-              <textarea
-                name="category"
-                autoComplete="off"
-                value={getCategoryName(editTransaction.categoryId)}
-                readOnly
-              />
-            </WrapperCategories>
-
-            <WrapperInputEditor>
-              <InputEditor
-                placeholder="0.00"
-                title="Please put the transaction value"
-                name="value"
-                autoComplete="off"
-                value={values.amount}
-                onChange={evt => setFieldValue('amount', evt.target.value)}
-                onBlur={handleBlur}
-                onKeyUp={handleBlur}
-              />
-            </WrapperInputEditor>
-            <div>
-              <DatePickerForm
-                dateFormat="dd-MM-yyyy"
-                name="date"
-                type="date"
-                timeFormat={false}
-              />
-            </div>
+            {editTransaction.type === 'INCOME' ? null : (
+              <WrapperCategories>
+                <textarea
+                  name="category"
+                  autoComplete="off"
+                  value={getCategoryName(editTransaction.categoryId)}
+                  readOnly
+                />
+              </WrapperCategories>
+            )}
+            <WrapperTablet>
+              <WrapperInputEditor>
+                <InputEditor
+                  placeholder="0.00"
+                  title="Please put the transaction value"
+                  name="value"
+                  autoComplete="off"
+                  value={values.amount}
+                  onChange={evt => setFieldValue('amount', evt.target.value)}
+                  onBlur={handleBlur}
+                  onKeyUp={handleBlur}
+                />
+              </WrapperInputEditor>
+              <div>
+                <DatePickerForm
+                  dateFormat="dd-MM-yyyy"
+                  name="date"
+                  type="date"
+                  timeFormat={false}
+                />
+              </div>
+            </WrapperTablet>
 
             <WrapperComment>
               <textarea
@@ -136,7 +142,7 @@ export const UpdateModal = () => {
                 Cancel
               </CancelButton>
             </WrapperButton>
-          </form>
+          </FormStyles>
         )}
       </Formik>
     </>

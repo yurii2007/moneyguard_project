@@ -27,14 +27,10 @@ export const WrapperChanges = styled.div`
   justify-content: center;
   gap: 12px;
 
-  color: var(--white-60, rgba(255, 255, 255, 0.6));
-  font-family: Poppins;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1.5;
-
   margin-bottom: 60px;
+  color: var(--transparency-60, rgba(255, 255, 255, 0.6));
+  font-size: 16px;
+  line-height: 1.5;
 
   &:focus {
     color: var(--dashboard-text, #ff868d);
@@ -158,14 +154,14 @@ export const SaveButton = styled.button`
   margin-bottom: 20px;
 
   &:hover {
-    background: transparent !important;
-    color: #ffc727 !important;
+    background: transparent;
+    color: #ffc727;
     outline: 1px solid #ffc727;
   }
 
   &:focus {
-    background: transparent !important;
-    color: #ffc727 !important;
+    background: transparent;
+    color: #ffc727;
     outline: 1px solid #ffc727;
   }
 `;
@@ -189,14 +185,14 @@ export const CancelButton = styled.button`
   background: var(--white, #fbfbfb);
 
   &:hover {
-    background: transparent !important;
-    color: #ffc727 !important;
+    background: transparent;
+    color: #ffc727;
     outline: 1px solid #ffc727;
   }
 
   &:focus {
-    background: transparent !important;
-    color: #ffc727 !important;
+    background: transparent;
+    color: #ffc727;
     outline: 1px solid #ffc727;
   }
 `;

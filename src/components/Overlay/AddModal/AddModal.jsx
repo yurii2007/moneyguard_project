@@ -67,7 +67,7 @@ export const AddModal = () => {
             .typeError('Transaction value must be a number')
             .required('Please provide transaction value.'),
           transactionDate: date().required('Please provide transaction date.'),
-          comment: string().required('Please add commit.'),
+          comment: string().required('Please add comment.'),
         })}
         onSubmit={(values, { setSubmitting, resetForm }) => {
           submitForm(values);

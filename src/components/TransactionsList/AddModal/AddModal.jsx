@@ -2,12 +2,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { UpdateWrapper } from '../UpdateModal/UpdateModal.styled';
 import { createTransactionThunk } from 'redux/finance/financeThunks';
 import { Formik } from 'formik';
+import Select from 'react-select';
 import { object, string, date, bool, mixed, number } from 'yup';
 import DatePickerForm from '../DatePicker/DatePicker';
 import { parseDate } from 'utils/helpers';
+import { IoIosClose } from 'react-icons/io';
 import { selectCategories } from 'redux/selectors';
 import { Checkbox } from './Checkbox/Checkbox';
 import {
+  BtnClose,
   CancelButton,
   HeaderText,
   InputEditor,
@@ -20,6 +23,7 @@ import {
 import { ErrorText } from './AddModal.syled';
 import { refreshUserBalance } from 'redux/auth/AuthThunk';
 import { useEffect } from 'react';
+import { customSelectStyles } from './customerStylesSelect';
 
 export const AddModal = ({ closeModal }) => {
   useEffect(() => {
@@ -41,7 +45,7 @@ export const AddModal = ({ closeModal }) => {
       transactionDate: parseDate(values.transactionDate),
       type: values.type ? 'EXPENSE' : 'INCOME',
       categoryId: values.type
-        ? values.category
+        ? values.category.id
         : '063f1132-ba5d-42b4-951d-44011ca46262',
       comment: values.comment,
       amount: values.type ? -values.amount : Math.abs(values.amount),
@@ -57,13 +61,16 @@ export const AddModal = ({ closeModal }) => {
 
   return (
     <UpdateWrapper onClick={unmountModal}>
+      <BtnClose type="button" onClick={() => closeModal()}>
+        <IoIosClose />
+      </BtnClose>
       <Formik
         initialValues={{
           type: true,
           amount: '',
           transactionDate: new Date(Date.now()),
           comment: '',
-          category: 'c9d9e447-1b83-4238-8712-edc77b18b739',
+          category: '',
         }}
         validationSchema={object({
           type: bool(),
@@ -72,7 +79,7 @@ export const AddModal = ({ closeModal }) => {
             .typeError('Transaction value must be a number')
             .required('Please provide transaction value.'),
           transactionDate: date().required('Please provide transaction date.'),
-          comment: string().required(),
+          comment: string().required('Please add commit.'),
         })}
         onSubmit={(values, { setSubmitting, resetForm }) => {
           submitForm(values);
@@ -108,17 +115,18 @@ export const AddModal = ({ closeModal }) => {
             />
             {values.type && (
               <WrapperCategories>
-                <select
+                <Select
                   name="category"
+                  value={values.category}
                   placeholder="Select a category"
-                  onChange={evt => setFieldValue('category', evt.target.value)}
-                >
-                  {categories?.map(category => (
-                    <option key={category.id} value={category.id}>
-                      {category.name}
-                    </option>
-                  ))}
-                </select>
+                  onChange={option => setFieldValue('category', option)}
+                  options={categories?.map(option => ({
+                    value: option.type,
+                    label: option.name,
+                    id: option.id,
+                  }))}
+                  styles={customSelectStyles}
+                />
                 <ErrorText>{errors.category}</ErrorText>
               </WrapperCategories>
             )}
@@ -161,6 +169,7 @@ export const AddModal = ({ closeModal }) => {
                 onBlur={handleBlur}
                 onKeyUp={handleBlur}
               />
+              <ErrorText>{errors.comment}</ErrorText>
             </WrapperComment>
             <WrapperButton>
               <SaveButton type="submit">Add</SaveButton>
@@ -168,9 +177,7 @@ export const AddModal = ({ closeModal }) => {
                 Cancel
               </CancelButton>
             </WrapperButton>
-            <div>
-              <ErrorText>{errors.comment}</ErrorText>
-            </div>
+            <div></div>
           </form>
         )}
       </Formik>

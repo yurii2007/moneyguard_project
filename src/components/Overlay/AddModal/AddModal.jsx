@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { UpdateWrapper } from '../UpdateModal/UpdateModal.styled';
 import { createTransactionThunk } from 'redux/finance/financeThunks';
 import { Formik } from 'formik';
 import Select from 'react-select';
@@ -22,21 +21,11 @@ import {
 } from './AddModal.syled';
 import { ErrorText } from './AddModal.syled';
 import { refreshUserBalance } from 'redux/auth/AuthThunk';
-import { useEffect } from 'react';
 import { customSelectStyles } from './customerStylesSelect';
+import { useModal } from 'components/ModalContext/ModalContext';
 
-export const AddModal = ({ closeModal }) => {
-  useEffect(() => {
-    const handleKeyDown = event => {
-      if (event.code === 'Escape') {
-        closeModal();
-      }
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [closeModal]);
+export const AddModal = () => {
+  const {modalClose} = useModal();
   const categories = useSelector(selectCategories);
   const dispatch = useDispatch();
 
@@ -55,13 +44,9 @@ export const AddModal = ({ closeModal }) => {
       .then(() => dispatch(refreshUserBalance()));
   };
 
-  const unmountModal = e => {
-    if (e.target === e.currentTarget) closeModal();
-  };
-
   return (
-    <UpdateWrapper onClick={unmountModal}>
-      <BtnClose type="button" onClick={() => closeModal()}>
+    <>
+      <BtnClose type="button" onClick={modalClose}>
         <IoIosClose />
       </BtnClose>
       <Formik
@@ -89,7 +74,7 @@ export const AddModal = ({ closeModal }) => {
           submitForm(values);
           resetForm();
           setSubmitting(false);
-          closeModal();
+          modalClose();
         }}
       >
         {({
@@ -176,7 +161,7 @@ export const AddModal = ({ closeModal }) => {
             </WrapperComment>
             <WrapperButton>
               <SaveButton type="submit">Add</SaveButton>
-              <CancelButton type="button" onClick={closeModal}>
+              <CancelButton type="button" onClick={modalClose}>
                 Cancel
               </CancelButton>
             </WrapperButton>
@@ -184,6 +169,6 @@ export const AddModal = ({ closeModal }) => {
           </form>
         )}
       </Formik>
-    </UpdateWrapper>
+      </>
   );
 };

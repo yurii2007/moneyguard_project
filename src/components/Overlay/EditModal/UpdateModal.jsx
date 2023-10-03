@@ -9,7 +9,6 @@ import {
   HeaderText,
   InputEditor,
   SaveButton,
-  UpdateWrapper,
   WrapperButton,
   WrapperCategories,
   WrapperChanges,
@@ -17,37 +16,27 @@ import {
   WrapperInputEditor,
 } from './UpdateModal.styled';
 import DatePickerForm from '../DatePicker/DatePicker';
-import getCategoryName from '../categories';
+import getCategoryName from '../../TransactionsList/categories';
 import { updTransactionThunk } from 'redux/finance/financeThunks';
 import { parseDate } from 'utils/helpers';
 import { refreshUserBalance } from 'redux/auth/AuthThunk';
-import { useEffect } from 'react';
 import { BtnClose } from '../AddModal/AddModal.syled';
+import { useModal } from 'components/ModalContext/ModalContext';
 
-export const UpdateModal = ({ selfDestruction, updatingTransaction }) => {
-  useEffect(() => {
-    const handleKeyDown = event => {
-      if (event.code === 'Escape') {
-        selfDestruction();
-      }
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [selfDestruction]);
+export const UpdateModal = () => {
+  const { editTransaction, modalClose } = useModal();
 
   const dispatch = useDispatch();
   const submitForm = async values => {
     const data = {
-      id: updatingTransaction.id,
+      id: editTransaction.id,
       data: {
         transactionDate: parseDate(new Date(values.date)),
-        type: updatingTransaction.type,
-        categoryId: updatingTransaction.categoryId,
+        type: editTransaction.type,
+        categoryId: editTransaction.categoryId,
         comment: values.comment,
         amount:
-          updatingTransaction.type === 'INCOME'
+          editTransaction.type === 'INCOME'
             ? Math.abs(values.amount)
             : -values.amount,
       },
@@ -56,21 +45,17 @@ export const UpdateModal = ({ selfDestruction, updatingTransaction }) => {
       .unwrap()
       .then(() => dispatch(refreshUserBalance()));
   };
-
-  const unmountModal = e => {
-    if (e.target === e.currentTarget) selfDestruction();
-  };
   return (
-    <UpdateWrapper onClick={unmountModal}>
-      <BtnClose type="button" onClick={() => selfDestruction()}>
+    <>
+      <BtnClose type="button" onClick={modalClose}>
         <IoIosClose />
       </BtnClose>
       <Formik
         initialValues={{
-          type: updatingTransaction.type === 'EXPENSE' ? true : false,
-          amount: Math.abs(updatingTransaction.amount),
-          date: updatingTransaction.transactionDate,
-          comment: updatingTransaction.comment,
+          type: editTransaction.type === 'EXPENSE' ? true : false,
+          amount: Math.abs(editTransaction.amount),
+          date: editTransaction.transactionDate,
+          comment: editTransaction.comment,
         }}
         validationSchema={object({
           type: bool(),
@@ -82,7 +67,7 @@ export const UpdateModal = ({ selfDestruction, updatingTransaction }) => {
           submitForm(values);
           resetForm();
           setSubmitting(false);
-          selfDestruction();
+          modalClose();
         }}
         enableReinitialize
       >
@@ -95,11 +80,11 @@ export const UpdateModal = ({ selfDestruction, updatingTransaction }) => {
           >
             <HeaderText>Edit transaction</HeaderText>
             <WrapperChanges>
-              <ChangesActiveTypeIncome activetype={updatingTransaction.type}>
+              <ChangesActiveTypeIncome activetype={editTransaction.type}>
                 Income
               </ChangesActiveTypeIncome>
               /
-              <ChangesActiveTypeExpense activetype={updatingTransaction.type}>
+              <ChangesActiveTypeExpense activetype={editTransaction.type}>
                 Expense
               </ChangesActiveTypeExpense>
             </WrapperChanges>
@@ -108,7 +93,7 @@ export const UpdateModal = ({ selfDestruction, updatingTransaction }) => {
               <textarea
                 name="category"
                 autoComplete="off"
-                value={getCategoryName(updatingTransaction.categoryId)}
+                value={getCategoryName(editTransaction.categoryId)}
                 readOnly
               />
             </WrapperCategories>
@@ -147,13 +132,13 @@ export const UpdateModal = ({ selfDestruction, updatingTransaction }) => {
             </WrapperComment>
             <WrapperButton>
               <SaveButton type="submit">Save</SaveButton>
-              <CancelButton type="button" onClick={selfDestruction}>
+              <CancelButton type="button" onClick={modalClose}>
                 Cancel
               </CancelButton>
             </WrapperButton>
           </form>
         )}
       </Formik>
-    </UpdateWrapper>
+    </>
   );
 };

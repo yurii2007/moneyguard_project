@@ -5,25 +5,33 @@ import SideBar from 'components/SideBar/SideBar';
 import { Suspense } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { Outlet, useLocation } from 'react-router-dom';
-import { Background, Container, DashboardPage, NavBlockWrapper } from './LayoutContainer.styled';
+import {
+  Background,
+  Container,
+  DashboardPage,
+  NavBlockWrapper,
+} from './LayoutContainer.styled';
 import { Balance } from 'components/Balance/Balance';
+import { Overlay } from 'components/Overlay/Overlay';
+import { ModalProvider } from 'components/ModalContext/ModalContext';
 
 export const LayoutContainer = () => {
   const isMobile = useMediaQuery({ query: '(max-width: 767.9px)' });
   const location = useLocation();
   const isShowBalance = location.pathname.includes('home');
   const resetPadding = location.pathname.includes('currency');
-  const styles = resetPadding ? {paddingInline: 0} : {}
+  const styles = resetPadding ? { paddingInline: 0 } : {};
 
   return (
-    <>
+    <ModalProvider>
+      <Overlay />
       <Header />
       <Background>
         <Container style={styles}>
           <DashboardPage>
             <NavBlockWrapper>
-            <Navigation />
-            {isMobile ? isShowBalance && <Balance /> : <Balance />}
+              <Navigation />
+              {isMobile ? isShowBalance && <Balance /> : <Balance />}
             </NavBlockWrapper>
             <SideBar />
           </DashboardPage>
@@ -34,6 +42,6 @@ export const LayoutContainer = () => {
           </main>
         </Container>
       </Background>
-    </>
+    </ModalProvider>
   );
 };

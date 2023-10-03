@@ -16,9 +16,13 @@ export const TransactionWrapper = styled.div`
     width: 44px;
     height: 44px;
     box-shadow: 1px 9px 15px 0px var(--transparency-20);
+    &:hover,
+    &:focus {
+      background: var(--btn-hover-gradient);
+    }
     svg {
-        width: 28px;
-        height: 28px;
+      width: 28px;
+      height: 28px;
     }
   }
 `;

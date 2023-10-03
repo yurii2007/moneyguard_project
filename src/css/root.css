@@ -1,6 +1,6 @@
 :root {
   --main-font-color: #fbfbfb;
-  --white-color: #FFF;
+  --white-color: #fff;
   --secondary-font-color: rgba(255, 255, 255, 0.6);
   --btn-gradient-color: linear-gradient(
     97deg,
@@ -8,9 +8,10 @@
     #9e40ba 97.04%,
     #7000ff 150.71%
   );
-  --Form-color: rgba(255, 255, 255, 0.10);
+  --Form-color: rgba(255, 255, 255, 0.1);
   --background: #101010;
   --background-table: rgba(82, 59, 126, 0.6);
+  --background-modal: rgb(82, 59, 126);
   --white: #fbfbfb;
   --icon-violet: #734aef;
   --transparency-10: rgba(255, 255, 255, 0.1);
@@ -20,4 +21,9 @@
   --yellow: #ffb627;
   --dashboard-text: #ff868d;
   --button-text-color: #623f8b;
+  --background-gradient: radial-gradient(
+    circle at center center,
+    rgba(47, 21, 176, 0.73),
+    rgba(48, 46, 142, 1)
+  );
 }

@@ -10,6 +10,11 @@ export const OverlayStyle = styled.div`
   height: 100vh;
   width: 100vw;
   padding-inline: 20px;
-  background: rgba(34, 13, 91, 0.23);
+  background: var(--background-gradient);
+  backdrop-filter: blur(60px);
   z-index: 1000;
+  @media screen and (min-width: 768px) {
+    background: rgba(34, 13, 91, 0.23);
+    backdrop-filter: blur(3.5px);
+  }
 `;

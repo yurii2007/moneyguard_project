@@ -1,3 +1,4 @@
+import { useModal } from 'components/ModalContext/ModalContext';
 import { ReactComponent as EditButton } from '../../../images/svg/edit-button.svg';
 import { TableStyle } from './TransactionListTable.styled';
 
@@ -5,8 +6,8 @@ export const TransactionListTable = ({
   transactions,
   defineCategory,
   handleDelete,
-  openUpdating,
 }) => {
+  const { modalOpen } = useModal();
   return (
     <TableStyle>
       <thead>
@@ -31,7 +32,7 @@ export const TransactionListTable = ({
               <div>
                 <button
                   className="edit-button"
-                  onClick={() => openUpdating(transaction)}
+                  onClick={() => modalOpen('edit', transaction)}
                 >
                   <EditButton width={14} height={14} />
                 </button>

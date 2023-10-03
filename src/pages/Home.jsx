@@ -4,11 +4,9 @@ import React from 'react';
 
 const Home = () => {
   return (
-    <>
       <Container size="main">
         <TransactionsList />
       </Container>
-    </>
   );
 };
 

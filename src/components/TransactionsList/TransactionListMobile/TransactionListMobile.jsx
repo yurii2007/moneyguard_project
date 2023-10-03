@@ -1,3 +1,4 @@
+import { useModal } from 'components/ModalContext/ModalContext';
 import { ReactComponent as EditButton } from '../../../images/svg/edit-button.svg';
 import { TransactionMobileList } from './TransactionListMobile.styled';
 
@@ -5,12 +6,21 @@ export const TransactionListMobile = ({
   transactions,
   defineCategory,
   handleDelete,
-  openUpdating,
 }) => {
+  const { modalOpen } = useModal();
   return (
     <TransactionMobileList>
       {transactions?.map(transaction => (
-        <li style={{borderLeft: `5px solid ${transaction.categoryId === '063f1132-ba5d-42b4-951d-44011ca46262' ? 'var(--yellow)' : 'var(--dashboard-text)'}`}} key={transaction.id}>
+        <li
+          style={{
+            borderLeft: `5px solid ${
+              transaction.categoryId === '063f1132-ba5d-42b4-951d-44011ca46262'
+                ? 'var(--yellow)'
+                : 'var(--dashboard-text)'
+            }`,
+          }}
+          key={transaction.id}
+        >
           <div>
             <p className="transaction-head">Date</p>
             <p className="transaction-desc">{transaction.transactionDate}</p>
@@ -44,7 +54,7 @@ export const TransactionListMobile = ({
             </button>
             <button
               className="edit-button"
-              onClick={() => openUpdating(transaction)}
+              onClick={() => modalOpen('edit', transaction)}
             >
               <EditButton width={14} height={14} />
               Edit

@@ -62,6 +62,10 @@ export const TableStyle = styled.table`
         text-align: center;
         font-size: 14px;
         line-height: normal;
+        &:hover,
+        &:focus {
+        background: var(--btn-hover-gradient);
+        }
       }
       .edit-button {
         padding: 4px 12px;
@@ -72,6 +76,12 @@ export const TableStyle = styled.table`
         font-size: 16px;
         line-height: normal;
         letter-spacing: 0.32px;
+        &:hover,
+        &:focus {
+          svg{
+            fill: var(--white-color);
+          }
+        }
       }
     }
   }

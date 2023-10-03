@@ -11,37 +11,20 @@ import { TransactionListMobile } from './TransactionListMobile/TransactionListMo
 import { TransactionListTable } from './TransactionListTable/TransactionListTable';
 import { selectAllTransactions, selectCategories } from 'redux/selectors';
 import { TransactionWrapper } from './TransactionsList.styled';
-import { useState } from 'react';
-import { UpdateModal } from './UpdateModal/UpdateModal';
-import { AddModal } from './AddModal/AddModal';
 import { refreshUserBalance } from 'redux/auth/AuthThunk';
+import { useModal } from 'components/ModalContext/ModalContext';
 
 const TransactionsList = () => {
-  const [isUpdating, setIsUpdating] = useState(false);
-  const [isAdding, setIsAdding] = useState(false);
-  const [modalUpdObject, setUpdObject] = useState(null);
+  const { modalOpen } = useModal();
   const isMobile = useMediaQuery({ query: '(max-width: 767.9px)' });
   const dispatch = useDispatch();
   const transactions = useSelector(selectAllTransactions);
   const categories = useSelector(selectCategories);
 
   useEffect(() => {
-    document.body.style.overflow = isUpdating || isAdding ? 'hidden' : 'auto';
     dispatch(fetchAllTransactionsThunk());
     dispatch(getTransactionCategoriesThunk());
-  }, [dispatch, isUpdating, isAdding]);
-
-  const openAddModal = () => setIsAdding(true);
-  const closeAddModal = () => setIsAdding(false);
-
-  const openUpdModal = obj => {
-    setUpdObject(obj);
-    setIsUpdating(true);
-  };
-  const closeUpdModal = () => {
-    setUpdObject(null);
-    setIsUpdating(false);
-  };
+  }, [dispatch]);
 
   const defineCategory = id =>
     categories?.find(category => category.id === id).name;
@@ -54,13 +37,6 @@ const TransactionsList = () => {
 
   return (
     <>
-      {isUpdating && (
-        <UpdateModal
-          updatingTransaction={modalUpdObject}
-          selfDestruction={closeUpdModal}
-        />
-      )}
-      {isAdding && <AddModal closeModal={closeAddModal} />}
       <TransactionWrapper>
         {transactions?.length > 0 ? (
           isMobile ? (
@@ -68,18 +44,19 @@ const TransactionsList = () => {
               transactions={transactions}
               defineCategory={defineCategory}
               handleDelete={onDelete}
-              openUpdating={openUpdModal}
             />
           ) : (
             <TransactionListTable
               transactions={transactions}
               defineCategory={defineCategory}
               handleDelete={onDelete}
-              openUpdating={openUpdModal}
             ></TransactionListTable>
           )
         ) : null}
-        <button className="transaction-add-button" onClick={openAddModal}>
+        <button
+          className="transaction-add-button"
+          onClick={() => modalOpen('add')}
+        >
           <AiOutlinePlus />
         </button>
       </TransactionWrapper>

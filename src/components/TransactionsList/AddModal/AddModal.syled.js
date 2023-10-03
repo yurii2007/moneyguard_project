@@ -123,12 +123,10 @@ export const WrapperCategories = styled.div`
   }
 
   border-bottom: 1px solid var(--transparency-60);
-
-  margin-bottom: 40px;
 `;
 
 export const WrapperInputEditor = styled.div`
-  margin-bottom: 40px;
+  margin: 40px 0;
   border-bottom: 1px solid var(--transparency-60);
 `;
 

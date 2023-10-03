@@ -70,11 +70,15 @@ export const AddModal = ({ closeModal }) => {
           amount: '',
           transactionDate: new Date(Date.now()),
           comment: '',
-          category: '',
+          category: null,
         }}
         validationSchema={object({
           type: bool(),
-          category: mixed().required('Please choose transaction category.'),
+          category: mixed().when('type', {
+            is: type => type,
+            then: () => mixed().required('Please choose transaction category.'),
+            otherwise: () => mixed().notRequired(),
+          }),
           amount: number()
             .typeError('Transaction value must be a number')
             .required('Please provide transaction value.'),
@@ -135,7 +139,6 @@ export const AddModal = ({ closeModal }) => {
                 placeholder="0.00"
                 title="Please put the transaction value"
                 name="value"
-                type="number"
                 autoComplete="off"
                 value={values.amount}
                 onChange={evt => setFieldValue('amount', evt.target.value)}

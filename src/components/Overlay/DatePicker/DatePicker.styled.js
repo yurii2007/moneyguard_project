@@ -2,20 +2,17 @@ import styled from 'styled-components';
 
 export const StyledDateWrapper = styled.div`
   position: relative;
-  margin-bottom: 40px;
   border-bottom: 1px solid var(--transparency-60);
   && {
     input {
       position: relative;
       border: none;
-
       font-size: 18px;
       color: var(--white);
       background-color: transparent;
       padding-left: 20px;
       padding-bottom: 4.5px;
       cursor: pointer;
-
       &:focus-visible {
         outline: 0;
       }
@@ -39,6 +36,9 @@ export const StyledDateWrapper = styled.div`
       input {
         width: 280px;
       }
+    }
+    @media screen and (min-width: 768px) {
+      height: 29.8px;
     }
   }
 `;

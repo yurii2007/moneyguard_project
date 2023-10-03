@@ -43,7 +43,7 @@ export const LogoutStyles = styled.div`
   @media screen and (min-width: 768px) {
     padding: 60px 115px;
     background: var(--background-modal);
-    box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
+    box-shadow: var(--modal-box-shadow);
     border-radius: 8px;
     .logo-modal {
       width: 36px;

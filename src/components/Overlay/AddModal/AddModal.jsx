@@ -11,6 +11,7 @@ import { Checkbox } from './Checkbox/Checkbox';
 import {
   BtnClose,
   CancelButton,
+  FormStyles,
   HeaderText,
   InputEditor,
   SaveButton,
@@ -18,6 +19,7 @@ import {
   WrapperCategories,
   WrapperComment,
   WrapperInputEditor,
+  WrapperTablet,
 } from './AddModal.syled';
 import { ErrorText } from './AddModal.syled';
 import { refreshUserBalance } from 'redux/auth/AuthThunk';
@@ -25,7 +27,7 @@ import { customSelectStyles } from './customerStylesSelect';
 import { useModal } from 'components/ModalContext/ModalContext';
 
 export const AddModal = () => {
-  const {modalClose} = useModal();
+  const { modalClose } = useModal();
   const categories = useSelector(selectCategories);
   const dispatch = useDispatch();
 
@@ -46,9 +48,6 @@ export const AddModal = () => {
 
   return (
     <>
-      <BtnClose type="button" onClick={modalClose}>
-        <IoIosClose />
-      </BtnClose>
       <Formik
         initialValues={{
           type: true,
@@ -85,12 +84,15 @@ export const AddModal = () => {
           errors,
           touched,
         }) => (
-          <form
+          <FormStyles
             onSubmit={e => {
               e.preventDefault();
               handleSubmit(e);
             }}
           >
+            <BtnClose type="button" onClick={modalClose}>
+              <IoIosClose size={44} />
+            </BtnClose>
             <HeaderText>Add Transaction</HeaderText>
             <Checkbox
               type="checkbox"
@@ -119,32 +121,34 @@ export const AddModal = () => {
                 <ErrorText>{errors.category}</ErrorText>
               </WrapperCategories>
             )}
-            <WrapperInputEditor>
-              <InputEditor
-                placeholder="0.00"
-                title="Please put the transaction value"
-                name="value"
-                autoComplete="off"
-                value={values.amount}
-                onChange={evt => setFieldValue('amount', evt.target.value)}
-                onBlur={handleBlur}
-                onKeyUp={handleBlur}
-              />
-              {touched.amount && errors.amount && (
-                <ErrorText>{errors.amount}</ErrorText>
-              )}
-            </WrapperInputEditor>
-            <div>
-              <DatePickerForm
-                dateFormat="dd.mm.yyyy"
-                name="transactionDate"
-                type="date"
-                timeFormat={false}
-              />
-              {errors.transactionDate && (
-                <ErrorText>{errors.transactionDate}</ErrorText>
-              )}
-            </div>
+            <WrapperTablet>
+              <WrapperInputEditor>
+                <InputEditor
+                  placeholder="0.00"
+                  title="Please put the transaction value"
+                  name="value"
+                  autoComplete="off"
+                  value={values.amount}
+                  onChange={evt => setFieldValue('amount', evt.target.value)}
+                  onBlur={handleBlur}
+                  onKeyUp={handleBlur}
+                />
+                {touched.amount && errors.amount && (
+                  <ErrorText>{errors.amount}</ErrorText>
+                )}
+              </WrapperInputEditor>
+              <div>
+                <DatePickerForm
+                  dateFormat="dd.mm.yyyy"
+                  name="transactionDate"
+                  type="date"
+                  timeFormat={false}
+                />
+                {errors.transactionDate && (
+                  <ErrorText>{errors.transactionDate}</ErrorText>
+                )}
+              </div>
+            </WrapperTablet>
             <WrapperComment>
               <textarea
                 placeholder="Comment"
@@ -166,9 +170,9 @@ export const AddModal = () => {
               </CancelButton>
             </WrapperButton>
             <div></div>
-          </form>
+          </FormStyles>
         )}
       </Formik>
-      </>
+    </>
   );
 };

@@ -1,71 +1,12 @@
 import styled from 'styled-components';
 
-export const UpdateWrapper = styled.div`
-  min-height: 100vh;
-  width: 100vw;
-  position: fixed;
-  top: 61.38px;
-  left: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: 0.5s;
-  z-index: 1000;
-  background: var(--transparency-10);
-  box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(50px);
-
+export const FormStyles = styled.form`
+  position: relative;
   @media screen and (min-width: 768px) {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-
-    position: absolute;
-    top: -55%;
-    left: 10%;
-
-    width: 540px;
-    min-height: 580px;
-    box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
-    backdrop-filter: blur(50px);
+    padding: 40px 72px;
+    background: var(--background-modal);
+    box-shadow: var(--modal-box-shadow);
     border-radius: 8px;
-
-    padding-top: 40px;
-    padding-bottom: 40px;
-  }
-
-  @media screen and (min-width: 1280px) {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-
-    position: absolute;
-    top: 0;
-    left: -20%;
-
-    width: 540px;
-    min-height: 580px;
-    box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
-    backdrop-filter: blur(50px);
-    border-radius: 8px;
-
-    padding-top: 40px;
-    padding-bottom: 40px;
-  }
-
-  textarea {
-    resize: none;
-    overflow-y: hidden;
-    transition: height 0.2s;
-    background-color: transparent;
-    border: none;
-    color: var(--white);
-    padding-left: 20px;
-    height: 24px;
-  }
-
-  textarea:focus {
-    outline: none;
   }
 `;
 
@@ -126,7 +67,6 @@ export const WrapperCategories = styled.div`
 `;
 
 export const WrapperInputEditor = styled.div`
-  margin: 40px 0;
   border-bottom: 1px solid var(--transparency-60);
 `;
 
@@ -144,6 +84,18 @@ export const InputEditor = styled.input`
   outline: none;
   &::placeholder {
     color: var(--white, #fbfbfb);
+  }
+`;
+
+export const WrapperTablet = styled.div`
+  margin-block: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    align-items: center;
+    gap: 32px;
   }
 `;
 
@@ -182,6 +134,7 @@ export const WrapperComment = styled.div`
 export const WrapperButton = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
 `;
 
 export const SaveButton = styled.button`
@@ -254,8 +207,6 @@ export const BtnClose = styled.button`
   position: absolute;
   top: 20px;
   right: 20px;
-  width: 20px;
-  height: 20px;
   border: none;
   background: none;
   margin: 0;
@@ -264,8 +215,6 @@ export const BtnClose = styled.button`
 
   & svg {
     color: #fbfbfb;
-    width: 20px;
-    height: 20px;
     position: relative;
   }
 

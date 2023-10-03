@@ -6,7 +6,7 @@ import { UpdateModal } from './EditModal/UpdateModal';
 import { ModalLogout } from './LogoutModal/ModalLogout';
 
 export const Overlay = () => {
-  const { modalName, isShowModal, modalClose, modalOpen } = useModal();
+  const { modalName, isShowModal, modalClose } = useModal();
   const openedModal = modalName => {
     switch (modalName) {
       case 'add':

@@ -15,7 +15,11 @@
   "btnEdit": "Редагувати",
   "expence": "Витрати",
   "income": "Дохід",
+  "transaction": "Додати транзакцію",
   "logout": "Вийти",
   "cancel": "Скасувати",
-  "Are you sure you want to log out?": "Ви впевнені, що бажаєте вийти?"
+  "save": "Зберегти",
+  "add": "Додати",
+  "Are you sure you want to log out?": "Ви впевнені, що бажаєте вийти?",
+  "Edit transaction": "Редагувати транзакцію"
 }

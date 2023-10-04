@@ -14,5 +14,12 @@
   "btnDel": "Delete",
   "btnEdit": "Edit",
   "expence": "Expenses",
-  "income": "Income"
+  "income": "Income",
+  "transaction": "Add Transaction",
+  "logout": "logout",
+  "cancel": "cancel",
+  "save": "save",
+  "add": "add",
+  "Are you sure you want to log out?": "Are you sure you want to log out?",
+  "Edit transaction": "Edit transaction"
 }

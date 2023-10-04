@@ -1,5 +1,7 @@
 import { Formik } from 'formik';
 import { object, string, date, bool, number } from 'yup';
+import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
 import { useDispatch } from 'react-redux';
 import { IoIosClose } from 'react-icons/io';
 import {
@@ -28,6 +30,7 @@ import { useModal } from 'components/ModalContext/ModalContext';
 
 export const UpdateModal = () => {
   const { editTransaction, modalClose } = useModal();
+  const { t } = useTranslation();
 
   const dispatch = useDispatch();
   const submitForm = async values => {
@@ -59,7 +62,11 @@ export const UpdateModal = () => {
         }}
         validationSchema={object({
           type: bool(),
-          amount: number().typeError('Transaction value must be a number'),
+          amount: number().typeError(
+            i18next.language === 'ua'
+              ? 'Значення трансакції має бути числом.'
+              : 'Transaction value must be a number'
+          ),
           date: date(),
           comment: string(),
         })}
@@ -81,14 +88,14 @@ export const UpdateModal = () => {
             <BtnClose type="button" onClick={modalClose}>
               <IoIosClose size={44} />
             </BtnClose>
-            <HeaderText>Edit transaction</HeaderText>
+            <HeaderText>{t('Edit transaction')}</HeaderText>
             <WrapperChanges>
               <ChangesActiveTypeIncome $activetype={editTransaction.type}>
-                Income
+                {t('income')}
               </ChangesActiveTypeIncome>
               &#x2F;
               <ChangesActiveTypeExpense $activetype={editTransaction.type}>
-                Expense
+                {t('expence')}
               </ChangesActiveTypeExpense>
             </WrapperChanges>
 
@@ -137,9 +144,9 @@ export const UpdateModal = () => {
               />
             </WrapperComment>
             <WrapperButton>
-              <SaveButton type="submit">Save</SaveButton>
+              <SaveButton type="submit">{t('save')}</SaveButton>
               <CancelButton type="button" onClick={modalClose}>
-                Cancel
+                {t('cancel')}
               </CancelButton>
             </WrapperButton>
           </FormStyles>

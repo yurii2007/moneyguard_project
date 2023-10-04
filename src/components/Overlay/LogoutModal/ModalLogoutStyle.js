@@ -12,7 +12,7 @@ export const LogoutStyles = styled.div`
     display: none;
   }
   .text-logout {
-    max-width: 214px;
+    width: 214px;
     font-size: 18px;
     line-height: 27px;
     text-align: center;
@@ -65,7 +65,7 @@ export const LogoutStyles = styled.div`
       color: var(--white-color);
     }
     .text-logout {
-      width: 214px;
+      width: 299px;
       color: var(--white-color);
       text-align: center;
       margin-bottom: 40px;

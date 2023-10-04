@@ -22,5 +22,9 @@
   "add": "add",
   "Are you sure you want to log out?": "Are you sure you want to log out?",
   "Edit transaction": "Edit transaction",
-  "leave feedback": "Leave feedback"
+  "leave feedback": "Leave feedback",
+  "send": "Send",
+  "email": "Email",
+  "name": "Name",
+  "feedback": "Feedback"
 }

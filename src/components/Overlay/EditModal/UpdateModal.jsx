@@ -19,13 +19,14 @@ import {
   WrapperChanges,
   WrapperInputEditor,
   WrapperTablet,
+  BtnClose,
+  FormStyles,
 } from '../AddModal/AddModal.syled';
 import DatePickerForm from '../DatePicker/DatePicker';
 import getCategoryName from '../../TransactionsList/categories';
 import { updTransactionThunk } from 'redux/finance/financeThunks';
 import { parseDate } from 'utils/helpers';
 import { refreshUserBalance } from 'redux/auth/AuthThunk';
-import { BtnClose, FormStyles } from '../AddModal/AddModal.syled';
 import { useModal } from 'components/ModalContext/ModalContext';
 
 export const UpdateModal = () => {

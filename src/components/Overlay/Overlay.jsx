@@ -4,6 +4,7 @@ import { useModal } from 'components/ModalContext/ModalContext';
 import { AddModal } from './AddModal/AddModal';
 import { UpdateModal } from './EditModal/UpdateModal';
 import { ModalLogout } from './LogoutModal/ModalLogout';
+import { FormFeedback } from './FormFeedback/FormFeedback';
 
 export const Overlay = () => {
   const { modalName, isShowModal, modalClose } = useModal();
@@ -15,6 +16,8 @@ export const Overlay = () => {
         return <UpdateModal />;
       case 'logout':
         return <ModalLogout />;
+      case 'feedback':
+        return <FormFeedback />;
       default:
         return null;
     }

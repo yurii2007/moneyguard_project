@@ -1,5 +1,5 @@
 import { getMonoCurrency } from '../utils/newMonobankAPI';
-import { format} from 'date-fns'
+import { format } from 'date-fns';
 
 function parseMono(arr) {
   const rez = [
@@ -25,4 +25,10 @@ async function getCurrency() {
 }
 export default getCurrency;
 
-export const parseDate = date => format(date,'yyyy-MM-dd')
+export const parseDate = date => format(date, 'yyyy-MM-dd');
+
+export const getLanguage = () => {
+  const language = localStorage.getItem('i18nextLng') || 'en';
+  if (language === 'ru-RU') return 'ua';
+  return language;
+};

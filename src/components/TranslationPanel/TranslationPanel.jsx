@@ -1,6 +1,7 @@
 import React from 'react';
 import i18next from 'i18next';
 import { useTranslation } from 'react-i18next';
+import { ButtonStyled } from './TranslationPanel.styled';
 
 const TranslationPanel = () => {
   const { i18n } = useTranslation();
@@ -11,18 +12,18 @@ const TranslationPanel = () => {
 
   return (
     <div>
-      <button
+      <ButtonStyled
         onClick={() => changeLanguage('en')}
         disabled={i18next.language === 'en'}
       >
         EN
-      </button>
-      <button
+      </ButtonStyled>
+      <ButtonStyled
         onClick={() => changeLanguage('ua')}
         disabled={i18next.language === 'ua'}
       >
         UA
-      </button>
+      </ButtonStyled>
     </div>
   );
 };

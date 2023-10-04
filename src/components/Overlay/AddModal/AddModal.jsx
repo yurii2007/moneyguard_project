@@ -1,6 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { createTransactionThunk } from 'redux/finance/financeThunks';
 import { Formik } from 'formik';
+import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
 import Select from 'react-select';
 import { object, string, date, bool, mixed, number } from 'yup';
 import DatePickerForm from '../DatePicker/DatePicker';
@@ -30,6 +32,7 @@ export const AddModal = () => {
   const { modalClose } = useModal();
   const categories = useSelector(selectCategories);
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   const submitForm = values => {
     const formattingData = {
@@ -60,14 +63,35 @@ export const AddModal = () => {
           type: bool(),
           category: mixed().when('type', {
             is: type => type,
-            then: () => mixed().required('Please choose transaction category.'),
+            then: () =>
+              mixed().required(
+                i18next.language === 'ua'
+                  ? 'Виберіть категорію транзакції.'
+                  : 'Please choose transaction category.'
+              ),
             otherwise: () => mixed().notRequired(),
           }),
           amount: number()
-            .typeError('Transaction value must be a number')
-            .required('Please provide transaction value.'),
-          transactionDate: date().required('Please provide transaction date.'),
-          comment: string().required('Please add comment.'),
+            .typeError(
+              i18next.language === 'ua'
+                ? 'Значення трансакції має бути числом.'
+                : 'Transaction value must be a number'
+            )
+            .required(
+              i18next.language === 'ua'
+                ? 'Укажіть суму транзакції.'
+                : 'Please provide transaction value.'
+            ),
+          transactionDate: date().required(
+            i18next.language === 'ua'
+              ? 'Укажіть дату транзакції.'
+              : 'Please provide transaction date.'
+          ),
+          comment: string().required(
+            i18next.language === 'ua'
+              ? 'Додайте коментар.'
+              : 'Please add comment.'
+          ),
         })}
         onSubmit={(values, { setSubmitting, resetForm }) => {
           submitForm(values);
@@ -93,7 +117,7 @@ export const AddModal = () => {
             <BtnClose type="button" onClick={modalClose}>
               <IoIosClose size={44} />
             </BtnClose>
-            <HeaderText>Add Transaction</HeaderText>
+            <HeaderText>{t('transaction')}</HeaderText>
             <Checkbox
               type="checkbox"
               name="type"
@@ -109,7 +133,11 @@ export const AddModal = () => {
                 <Select
                   name="category"
                   value={values.category}
-                  placeholder="Select a category"
+                  placeholder={
+                    i18next.language === 'ua'
+                      ? 'Виберіть категорію'
+                      : 'Select a category'
+                  }
                   onChange={option => setFieldValue('category', option)}
                   options={categories?.map(option => ({
                     value: option.type,
@@ -151,7 +179,7 @@ export const AddModal = () => {
             </WrapperTablet>
             <WrapperComment>
               <textarea
-                placeholder="Comment"
+                placeholder={i18next.language === 'ua' ? 'Коментар' : 'Comment'}
                 title="Leave the description here"
                 name="comment"
                 type="text"
@@ -164,9 +192,9 @@ export const AddModal = () => {
               <ErrorText>{errors.comment}</ErrorText>
             </WrapperComment>
             <WrapperButton>
-              <SaveButton type="submit">Add</SaveButton>
+              <SaveButton type="submit">{t('add')}</SaveButton>
               <CancelButton type="button" onClick={modalClose}>
-                Cancel
+                {t('cancel')}
               </CancelButton>
             </WrapperButton>
             <div></div>

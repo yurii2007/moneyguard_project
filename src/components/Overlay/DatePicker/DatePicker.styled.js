@@ -18,20 +18,6 @@ export const StyledDateWrapper = styled.div`
       }
     }
 
-    &.rdt {
-      position: relative;
-    }
-
-    &.rdtPicker {
-      position: absolute;
-      min-width: 250px;
-      padding: 4px;
-    }
-
-    .rdtPicker td.rdtToday:before {
-      border-bottom: 7px solid var(--picker);
-    }
-
     @media (max-width: 767.9px) {
       input {
         width: 280px;

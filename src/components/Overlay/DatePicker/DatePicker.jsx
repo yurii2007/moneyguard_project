@@ -4,10 +4,17 @@ import { useField, useFormikContext } from 'formik';
 import { IconWrapper, StyledDateWrapper } from './DatePicker.styled';
 import { ReactComponent as Calendar } from 'images/svg/calendar.svg';
 import DatePicker from 'react-datepicker';
+import uk from 'date-fns/locale/uk';
+import en from 'date-fns/locale/en-US';
+import { registerLocale } from 'react-datepicker';
+import { getLanguage } from 'utils/helpers';
 
 export const DatePickerForm = ({ name }) => {
   const [field] = useField(name);
   const { setFieldValue } = useFormikContext();
+  const userLanguage = getLanguage();
+  registerLocale(uk);
+  registerLocale(en);
 
   return (
     <StyledDateWrapper>
@@ -21,6 +28,7 @@ export const DatePickerForm = ({ name }) => {
           }
         }}
         dateFormat="dd.MM.yyyy"
+        locale={userLanguage === 'ua' ? uk : en}
       />
       <IconWrapper>
         <Calendar />

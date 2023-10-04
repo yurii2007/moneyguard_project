@@ -14,6 +14,7 @@ import {
 import { Balance } from 'components/Balance/Balance';
 import { Overlay } from 'components/Overlay/Overlay';
 import { ModalProvider } from 'components/ModalContext/ModalContext';
+import { FeedbackButton } from 'components/FeedbackButton/FeedbackButton';
 
 export const LayoutContainer = () => {
   const isMobile = useMediaQuery({ query: '(max-width: 767.9px)' });
@@ -41,6 +42,7 @@ export const LayoutContainer = () => {
             </Suspense>
           </main>
         </Container>
+        <FeedbackButton />
       </Background>
     </ModalProvider>
   );

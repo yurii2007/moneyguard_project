@@ -152,6 +152,7 @@ export const AddModal = () => {
             <WrapperTablet>
               <WrapperInputEditor>
                 <InputEditor
+                  type="number"
                   placeholder="0.00"
                   title="Please put the transaction value"
                   name="value"

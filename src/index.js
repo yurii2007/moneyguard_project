@@ -7,6 +7,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { persistStor, store } from 'redux/store';
 import { PersistGate } from 'redux-persist/integration/react';
+import { Loader } from 'components/Loader/Loader';
 
 import './18n';
 
@@ -15,7 +16,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistStor}>
         <BrowserRouter basename="/moneyguard_project">
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<Loader />}>
             <App />
           </Suspense>
         </BrowserRouter>
